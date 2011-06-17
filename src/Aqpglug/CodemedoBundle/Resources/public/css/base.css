@@ -94,10 +94,11 @@ body {
     top:177px;
     width:823px;
     height:1px;
-
     background-color:#000000;
     opacity:1.0;
     filter:alpha(opacity=100);
+    border: none;
+    margin:0;
 }
 
 #nap34_7_5{
@@ -128,15 +129,36 @@ body {
     background-image: url(/bundles/aqpglugcodemedo/images/system-search.png);
 }
 
+#nap76 {
+    left: 792px;
+    top: 90px;
+    width: 48px;
+    height: 48px;
+    z-index: 9;
+    border: 0px solid;
+}
+
+#nap77 {
+    left: 61px;
+    top: 90px;
+    width: 48px;
+    height: 48px;
+    z-index: 10;
+    border: 0px solid;
+}
+
+
 #content
 {
     position:absolute;
     left: 61px;
-    top: 233px;
+    top: 204px;
     width:902px;
 }
 
-.members
+
+/* ///// manual //////  */
+.members, .featured.article
 {
     -moz-column-count: 3;
     -moz-column-gap: 20px;
@@ -150,14 +172,14 @@ body {
     vertical-align: middle;
 }
 
-.projects {
+.projects .articles {
     -moz-column-count: 2;
     -moz-column-gap: 20px;
     -webkit-column-count: 2;
     -webkit-column-gap: 20px;
     column-count: 2;
     column-gap: 20px;
-    
+
     height:400px;
 }
 .projects li {
@@ -172,5 +194,49 @@ body {
     width: 314px;
     height: 134px;
     z-index: 1;
+    border: 0px solid;
+}
+
+.featured.article {
+    height:165px;   
+    margin:70px 100px 0;
+}
+.featured.article li {
+    width: 167px;
+    height: 160px;
+    z-index: 3;
+    background-color: white;
+    opacity: 1.0;
+    filter: alpha(opacity=100);
+    border: 1px dashed #597EAA;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    text-align: center;
+    list-style: none;
+}
+.featured.article a {
+    display: block;
+    width: 153px;
+    height: 63px;
+    z-index: 1;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: none;
+    text-align: center;
+    color: #597EAA;
+    white-space: normal;
+}
+.featured.article img {
+    width: 79px;
+    height: 78px;
+    z-index: 2;
+    border: 0px solid;
+}
+
+.articles img {
+    width: 77px;
+    height: 79px;
+    z-index: 11;
     border: 0px solid;
 }
