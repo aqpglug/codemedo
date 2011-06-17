@@ -1,15 +1,18 @@
 {% extends 'AqpglugCodemedoBundle::layout.html.twig' %}
+{% import 'AqpglugCodemedoBundle:Macros:image.html.twig' as image %}
 
 {% block content %}
 <h1>Eventos</h1>
+<img id="nap104" src="/bundles/aqpglugcodemedo/images/icons/RSSIcon.png" class="napkeeComponent napkeeIcon rotate360"/>
+<img id="nap105" src="/bundles/aqpglugcodemedo/images/icons/EmailIcon.png" class="napkeeComponent napkeeIcon rotate360"/>
 <div class="event-container">
     <ul class="events">
     {% for event in events %}
         <li>
-            <img src="/bundles/aqpglugcodemedo/images/{{ event.image|default('placeholder.jpg')}}" alt="{{ event.title }}" />
+            <img src="{{ image.or_default( event.image, 'http://lorempixum.com/80/80/technics/') }}" alt="{{ event.title }}" />
             <a href="{{ path("_event_show", {'slug': event.slug}) }}">{{ event.title }}</a><br />
-            <span>{{ event.content }}</span>
-            <span>{#{ event.metadata['fecha']|raw }#}el 28 de abril de 10am a 3pm</span>
+            <span>{{ event.content }}</span><br />
+            <span class="date">{#{ event.metadata['fecha']|raw }#}el 28 de abril de 10am a 3pm</span>
         </li>
     {% else %}
         <li>no hay Eventos</li>
@@ -19,4 +22,6 @@
         <iframe id="nap11" src="http://www.napkee.com/components/NapkeeHostedMaps/?loc=Arequipa, Peru" class="napkeeComponent napkeeMap"></iframe>
     </div>
 </div>
+<img id="nap14" src="/bundles/aqpglugcodemedo/images/icons/UpTriangleIcon.png" class="napkeeComponent napkeeIcon rotate360"/>
+<img id="nap15" src="/bundles/aqpglugcodemedo/images/icons/DownFillTriangleIcon.png" class="napkeeComponent napkeeIcon rotate360"/>
 {% endblock %}

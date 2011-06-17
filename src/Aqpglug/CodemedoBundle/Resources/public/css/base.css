@@ -166,12 +166,46 @@ body {
 
 
 #nap11 {
-left: 495px;
-top: 96px;
-width: 350px;
-height: 280px;
-position: absolute;
+    left: 495px;
+    top: 96px;
+    width: 350px;
+    height: 280px;
+    position: absolute;
 }
+
+#nap14 {
+    left: 148px;
+    top: 424px;
+    width: 32px;
+    height: 32px;
+    border: 0px solid;
+}
+
+#nap15 {
+    left: 261px;
+    top: 424px;
+    width: 32px;
+    height: 32px;
+    z-index: 7;
+    border: 0px solid;
+}
+
+#nap68 {
+    left: 809px;
+    top: 351px;
+    width: 48px;
+    height: 48px;
+    border: 0px solid;
+}
+
+#nap69 {
+    left: 45px;
+    top: 351px;
+    width: 48px;
+    height: 48px;
+    border: 0px solid;
+}
+
 
 #content
 {
@@ -187,7 +221,7 @@ position: absolute;
 #content h1 {
     position:relative;
     left: 84px;
-    margin:10px 0;
+    margin:10px 0 0;
     z-index: 2;
     font-size: 24px;
     font-style: normal;
@@ -196,8 +230,7 @@ position: absolute;
     color: black;
 }
 
-.members, .featured.article
-{
+.members, .featured.article {
     -moz-column-count: 3;
 
     -webkit-column-count: 3;
@@ -206,13 +239,21 @@ position: absolute;
 
 }
 .members {
-    margin: 0 70px;
+    margin: 7px 86px 0
 }
-.members img
-{
+.members li {
+    margin-bottom:14px;
+}
+.members img {
     vertical-align: middle;
 }
 
+.members a {
+    font-size: 13px;
+    position:relative;
+    top:3px;
+    left:8px;
+}
 .projects, .articles {
     -moz-column-count: 2;
     -webkit-column-count: 2;
@@ -330,17 +371,55 @@ position: absolute;
 }
 .events {
     float: left;
-    margin: 0 60px;
+    margin: 21px 34px 0;
+    border-right: 1px solid black;
+    padding-right: 41px;
+    height: 324px;
+    overflow: hidden;
 }
 .events li {
     list-style: none;
+    clear: both;
+    height: 79px;
+    margin: 4px 0 40px;
+    width: 308px;
 }
 .events img {
     width: 77px;
     height: 79px;
     border: 0px;
+    float: left;
 }
 
+.events a {
+    position:relative;
+    left:16px;
+    top:0px;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: underline;
+}
+.events span {
+    position:relative;
+    left:16px;
+    top: 6px;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: none;
+    text-align: left;
+    color: black;
+}
+.events .date {
+    font-size: 13px;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: none;
+    text-align: left;
+    color: #666;
+    top: 8px;
+}
 #map {
     float:left;
 }
