@@ -56,11 +56,12 @@ class AdminController extends Controller
     }
     
     /**
-     * @Route("/edit/{slug}", name="_admin_edit")
+     * @Route("/edit/{id}", name="_admin_edit")
      */
-    public function editAction($slug)
+    public function editAction($id)
     {
-        $block = $this->getRepo()->findPageBySlug($slug);
+        $block = $this->getRepo()->findOneBy(array('id' => $id));
+        
         $form = $this->createForm(new BlockType(), $block);
 
         $request = $this->getRequest();
@@ -76,7 +77,8 @@ class AdminController extends Controller
         }
 
         return $this->render('AqpglugCodemedoBundle:Admin:edit.html.twig', array(
-            'form' => $form,
+            'form' => $form->createView(),
+            'id' => $id,
         ));
     }
     
