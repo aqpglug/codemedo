@@ -6,7 +6,7 @@ shell:
 	phpsh app/shell.php
 
 mysql:
-	mysql -u root -p jamear
+	mysql -u root -p codemedo
 
 cc:
 	php app/console cache:clear --env=dev
@@ -31,7 +31,7 @@ permissions:
 	sudo chmod 777 -R app/cache app/logs
 
 test:
-	phpunit -c app/ src/Stormlabs
+	phpunit -c app/ src/Aqpglug
 
 vendors:
 	bin/vendors update
