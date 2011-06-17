@@ -1,0 +1,14 @@
+{% extends 'AqpglugCodemedoBundle::layout.html.twig' %}
+
+{% block content %}
+
+<a href="{{ path('_admin_new') }}" >nuevo</a>
+
+    <div>
+    {% for article in articles %}
+        <a href="{{ path("_admin_edit", {'slug': article.slug}) }}">{{ article.title }}</a>
+    {% else %}
+        no hay articulos
+    {% endfor %}
+    </div>
+{% endblock %}

@@ -1,4 +1,8 @@
 # orden de más específico al más general
+_admin:
+    resource: "@AqpglugCodemedoBundle/Controller/AdminController.php"
+    type:     annotation
+
 _project:
     resource: "@AqpglugCodemedoBundle/Controller/ProjectController.php"
     type:     annotation
