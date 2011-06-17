@@ -1,3 +1,3 @@
-#homepage:
-#    pattern:  /
-#    defaults: { _controller: AqpglugCodemedoBundle:Default:index }
+_block:
+    resource: "@AqpglugCodemedoBundle/Controller/BlockController.php"
+    type:     annotation

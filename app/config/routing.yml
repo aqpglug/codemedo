@@ -1,0 +1,2 @@
+_codemedo:
+    resource: "@AqpglugCodemedoBundle/Resources/config/routing.yml"
