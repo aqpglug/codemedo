@@ -9,16 +9,16 @@ class BlockType extends AbstractType
 {
 
     // TODO: traer esto desde el config
-    protected $types;
+    protected $config;
 
     function __construct($types)
     {
-        $this->types = $types;
+        $this->config = $types;
     }
 
     public function buildForm(FormBuilder $builder, array $options)
     {
-        $builder->add('type', 'choice', array('choices' => $this->types))
+        $builder->add('type', 'choice', array('choices' => $this->config))
                 ->add('title')
                 ->add('slug')
                 ->add('content')
