@@ -4,7 +4,13 @@ types:
   article:
     label: Articulo
     metadata: [resume]
-  page: ~
-  project: ~
-  event: ~
-  menber: ~
+  page:
+    label: Página
+  project:
+    label: Proyecto
+    metadata: [url]
+  event:
+    label: Evento
+    metadata: [date, lat, long]
+  member:
+    label: Miembro

@@ -35,8 +35,9 @@ class AdminController extends Controller
     public function newAction()
     {
         $block = new Block();
-        $types = $this->get('codemedo')->getTypes();
-        $form = $this->createForm(new BlockType($types), $block);
+        $labels = $this->get('codemedo')->getLabels();
+        $meta = $this->get('codemedo')->getMeta();
+        $form = $this->createForm(new BlockType($labels, $meta), $block);
 
         $request = $this->getRequest();
         if ($request->getMethod() == 'POST') {

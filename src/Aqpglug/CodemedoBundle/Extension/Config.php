@@ -13,23 +13,43 @@ class Config
     {
         $this->data = Yaml::parse(__DIR__ . "/../Resources/config/codemedo.yml");
         $keys = array_keys($this->data);
-        
-        if(count(array_diff($keys, array('homepage', 'types'))))
+
+        if (count(array_diff($keys, array('homepage', 'types'))))
             throw new \InvalidArgumentException();
+        
+        foreach ($this->data['types'] as $key => $value) {
+            if (!array_key_exists('label', $value)){
+                throw new \InvalidArgumentException();
+            }
+        }
     }
 
     public function getTypes()
     {
-        return array_keys($this->data['types']);
+        return $this->data['types'];
     }
 
-    public function getMeta($type)
+    public function getLabels()
     {
-        return $this->types[$type];
+        $labels = array();
+        foreach ($this->data['types'] as $key => $value) {
+            $labels[$key] = $value['label'];
+        }
+        return $labels;
+    }
+
+    public function getMeta(array $type)
+    {
+        $meta = array();
+        foreach ($this->data['types'] as $key => $value) {
+            $meta[$key] = is_array($value) ? $value['metadata'] : null;
+        }
+        return $meta;
     }
 
     public function getHome()
     {
-        return;
+        return $this->data['homepage'];
     }
+
 }
