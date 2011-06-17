@@ -16,9 +16,9 @@ class Config
 
         if (count(array_diff($keys, array('homepage', 'types'))))
             throw new \InvalidArgumentException();
-        
+
         foreach ($this->data['types'] as $key => $value) {
-            if (!array_key_exists('label', $value)){
+            if (!array_key_exists('label', $value)) {
                 throw new \InvalidArgumentException();
             }
         }
@@ -38,11 +38,11 @@ class Config
         return $labels;
     }
 
-    public function getMeta(array $type)
+    public function getMeta()
     {
-        $meta = array();
-        foreach ($this->data['types'] as $key => $value) {
-            $meta[$key] = is_array($value) ? $value['metadata'] : null;
+        $meta = $this->data['types'];
+        foreach ($meta as $key => $value) {
+            $meta[$key] = array_key_exists('metadata', $value) ? $value['metadata'] : array();
         }
         return $meta;
     }
