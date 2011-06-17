@@ -1,10 +1,10 @@
 <?php
 
-namespace Aqpglug\CodemedoBundle\DependencyInjection;
+namespace Aqpglug\CodemedoBundle\Extension;
 
 use Symfony\Component\Yaml\Yaml;
 
-class Types
+class Config
 {
 
     protected $data;
