@@ -26,7 +26,7 @@ class BlockRepository extends EntityRepository
 
     public function findAllSortedBy($type, $field, $nb = null)
     {
-        $query = $this->queryAllSortedBy($field);
+        $query = $this->queryAllSortedBy($type, $field);
 
         if (null !== $nb) {
             $query->setMaxResults($nb);
@@ -38,8 +38,12 @@ class BlockRepository extends EntityRepository
     public function queryAllSortedBy($type, $field)
     {
         $qb = $this->createQueryBuilder('e');
-        $qb->where('e.type = ?', $type);
-        $qb->andWhere('e.published = ?', true);
+        $qb->where('e.type = ?1');
+        $qb->andWhere('e.published = ?2');
+        $qb->setParameters(array(
+            1 => $type,
+            2 => true,
+            ));
         $qb->orderBy('e.' . $field, 'title' === $field ? 'asc' : 'desc');
         $query = $qb->getQuery();
 
