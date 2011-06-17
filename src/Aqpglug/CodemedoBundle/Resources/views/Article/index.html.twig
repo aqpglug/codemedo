@@ -1,5 +1,22 @@
 {% extends 'AqpglugCodemedoBundle::layout.html.twig' %}
 
 {% block content %}
-    hello!!
+    <div>
+    {% for article in featured %}
+        <a href="{{ path("_article_show", {'slug': article.slug}) }}">{{ article.title }}</a>
+        <img src="/bundles/aqpglugcodeme/images/{{ article.image|default('block_default.png')}}" alt="{{ article.title }}" />
+    {% else %}
+        no hay articulos destacados
+    {% endfor %}
+    </div>
+    
+    <div>
+    {% for article in articles %}
+        <img src="/bundles/aqpglugcodeme/images/{{ article.image|default('block_default.png')}}" alt="{{ article.title }}" />
+        <a href="{{ path("_article_show", {'slug': article.slug}) }}">{{ article.title }}</a>
+        <p>{{ article.content }}</p>
+    {% else %}
+        no hay articulos
+    {% endfor %}
+    </div>
 {% endblock %}
