@@ -25,4 +25,13 @@ class BlockController extends Controller
         ));
     }
 
+    public function listAction($type, $field, $template, $limit=5)
+    {
+        $blocks = $this->getRepo()->findAllSortedBy($type, $field, $limit);
+
+        return $this->render($template, array(
+            'results' => $blocks,
+        ));
+    }
+
 }
