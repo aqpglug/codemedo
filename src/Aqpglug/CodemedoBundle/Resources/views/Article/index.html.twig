@@ -23,10 +23,13 @@
         </tr>
     </tbody>
 </table>
+<img id="nap104" src="/bundles/aqpglugcodemedo/images/icons/RSSIcon.png" class="napkeeComponent napkeeIcon rotate360"/>
+<img id="nap105" src="/bundles/aqpglugcodemedo/images/icons/EmailIcon.png" class="napkeeComponent napkeeIcon rotate360"/>
 
 
-    {% render 'AqpglugCodemedoBundle:Block:featured' with {
-                'field': 'article',
+    {% render 'AqpglugCodemedoBundle:Block:list' with {
+                'type': 'article',
+                'field': 'featured',
                 'template': 'AqpglugCodemedoBundle:Article:featured.html.twig',
                 'limit': 3 } %}
 
