@@ -9,13 +9,12 @@ class BlockType extends AbstractType
 {
 
     // TODO: traer esto desde el config
-    public $types = array(
-        'page' => 'Página',
-        'article' => 'Artículo',
-        'project' => 'Proyecto',
-        'event' => 'Evento',
-        'member' => 'Miembro',
-    );
+    protected $types;
+
+    function __construct($types)
+    {
+        $this->types = $types;
+    }
 
     public function buildForm(FormBuilder $builder, array $options)
     {
