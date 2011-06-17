@@ -17,7 +17,15 @@ class ProjectController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('AqpglugCodemedoBundle:Project:index.html.twig');
+        //$projects = $this->getRepo()->findAllSortedBy('project', 'created', 4);
+        $projects = $this->getRepo()->findBy(
+                array('type' => 'project'),
+                array('created' => 'DESC'),
+                4);
+        
+        return $this->render('AqpglugCodemedoBundle:Project:index.html.twig', array(
+            'projects' => $projects,
+        ));
     }
 
     /**

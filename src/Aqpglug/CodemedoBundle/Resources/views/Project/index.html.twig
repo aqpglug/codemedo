@@ -1,5 +1,11 @@
 {% extends 'AqpglugCodemedoBundle::layout.html.twig' %}
-
+{% block title %} Proyectos {% endblock %} 
 {% block content %}
-    hello!!
+    <ul>
+    {% for project in projects%}
+        <li><a href="{{ project.metadata['url'] }}">{{ project.title }}</a>
+            <p>{{ project.content }}</p>
+        </li>
+    {% endfor %}
+    </ul>
 {% endblock %}
