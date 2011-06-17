@@ -17,9 +17,13 @@ class ArticleController extends Controller
      */
     public function indexAction()
     {
-        $this->featured = $this->getRepo()->findAllSortedBy($type, $field);
+        $featured = $this->getRepo()->findAllSortedBy('article', 'featured', 3);
+        $articles = $this->getRepo()->findAllSortedBy('article', 'created');
 
-        return $this->render('AqpglugCodemedoBundle:Article:index.html.twig');
+        return $this->render('AqpglugCodemedoBundle:Article:index.html.twig', array(
+            'featured' => $featured,
+            'articles' => $articles,
+            ));
     }
 
     /**
