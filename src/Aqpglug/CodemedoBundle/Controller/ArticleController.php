@@ -29,10 +29,12 @@ class ArticleController extends Controller
      */
     public function showAction($slug)
     {
-        $article = $this->getRepo()->findPageBySlug($slug);
+        $article = $this->getRepo()->findOneBy(array(
+            'type' =>'article',
+            'slug'=> $slug));
 
         return $this->render('AqpglugCodemedoBundle:Article:show.html.twig', array(
-            'page' => $page,
+            'article' => $article,
         ));
     }
 
