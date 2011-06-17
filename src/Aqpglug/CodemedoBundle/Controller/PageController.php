@@ -13,7 +13,7 @@ class PageController extends Controller
 {
 
     /**
-     * @Route("/", name="homepage")
+     * @Route("", name="homepage")
      */
     public function indexAction()
     {
