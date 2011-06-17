@@ -1,5 +1,22 @@
 {% extends 'AqpglugCodemedoBundle::layout.html.twig' %}
 
 {% block content %}
-    hello!!
+<h1>Eventos</h1>
+<div class="event-container">
+    <ul class="events">
+    {% for event in events %}
+        <li>
+            <img src="/bundles/aqpglugcodemedo/images/{{ event.image|default('placeholder.jpg')}}" alt="{{ event.title }}" />
+            <a href="{{ path("_event_show", {'slug': event.slug}) }}">{{ event.title }}</a><br />
+            <span>{{ event.content }}</span>
+            <span>{#{ event.metadata['fecha']|raw }#}el 28 de abril de 10am a 3pm</span>
+        </li>
+    {% else %}
+        <li>no hay Eventos</li>
+    {% endfor %}
+    </ul>
+    <div id="map">
+        <iframe id="nap11" src="http://www.napkee.com/components/NapkeeHostedMaps/?loc=Arequipa, Peru" class="napkeeComponent napkeeMap"></iframe>
+    </div>
+</div>
 {% endblock %}
