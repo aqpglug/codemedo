@@ -41,7 +41,7 @@ class Block
 
     public function __construct()
     {
-        $this->created = $this->modified = \DateTime('now');
+        $this->created = $this->modified = new \DateTime("now");
     }
 
     public function getType()
