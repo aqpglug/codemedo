@@ -2,7 +2,7 @@
 
 namespace Aqpglug\CodemedoBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Aqpglug\CodemedoBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
@@ -17,15 +17,16 @@ class ArticleController extends Controller
      */
     public function indexAction()
     {
+        $this->featured = $this->getRepo()->findAllSortedBy($type, $field);
+
         return $this->render('AqpglugCodemedoBundle:Article:index.html.twig');
     }
 
     /**
      * @Route("/{slug}", name="_article_show")
      */
-    public function articlesAction($slug)
+    public function showAction($slug)
     {
         return $this->render('AqpglugCodemedoBundle:Article:show.html.twig');
     }
-
 }
