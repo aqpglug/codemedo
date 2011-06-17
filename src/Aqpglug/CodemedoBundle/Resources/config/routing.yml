@@ -1,4 +1,5 @@
-# orden de más específico al más general
+# orden de más específico al más general (page debe estar al final ya que 
+# tiene el match más genérico)
 _project:
     resource: "@AqpglugCodemedoBundle/Controller/ProjectController.php"
     type:     annotation
