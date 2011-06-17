@@ -20,11 +20,23 @@ class Types
 
     public function getTypes()
     {
-        return array_keys($this->data['types']);
+        return $this->data['types'];
+    }
+    public function getLabels()
+    {
+        $labels = array();
+        foreach ($this->data['types'] as $key => $value) {
+            $labels[$key] = $value['label'];
+        }
+        return $labels;
     }
 
     public function getMeta($type)
     {
+        $meta = array();
+        foreach ($this->data['types'] as $key => $value) {
+            $labels[$key] = $value['metadata'];
+        }
         return $this->types[$type];
     }
 
