@@ -17,7 +17,7 @@ class Config
         if (count(array_diff($keys, array('homepage', 'types'))))
             throw new \InvalidArgumentException();
         
-        foreach ($this->data['types'] as $value) {
+        foreach ($this->data['types'] as $key => $value) {
             if (!array_key_exists('label', $value)){
                 throw new \InvalidArgumentException();
             }
