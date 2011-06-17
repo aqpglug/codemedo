@@ -33,8 +33,9 @@
 <ul class="articles">
     {% for article in articles %}
         <li>
-            <img src="/bundles/aqpglugcodemedo/images/{{ article.image|default('default_project.png')}}" alt="{{ article.title }}" />
-            <a href="{{ path("_article_show", {'slug': article.slug}) }}">{{ article.title }}</a>
+            <img src="/bundles/aqpglugcodemedo/images/{{ article.image|default('placeholder.jpg')}}" alt="{{ article.title }}" />
+            <a href="{{ path("_article_show", {'slug': article.slug}) }}">{{ article.title }}</a><br />
+            <span>{#{ article.metadata['extract']|raw }#}A paragraph of <em>text</em>.<br />A second <strong>row</strong> of text.</span>
         </li>
     {% else %}
         <li>no hay articulos</li>

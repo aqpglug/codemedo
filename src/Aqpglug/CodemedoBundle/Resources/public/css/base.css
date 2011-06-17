@@ -131,7 +131,7 @@ body {
 
 #nap76 {
     left: 792px;
-    top: 90px;
+    top: 109px;
     width: 48px;
     height: 48px;
     z-index: 9;
@@ -140,7 +140,7 @@ body {
 
 #nap77 {
     left: 61px;
-    top: 90px;
+    top: 109px;
     width: 48px;
     height: 48px;
     z-index: 10;
@@ -161,24 +161,27 @@ body {
 .members, .featured.article
 {
     -moz-column-count: 3;
-    -moz-column-gap: 20px;
+
     -webkit-column-count: 3;
-    -webkit-column-gap: 20px;
+
     column-count: 3;
-    column-gap: 20px;
+
+}
+.members {
+    margin: 0 70px;
 }
 .members img
 {
     vertical-align: middle;
 }
 
-.projects .articles {
+.projects, .articles {
     -moz-column-count: 2;
-    -moz-column-gap: 20px;
     -webkit-column-count: 2;
-    -webkit-column-gap: 20px;
     column-count: 2;
-    column-gap: 20px;
+    /*-moz-column-gap: 20px;
+    -webkit-column-gap: 20px;
+    column-gap: 20px;*/
 
     height:400px;
 }
@@ -234,9 +237,44 @@ body {
     border: 0px solid;
 }
 
+.articles {
+    margin: 12px 73px 0;
+    height: 180px;
+}
+
+.articles li {
+    clear:both;
+    list-style: none;
+    margin: 0 0 15px 0;
+    height: 79px;
+}
 .articles img {
     width: 77px;
     height: 79px;
     z-index: 11;
     border: 0px solid;
+    vertical-align: top;
+    float:left;
+}
+.articles a {
+    position: relative;
+    left: 14px;
+    top: 4px;
+    font-size: 16px;
+}
+
+.articles span {
+    position: relative;
+    left: 40px;
+    top: 9px;
+    width: 210px;
+    height: 50px;
+    z-index: 12;
+    font-size: 13px;
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: none;
+    text-align: left;
+    color: black;
+    white-space: normal;
 }
