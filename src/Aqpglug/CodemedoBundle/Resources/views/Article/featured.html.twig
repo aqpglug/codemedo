@@ -1,0 +1,8 @@
+<ul>
+    {% for article in results %}
+    <li>
+        <a href="{{ path('_article_show', {'slug': article.slug} ) }}">{{ article.title }}</a>
+        <p>{{ article.content }}</p>
+    </li>
+    {% endfor %}
+</ul>

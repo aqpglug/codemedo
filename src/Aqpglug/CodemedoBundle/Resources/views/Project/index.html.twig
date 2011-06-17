@@ -3,7 +3,7 @@
 {% block content %}
     <ul>
     {% for project in projects%}
-        <li><a href="{{ project.metadata['url'] }}">{{ project.title }}</a>
+        <li><a href="{{ project.metadata }}">{{ project.title }}</a>
             <p>{{ project.content }}</p>
         </li>
     {% endfor %}
