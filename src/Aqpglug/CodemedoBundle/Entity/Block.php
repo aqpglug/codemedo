@@ -44,6 +44,11 @@ class Block
         $this->created = $this->modified = new \DateTime("now");
     }
 
+    public function getId()
+    {
+        return $this->id;
+    }
+
     public function getType()
     {
         return $this->type;
@@ -62,6 +67,7 @@ class Block
     public function setTitle($title)
     {
         $this->title = $title;
+        $this->slug = $title; // TODO: hacer slug
     }
 
     public function getSlug()
@@ -143,4 +149,5 @@ class Block
     {
         $this->modified = $modified;
     }
+
 }
