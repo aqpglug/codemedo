@@ -5,7 +5,9 @@ namespace Aqpglug\CodemedoBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Aqpglug\CodemedoBundle\Repository\BlockRepository");
+ * @ORM\Table(indexes={@ORM\Index("slug_idx", columns={"slug"}),
+ *                     @ORM\Index("type_idx", columns={"type"})})
  */
 class Block
 {
