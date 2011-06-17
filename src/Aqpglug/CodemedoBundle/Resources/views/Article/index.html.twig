@@ -1,19 +1,43 @@
 {% extends 'AqpglugCodemedoBundle::layout.html.twig' %}
 
 {% block content %}
-    
-    {% render 'AqpglugCodemedoBundle:Block:list' with {
+
+<table id="nap90" border="0" cellspacing="0" cellpadding="0" class="napkeeComponent napkeeTabbar">
+    <tbody><tr>
+            <td valign="bottom" align="left">
+                <ul id="nap90n" class="napkeeTabs napkeeHorizontalTabs napkeeHorizontalTabsTop">
+                    <li class="selected"><a id="nap90i0" href="#nap90-0" class="selected">Preguntas Frecuentes</a></li>
+                    <li><a id="nap90i1" href="#nap90-1">Presentaciones</a></li>
+                    <li><a id="nap90i2" href="#nap90-2">Galerias</a></li>
+                </ul>
+            </td>
+        </tr>
+        <tr>
+            <td width="897" height="34" valign="top">
+                <div id="nap90t" class="napkeeTabsDivs" style="width: 897px; ">
+                    <div id="nap90-0" style="height: 21px; display: block; "></div>
+                    <div id="nap90-1" style="height: 21px; display: none; "></div>
+                    <div id="nap90-2" style="height: 21px; display: none; "></div>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+
+    {% render 'AqpglugCodemedoBundle:Block:featured' with {
                 'field': 'article',
                 'template': 'AqpglugCodemedoBundle:Article:featured.html.twig',
-                'limit': 4 } %}
+                'limit': 3 } %}
 
-    <div>
+<ul class="articles">
     {% for article in articles %}
-        <img src="/bundles/aqpglugcodemedo/images/{{ article.image|default('block_default.png')}}" alt="{{ article.title }}" />
-        <a href="{{ path("_article_show", {'slug': article.slug}) }}">{{ article.title }}</a>
-        <p>{{ article.content }}</p>
+        <li>
+            <img src="/bundles/aqpglugcodemedo/images/{{ article.image|default('default_project.png')}}" alt="{{ article.title }}" />
+            <a href="{{ path("_article_show", {'slug': article.slug}) }}">{{ article.title }}</a>
+        </li>
     {% else %}
-        no hay articulos
+        <li>no hay articulos</li>
     {% endfor %}
-    </div>
+    </ul>
 {% endblock %}

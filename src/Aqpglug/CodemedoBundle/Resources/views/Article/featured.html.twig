@@ -1,8 +1,10 @@
-<ul>
+<img id="nap76" src="/bundles/aqpglugcodemedo/images/icons/RightFillTriangleIcon.png" class="napkeeComponent napkeeIcon rotate360"/>
+<img id="nap77" src="/bundles/aqpglugcodemedo/images/icons/LeftFillTriangleIcon.png" class="napkeeComponent napkeeIcon rotate360"/>
+<ul class="featured article">
     {% for article in results %}
     <li>
         <a href="{{ path('_article_show', {'slug': article.slug} ) }}">{{ article.title }}</a>
-        <p>{{ article.content }}</p>
+        <img src="/bundles/aqpglugcodemedo/images/{{ article.image|default('default_project.png')}}" alt="{{ article.title }}" />
     </li>
     {% endfor %}
 </ul>
