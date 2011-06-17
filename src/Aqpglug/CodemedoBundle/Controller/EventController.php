@@ -17,7 +17,11 @@ class EventController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('AqpglugCodemedoBundle:Event:index.html.twig');
+        $events = $this->getRepo()->findAllSortedBy('event', 'created');
+
+        return $this->render('AqpglugCodemedoBundle:Event:index.html.twig', array(
+            'events' => $events,
+        ));
     }
 
     /**
