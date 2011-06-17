@@ -5,11 +5,11 @@
     {% render 'AqpglugCodemedoBundle:Block:list' with {
                 'field': 'article',
                 'template': 'AqpglugCodemedoBundle:Article:featured.html.twig',
-                'limit': '4' } %}
+                'limit': 4 } %}
 
     <div>
     {% for article in articles %}
-        <img src="/bundles/aqpglugcodeme/images/{{ article.image|default('block_default.png')}}" alt="{{ article.title }}" />
+        <img src="/bundles/aqpglugcodemedo/images/{{ article.image|default('block_default.png')}}" alt="{{ article.title }}" />
         <a href="{{ path("_article_show", {'slug': article.slug}) }}">{{ article.title }}</a>
         <p>{{ article.content }}</p>
     {% else %}
