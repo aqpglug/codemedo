@@ -14,3 +14,4 @@ types:
     metadata: [date, lat, long]
   member:
     label: Miembro
+    metadata: [url]
