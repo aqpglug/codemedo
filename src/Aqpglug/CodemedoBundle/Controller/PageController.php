@@ -17,15 +17,25 @@ class PageController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('AqpglugCodemedoBundle:Page:index.html.twig');
+        $homepage_id = 1; // TODO: traer de config
+        
+        $repo = $this->getDoctrine()->getRepository('Aqpglug\CodemedoBundle\Entity\Block');
+        
+        $page = $repo->getHome($homepage_id);
+        
+        return $this->render('AqpglugCodemedoBundle:Page:show.html.twig');
     }
 
     /**
-     * @Route("/{slug}", name="_Page_show")
+     * @Route("/{slug}", name="_page_show")
      */
     public function showAction($slug)
     {
-        return $this->render('AqpglugCodemedoBundle:Page:show.html.twig');
+        $repo = $this->getDoctrine()->getRepository('Aqpglug\CodemedoBundle\Entity\Block');
+        
+        $page = $repo->findPageBySlug($slug);
+        return $this->render('AqpglugCodemedoBundle:Page:show.html.twig',
+                array('page' => $page));
     }
 
 }
