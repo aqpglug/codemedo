@@ -43,10 +43,11 @@ class BlockRepository extends EntityRepository
         $qb->setParameters(array(
             1 => $type,
             2 => true,
-            ));
+        ));
         $qb->orderBy('e.' . $field, 'title' === $field ? 'asc' : 'desc');
         $query = $qb->getQuery();
 
         return $query;
     }
+
 }
