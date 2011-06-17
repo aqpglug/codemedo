@@ -1,5 +1,5 @@
 parameters:
-    types.class:      Aqpglug\CodemedoBundle\DependencyInjection\Types
+    types.class:      Aqpglug\CodemedoBundle\Extension\Config
 
 services:
     codemedo:
