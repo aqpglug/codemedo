@@ -1,5 +1,17 @@
 {% extends 'AqpglugCodemedoBundle::layout.html.twig' %}
 
 {% block content %}
-    hello!!
+<h1>Miembros activos</h1>
+<ul class='members'>
+    {% set featured = true %}
+    {% for member in members %}
+        {% if member.featured != featured %}
+            {% set featured = member.featured %}
+</ul>
+<h1>Miembros inactivos</h1>
+<ul class='members'>
+        {% endif %}
+        <li><img src="/bundles/aqpglugcodemedo/images/{{ member.image|default('default_member.png')}}" alt="{{ member.title }}" /><a href="{{ member.metadata }}">{{ member.title }}</a></li>
+    {% endfor %}
+</ul>
 {% endblock %}

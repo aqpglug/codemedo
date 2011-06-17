@@ -20,13 +20,13 @@ body {
     font-family: Comic Sans, Comic Sans MS, cursive;
     white-space: nowrap;
 }
-        
+
 #nap34_7_1, #container{
     left:61px;
     top:73px;
     width:902px;
     height:600px;
-    
+
     background-color:#FFFFFF;
     opacity:1.0;
     filter:alpha(opacity=100);
@@ -40,7 +40,7 @@ body {
     top:73px;
     width:902px;
     height:600px;
-    
+
     background-color:#FFFFFF;
     opacity:1.0;
     filter:alpha(opacity=100);
@@ -54,7 +54,7 @@ body {
     top:92px;
     width:77px;
     height:79px;
-    
+
     border:0px solid;
 }
 
@@ -63,7 +63,7 @@ body {
     top:92px;
     width:77px;
     height:79px;
-    
+
     display:none;
 }
 
@@ -80,7 +80,7 @@ body {
     top:109px;
     width:197px;
     height:62px;
-    
+
     font-size: 40px;
     font-style:normal;
     font-weight:normal;
@@ -94,7 +94,7 @@ body {
     top:177px;
     width:823px;
     height:1px;
-    
+
     background-color:#000000;
     opacity:1.0;
     filter:alpha(opacity=100);
@@ -105,7 +105,7 @@ body {
     top:154px;
     width:484px;
     height:25px;
-    
+
     font-size: 13px;
     font-style:normal;
     font-weight:normal;
@@ -120,7 +120,7 @@ body {
     top:88px;
     width:104px;
     height:21px;
-    
+
     font-size: 13px;
     font-style:normal;
     font-weight:normal;
@@ -134,4 +134,43 @@ body {
     left: 61px;
     top: 233px;
     width:902px;
+}
+
+.members
+{
+    -moz-column-count: 3;
+    -moz-column-gap: 20px;
+    -webkit-column-count: 3;
+    -webkit-column-gap: 20px;
+    column-count: 3;
+    column-gap: 20px;
+}
+.members img
+{
+    vertical-align: middle;
+}
+
+.projects {
+    -moz-column-count: 2;
+    -moz-column-gap: 20px;
+    -webkit-column-count: 2;
+    -webkit-column-gap: 20px;
+    column-count: 2;
+    column-gap: 20px;
+    
+    height:400px;
+}
+.projects li {
+    text-align: center;
+}
+.projects a {
+    display:block;
+}
+.projects img {
+    left: 185px;
+    top: 306px;
+    width: 314px;
+    height: 134px;
+    z-index: 1;
+    border: 0px solid;
 }

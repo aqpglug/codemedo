@@ -17,6 +17,13 @@ class MemberController extends Controller
      */
     public function indexAction()
     {
-        return $this->render('AqpglugCodemedoBundle:Member:index.html.twig');
+        $members = $this->getRepo()->findBy(
+                array('type' => 'member',
+                    'published' => True),
+                array('featured' => 'DESC',
+                    'created' => 'DESC'));
+        return $this->render('AqpglugCodemedoBundle:Member:index.html.twig', array(
+            'members' => $members,
+        ));
     }
 }
