@@ -36,7 +36,7 @@ CREATE TABLE `Block` (
   `modified` datetime NOT NULL,
   PRIMARY KEY (`id`),
   KEY `IDX_42DAB8268CDE5729` (`type`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -48,7 +48,7 @@ LOCK TABLES `Block` WRITE;
 INSERT INTO `Block` VALUES
 (1,'page','inicio','inicio','<h1 style=\"text-align:center;font-size:60px;width:50%;float:left;margin-top:0;\">FLISOL 2012</h1>\r\n<p style=\"display:block;padding:20px;text-align:center;\">Es una oportunidad para todas aquellas personas interesadas en conocer más acerca del software libre, es posible entrar en contacto con el mundo del software libre, conocer a otros usuarios, resolver dudas e interrogantes, intercambiar opiniones y experiencias; asistir a charlas y otras actividades.</p>\r\n<div>[imagen]</div>',NULL,'N;',1,0,'2011-06-16 23:40:29','2011-06-16 23:40:29'),
 (2,'project','Proyecto de software libre','proyecto-software-libre','Algún proyecto de software libre aqui',NULL,'N;',1,0,'2011-06-16 23:49:38','2011-06-16 23:49:38'),
-(3,'article','que es software libre','que-es-software-libre','La palabra \"libre\" en nuestro nombre no se refiere al precio; se refiere a la libertad. Primero, a la libertad de copiar y redistribuir un programa a tus vecinos, para que ellos al igual que tu, lo puedan usar también. Segundo, a la libertad de cambiar un programa, así podrás controlarlo en lugar que el programa te controle a ti; para esto, el código fuente tiene que estar disponible para ti',NULL,'N;',1,0,'2011-06-16 23:50:13','2011-06-16 23:50:13'),
+(3,'article','¿Qué es software libre?','que-es-software-libre','La palabra \"libre\" en nuestro nombre no se refiere al precio; se refiere a la libertad. Primero, a la libertad de copiar y redistribuir un programa a tus vecinos, para que ellos al igual que tu, lo puedan usar también. Segundo, a la libertad de cambiar un programa, así podrás controlarlo en lugar que el programa te controle a ti; para esto, el código fuente tiene que estar disponible para ti',NULL,'N;',1,1,'2011-06-16 23:50:13','2011-06-16 23:50:13'),
 (4,'page','Contacto','contacto','Página de contacto',NULL,'N;',1,0,'2011-06-17 00:48:50','2011-06-17 00:48:50'),
 (5,'page','Software libre','software-libre','Algo es software libre',NULL,'N;',1,0,'2011-06-17 00:50:34','2011-06-17 00:50:34'),
 (6,'member','Fulano activo','fulano-de-tal',NULL,NULL,'N;',1,1,'2011-06-17 10:29:40','2011-06-17 10:29:40'),
@@ -58,7 +58,17 @@ INSERT INTO `Block` VALUES
 (10,'member','Otro fulano','otro-fulano',NULL,NULL,'N;',1,0,'2011-06-17 10:57:25','2011-06-17 10:57:25'),
 (11,'member','Alguien más','alguien-ms','blah',NULL,'N;',1,1,'2011-06-17 10:59:38','2011-06-17 10:59:38'),
 (12,'member','Más fulanos','ms-fulanos',NULL,NULL,'N;',1,0,'2011-06-17 11:00:20','2011-06-17 11:00:20'),
-(13,'project','Otro proyecto','otro-proyecto','Proyecto de por ahi',NULL,'N;',1,0,'2011-06-17 11:08:55','2011-06-17 11:08:55');
+(13,'project','Otro proyecto','otro-proyecto','Proyecto de por ahi',NULL,'N;',1,0,'2011-06-17 11:08:55','2011-06-17 11:08:55'),
+(14,'article','¿Qué es AQPGLUG?','qu-es-aqpglug','blah blah blah',NULL,'N;',1,1,'2011-06-17 11:55:19','2011-06-17 11:55:19'),
+(15,'article','¿Qué es bla bla bla?','qu-es-bla-bla-bla','adasd',NULL,'N;',1,1,'2011-06-17 12:22:54','2011-06-17 12:22:54'),
+(16,'article','¿Bla bla bla bla ...........?','bla-blah','A paragraph of <em>text</em>.\r\nA second <strong>row</strong> of text.',NULL,'N;',1,0,'2011-06-17 12:44:48','2011-06-17 12:44:48'),
+(17,'project','Proyecto de software libre','proy','algo',NULL,'N;',1,0,'2011-06-17 13:23:27','2011-06-17 13:23:27'),
+(18,'event','Reunión Aqpglug','reunion-aqpglug-14','En calle blah nro 314',NULL,'N;',1,0,'2011-06-17 13:52:03','2011-06-17 13:52:03'),
+(19,'event','Reunión aqpglug','reunion-aqpglug-15','En calle blah nro 314',NULL,'N;',1,0,'2011-06-17 13:53:52','2011-06-17 13:53:52'),
+(20,'event','Flisol 2012','flisol-2012','En el auditorio de blah blah blah',NULL,'N;',1,1,'2011-06-17 13:54:17','2011-06-17 13:54:17'),
+(21,'member','Más fulanos','algo','funlano',NULL,'N;',1,1,'2011-06-17 14:07:58','2011-06-17 14:07:58'),
+(22,'member','sultano','sultando','asdl',NULL,'N;',1,1,'2011-06-17 14:08:16','2011-06-17 14:08:16'),
+(23,'member','Zangano','este-esta-mas-pendejo','asdlasld',NULL,'N;',1,1,'2011-06-17 14:09:15','2011-06-17 14:09:15');
 /*!40000 ALTER TABLE `Block` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -71,4 +81,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2011-06-17 11:16:24
+-- Dump completed on 2011-06-17 14:10:03
