@@ -1,0 +1,137 @@
+body {
+    font-size:13px;
+    font-family: Comic Sans, Comic Sans MS, cursive;
+    color: #333;
+}
+#napkeeCanvas {
+    position:absolute;
+    left:0px;
+    top:0px;
+}
+.napkeeComponent {
+    position:absolute;
+    font-size:13px;
+    font-family: Comic Sans, Comic Sans MS, cursive;
+    white-space: nowrap;
+}
+.napkeeRelativeComponent {
+    position:absolute;
+    font-size:13px;
+    font-family: Comic Sans, Comic Sans MS, cursive;
+    white-space: nowrap;
+}
+        
+#nap34_7_1, #container{
+    left:61px;
+    top:73px;
+    width:902px;
+    height:600px;
+    
+    background-color:#FFFFFF;
+    opacity:1.0;
+    filter:alpha(opacity=100);
+    border:1px solid #000;
+    -moz-border-radius:0px;
+    -webkit-border-radius:0px;
+}
+
+#nap34_7_1{
+    left:61px;
+    top:73px;
+    width:902px;
+    height:600px;
+    
+    background-color:#FFFFFF;
+    opacity:1.0;
+    filter:alpha(opacity=100);
+    border:1px solid #000;
+    -moz-border-radius:0px;
+    -webkit-border-radius:0px;
+}
+
+#nap34_7_2{
+    left:100px;
+    top:92px;
+    width:77px;
+    height:79px;
+    
+    border:0px solid;
+}
+
+#nap34_7_2table{
+    left:100px;
+    top:92px;
+    width:77px;
+    height:79px;
+    
+    display:none;
+}
+
+#nap34_7_2label{
+    font-size: 13px;
+    font-style:normal;
+    font-weight:normal;
+    text-decoration:none;
+    text-align:left;
+}
+
+#nap34_7_3{
+    left:177px;
+    top:109px;
+    width:197px;
+    height:62px;
+    
+    font-size: 40px;
+    font-style:normal;
+    font-weight:normal;
+    text-decoration:none;
+    text-align:center;
+    color:#000000;
+}
+
+#nap34_7_4{
+    left:100px;
+    top:177px;
+    width:823px;
+    height:1px;
+    
+    background-color:#000000;
+    opacity:1.0;
+    filter:alpha(opacity=100);
+}
+
+#nap34_7_5{
+    left:439px;
+    top:154px;
+    width:484px;
+    height:25px;
+    
+    font-size: 13px;
+    font-style:normal;
+    font-weight:normal;
+    text-decoration:none;
+    color:#000000;
+}
+
+
+#nap34_7_6{
+    position:absolute;
+    left:760px;
+    top:88px;
+    width:104px;
+    height:21px;
+    
+    font-size: 13px;
+    font-style:normal;
+    font-weight:normal;
+    text-decoration:none;
+    background-image: url(/bundles/aqpglugcodemedo/images/system-search.png);
+}
+
+#content
+{
+    position:absolute;
+    left: 61px;
+    top: 233px;
+    width:902px;
+}
