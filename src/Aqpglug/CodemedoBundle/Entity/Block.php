@@ -3,6 +3,7 @@
 namespace Aqpglug\CodemedoBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Aqpglug\CodemedoBundle\Utils\Slug;
 
 /**
  * @ORM\Entity(repositoryClass="Aqpglug\CodemedoBundle\Repository\BlockRepository");
@@ -67,7 +68,7 @@ class Block
     public function setTitle($title)
     {
         $this->title = $title;
-        $this->slug = $title; // TODO: hacer slug
+        $this->slug = Slug::slugify($this->title);
     }
 
     public function getSlug()

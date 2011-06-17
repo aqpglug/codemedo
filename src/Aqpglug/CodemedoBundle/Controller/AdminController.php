@@ -7,7 +7,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Aqpglug\CodemedoBundle\Controller\Controller;
 use Aqpglug\CodemedoBundle\Entity\Block;
 use Aqpglug\CodemedoBundle\Form\BlockType;
-use Aqpglug\CodemedoBundle\Utils\Slug;
 
 /**
  * @Route("/admin")
@@ -44,9 +43,6 @@ class AdminController extends Controller
 
             if ($form->isValid()) {
                 $em = $this->getDoctrine()->getEntityManager();
-                $block->setSlug(Slug::slugify($block->getTitle()));
-                $block->setPublished(true);
-                $block->setFeatured(false);
                 $em->persist($block);
                 $em->flush();
                 return $this->redirect($this->generateUrl('_admin_index'));
