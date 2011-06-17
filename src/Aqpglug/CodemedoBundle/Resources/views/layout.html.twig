@@ -1,0 +1,17 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}Codemedo{% endblock %}
+
+{% block stylesheets %}
+{{ parent() }}
+<link rel="stylesheet" type="text/css" media="all" href="{{ asset('/bundles/aqpglugcodemedo/css/base.css') }}" />
+{% endblock %}
+
+{% block body %}
+<div id="container">
+    <div id="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+</div>
+{% endblock %}
