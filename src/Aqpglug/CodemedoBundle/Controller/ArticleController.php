@@ -23,7 +23,7 @@ class ArticleController extends Controller
         return $this->render('AqpglugCodemedoBundle:Article:index.html.twig', array(
             'featured' => $featured,
             'articles' => $articles,
-            ));
+        ));
     }
 
     /**
@@ -31,6 +31,11 @@ class ArticleController extends Controller
      */
     public function showAction($slug)
     {
-        return $this->render('AqpglugCodemedoBundle:Article:show.html.twig');
+        $article = $this->getRepo()->findPageBySlug($slug);
+
+        return $this->render('AqpglugCodemedoBundle:Article:show.html.twig', array(
+            'page' => $page,
+        ));
     }
+
 }
