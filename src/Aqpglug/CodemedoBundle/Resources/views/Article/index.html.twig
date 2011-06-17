@@ -3,7 +3,8 @@
 {% block content %}
     
     {% render 'AqpglugCodemedoBundle:Block:list' with {
-                'field': 'article',
+                'type': 'article',
+                'field': 'featured',
                 'template': 'AqpglugCodemedoBundle:Article:featured.html.twig',
                 'limit': 4 } %}
 
