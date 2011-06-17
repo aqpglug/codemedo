@@ -2,7 +2,7 @@
 
 namespace Aqpglug\CodemedoBundle\Controller;
 
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Aqpglug\CodemedoBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
@@ -19,9 +19,7 @@ class PageController extends Controller
     {
         $homepage_id = 1; // TODO: traer de config
 
-        $repo = $this->getDoctrine()->getRepository('Aqpglug\CodemedoBundle\Entity\Block');
-
-        $page = $repo->getHome($homepage_id);
+        $page = $this->getRepo()->getHome($homepage_id);
 
         return $this->render('AqpglugCodemedoBundle:Page:show.html.twig', array(
             'page' => $page,
@@ -33,9 +31,8 @@ class PageController extends Controller
      */
     public function showAction($slug)
     {
-        $repo = $this->getDoctrine()->getRepository('Aqpglug\CodemedoBundle\Entity\Block');
-
-        $page = $repo->findPageBySlug($slug);
+        $page = $this->getRepo()->findPageBySlug($slug);
+        
         return $this->render('AqpglugCodemedoBundle:Page:show.html.twig', array(
             'page' => $page,
         ));
