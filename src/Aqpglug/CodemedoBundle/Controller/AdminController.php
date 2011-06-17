@@ -20,7 +20,10 @@ class AdminController extends Controller
      */
     public function indexAction()
     {
-        $articles = $this->getRepo()->findAll();
+        $articles = $this->getRepo()->findBy(array(),array(
+            'type' => 'ASC',
+            'created' => 'DESC',
+        ));
         
         return $this->render('AqpglugCodemedoBundle:Admin:index.html.twig', array(
             'articles' => $articles,
