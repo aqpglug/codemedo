@@ -1,0 +1,6 @@
+parameters:
+    types.class:      Aqpglug\CodemedoBundle\DependencyInjection\Types
+
+services:
+    codemedo:
+        class:        %types.class%
