@@ -18,12 +18,10 @@ class PageController extends Controller
      */
     public function indexAction()
     {
-        $homepage_id = 1; // TODO: traer de config
+        $page = $this->getRepo()->getHome($this->getConfig()->getHome());
 
-        $page = $this->getRepo()->getHome($homepage_id);
-
-        if (!$page) {
-            $this->createNotFoundException();
+        if ($page === null) {
+            throw $this->createNotFoundException();
         }
 
         return $this->render('AqpglugCodemedoBundle:Page:show.html.twig', array(
@@ -37,10 +35,9 @@ class PageController extends Controller
     public function showAction($slug)
     {
         $page = $this->getRepo()->findPageBySlug($slug);
-        
+
         return $this->render('AqpglugCodemedoBundle:Page:show.html.twig', array(
             'page' => $page,
         ));
     }
-
 }
