@@ -11,15 +11,16 @@ class BlockRepository extends EntityRepository
 
     public function getHome($id)
     {
-        return $this->findBy(array(
+        return $this->findOneBy(array(
             'type' => 'page',
             'id' => $id ));
     }
     
     public function findPageBySlug($slug)
     {
-        return $this->findBy(array(
+        return $this->findOneBy(array(
             'type' => 'page',
-            'slug' => $slug ));
+            'slug' => $slug,
+            'published' => True));
     }
 }
