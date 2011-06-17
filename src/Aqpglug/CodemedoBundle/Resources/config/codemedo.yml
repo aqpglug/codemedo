@@ -1,0 +1,10 @@
+homepage: 2
+
+types:
+  article:
+    label: Articulo
+    metadata: [resume]
+  page: ~
+  project: ~
+  event: ~
+  menber: ~
