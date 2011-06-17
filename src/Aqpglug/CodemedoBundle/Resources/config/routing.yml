@@ -16,6 +16,10 @@ _Event:
     resource: "@AqpglugCodemedoBundle/Controller/EventController.php"
     type:     annotation
 
+_Member:
+    resource: "@AqpglugCodemedoBundle/Controller/MemberController.php"
+    type:     annotation
+
 _page:
     resource: "@AqpglugCodemedoBundle/Controller/PageController.php"
     type:     annotation
