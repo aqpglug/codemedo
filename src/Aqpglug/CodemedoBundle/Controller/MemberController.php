@@ -3,24 +3,20 @@
 namespace Aqpglug\CodemedoBundle\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 
-class BlockController extends Controller
+/**
+ * @Route("/miembros")
+ */
+class MemberController extends Controller
 {
 
     /**
-     * @Route("/", name="_home")
+     * @Route("/", name="_member_index")
      */
-    public function homeAction()
+    public function indexAction()
     {
-        return $this->render('AqpglugCodemedoBundle:Default:index.html.twig');
+        return $this->render('AqpglugCodemedoBundle:Member:index.html.twig');
     }
-
-    public function articlesAction()
-    {
-        
-    }
-
 }

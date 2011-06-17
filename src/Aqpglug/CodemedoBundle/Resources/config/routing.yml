@@ -1,3 +1,16 @@
-_block:
-    resource: "@AqpglugCodemedoBundle/Controller/BlockController.php"
+# orden de más específico al más general
+_project:
+    resource: "@AqpglugCodemedoBundle/Controller/ProjectController.php"
+    type:     annotation
+
+_article:
+    resource: "@AqpglugCodemedoBundle/Controller/ArticleController.php"
+    type:     annotation
+
+_Event:
+    resource: "@AqpglugCodemedoBundle/Controller/EventController.php"
+    type:     annotation
+
+_page:
+    resource: "@AqpglugCodemedoBundle/Controller/PageController.php"
     type:     annotation
