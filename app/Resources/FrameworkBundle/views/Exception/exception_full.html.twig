@@ -1,0 +1,9 @@
+{% extends 'AqpglugCodemedoBundle::layout.html.twig' %}
+
+{% block title %}
+    {{ exception.message }} ({{ status_code }} {{ status_text }})
+{% endblock %}
+
+{% block content %}
+    {% include 'FrameworkBundle:Exception:exception.html.twig' %}
+{% endblock %}

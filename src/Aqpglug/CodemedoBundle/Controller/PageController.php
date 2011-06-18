@@ -21,7 +21,7 @@ class PageController extends Controller
         $page = $this->getRepo()->getHome($this->getConfig()->getHome());
 
         if ($page === null) {
-            throw $this->createNotFoundException();
+            throw $this->createNotFoundException(sprintf("Pagina no encontrada ", $slug));
         }
 
         return $this->render('AqpglugCodemedoBundle:Page:show.html.twig', array(
@@ -35,6 +35,10 @@ class PageController extends Controller
     public function showAction($slug)
     {
         $page = $this->getRepo()->findPageBySlug($slug);
+        
+        if ($page === null) {
+            throw $this->createNotFoundException(sprintf("Pagina no encontrada ", $slug));
+        }
 
         return $this->render('AqpglugCodemedoBundle:Page:show.html.twig', array(
             'page' => $page,

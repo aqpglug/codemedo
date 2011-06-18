@@ -1,0 +1,7 @@
+<h1>
+    {{ exception.message|replace({"\n": '<br />'})|format_file_from_text }}
+</h1>
+
+<p>
+    <strong>{{ status_code }}</strong> {{ status_text }}
+</p>
