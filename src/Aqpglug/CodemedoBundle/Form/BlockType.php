@@ -4,24 +4,20 @@ namespace Aqpglug\CodemedoBundle\Form;
 
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilder;
+use Aqpglug\CodemedoBundle\Form\MetaType;
+use Aqpglug\CodemedoBundle\Extension\Config;
 
 class BlockType extends AbstractType
 {
-
-    // TODO: traer esto desde el config
-    protected $labels;
-    protected $meta;
-
-    function __construct($labels, $meta)
+    private $meta;
+    function __construct($meta)
     {
-        $this->labels = $labels;
         $this->meta = $meta;
     }
-
     public function buildForm(FormBuilder $builder, array $options)
     {
-        $builder->add('type', 'choice', array('choices' => $this->labels))
-                ->add('title')
+
+        $builder->add('title')
                 ->add('slug', 'text', array(
                     'required' => false,
                 ))
@@ -31,7 +27,7 @@ class BlockType extends AbstractType
                 ))
                 ->add('featured', 'checkbox', array(
                     'required' => false,
-                ));
+                ))
+                ->add('metadata', new MetaType($this->meta));
     }
-
 }

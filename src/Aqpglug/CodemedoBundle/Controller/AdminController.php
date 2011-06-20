@@ -26,24 +26,26 @@ class AdminController extends Controller
         
         return $this->render('AqpglugCodemedoBundle:Admin:index.html.twig', array(
             'articles' => $articles,
+            'types' => $this->get('codemedo')->getLabels(),
         ));
     }
 
     /**
-     * @Route("/new", name="_admin_new")
+     * @Route("/new/{type}", name="_admin_new")
      */
-    public function newAction()
+    public function newAction($type)
     {
         $block = new Block();
-        $labels = $this->get('codemedo')->getLabels();
-        $meta = $this->get('codemedo')->getMeta();
-        $form = $this->createForm(new BlockType($labels, $meta), $block);
+        
+        $meta = $this->get('codemedo')->getMeta($type);
+        $form = $this->createForm(new BlockType($meta), $block);
 
         $request = $this->getRequest();
         if ($request->getMethod() == 'POST') {
             $form->bindRequest($request);
 
             if ($form->isValid()) {
+                $block->setType($type);
                 $em = $this->getDoctrine()->getEntityManager();
                 $em->persist($block);
                 $em->flush();
@@ -53,6 +55,7 @@ class AdminController extends Controller
 
         return $this->render('AqpglugCodemedoBundle:Admin:new.html.twig', array(
             'form' => $form->createView(),
+            'type' => $type,
         ));
     }
     
@@ -63,7 +66,8 @@ class AdminController extends Controller
     {
         $block = $this->getRepo()->findOneBy(array('id' => $id));
         
-        $form = $this->createForm(new BlockType(), $block);
+        $meta = $this->get('codemedo')->getMeta($block->getType());
+        $form = $this->createForm(new BlockType($meta), $block);
 
         $request = $this->getRequest();
         if ($request->getMethod() == 'POST') {
