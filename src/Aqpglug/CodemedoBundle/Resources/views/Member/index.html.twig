@@ -14,7 +14,12 @@
 <h1>Todos los Miembros</h1>
 <ul class='members'>
         {% endif %}
-        <li><img src="/bundles/aqpglugcodemedo/images/{{ member.image|default('default_member.png')}}" alt="{{ member.title }}" /><a href="{{ member.metadata }}">{{ member.title }}</a></li>
+        <li>
+            <a href="{{ member.metadata.url }}" target="blank">
+                <img src="/bundles/aqpglugcodemedo/images/{{ member.image|default('default_member.png')}}" alt="{{ member.title }}" />
+                {{ member.title }} ({{member.slug}})
+            </a>
+        </li>
     {% endfor %}
 </ul>
 {% endblock %}
