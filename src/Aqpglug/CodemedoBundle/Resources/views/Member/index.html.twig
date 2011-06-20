@@ -15,10 +15,15 @@
 <ul class='members'>
         {% endif %}
         <li>
-            <a href="{{ member.metadata.url }}" target="_blank">
+            {% if member.metadata.url is defined %}
+                <a href="{{ member.metadata.url }}" target="_blank">
+                    <img src="/bundles/aqpglugcodemedo/images/{{ member.image|default('default_member.png')}}" alt="{{ member.title }}" />
+                    {{ member.title }} ({{member.slug}})
+                </a>
+            {% else %}
                 <img src="/bundles/aqpglugcodemedo/images/{{ member.image|default('default_member.png')}}" alt="{{ member.title }}" />
                 {{ member.title }} ({{member.slug}})
-            </a>
+            {% endif %}
         </li>
     {% endfor %}
 </ul>
