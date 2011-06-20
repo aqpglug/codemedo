@@ -4,8 +4,6 @@ types:
   article:
     label: Artículo
     metadata: [resume]
-  page:
-    label: Página
   project:
     label: Proyecto
     metadata: [url]
