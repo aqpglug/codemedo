@@ -12,7 +12,7 @@
             <img src="{{ image.or_default( event.image, 'http://lorempixum.com/80/80/technics/') }}" alt="{{ event.title }}" />
             <a href="{{ path("_event_show", {'slug': event.slug}) }}">{{ event.title }}</a><br />
             <span>{{ event.metadata.resume }}</span><br />
-            <span class="date">{{ event.metadata.date|raw }}</span>
+            <span class="date">{{ event.metadata.date|date("m/d/Y") }}</span>
         </li>
     {% else %}
         <li>no hay Eventos</li>

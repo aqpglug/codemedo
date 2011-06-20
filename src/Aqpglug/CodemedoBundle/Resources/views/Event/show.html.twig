@@ -20,7 +20,7 @@
 </div>
 <div id="event_info">
     <div id="event_map" style="width:200px; height:200px"></div>
-    <span>{{ event.metadata.date }}</span>
+    <span>{{ event.metadata.date|date("m/d/Y") }}</span>
     <img src="{{ image.or_default( event.image, 'http://lorempixum.com/200/150/technics/') }}" alt="{{ event.title }}" />
 </div>
 {% endblock %}
