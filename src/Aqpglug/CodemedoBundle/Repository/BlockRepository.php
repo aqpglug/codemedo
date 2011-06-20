@@ -5,16 +5,19 @@ namespace Aqpglug\CodemedoBundle\Repository;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Aqpglug\CodemedoBundle\Entity\Block;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class BlockRepository extends EntityRepository
 {
-
-    public function findPageBySlug($slug)
+    
+    public function findOneBy(array $criteria)
     {
-        return $this->findOneBy(array(
-            'type' => 'page',
-            'slug' => $slug,
-            'published' => True));
+        $criteria = array_merge($criteria, array('published' => True));
+        $block = parent::findOneBy($criteria);
+        
+        if ($block === null)
+            throw new NotFoundHttpException();
+        return $block;
     }
 
     public function findAllSortedBy($type, $field, $nb = null)

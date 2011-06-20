@@ -29,7 +29,13 @@ class EventController extends Controller
      */
     public function showAction($slug)
     {
-        return $this->render('AqpglugCodemedoBundle:Event:show.html.twig');
+        $event = $this->getRepo()->findOneBy(array(
+            'type' =>'event',
+            'slug'=> $slug));
+        
+        return $this->render('AqpglugCodemedoBundle:Event:show.html.twig', array(
+            'event' => $event,
+            ));
     }
 
 }
