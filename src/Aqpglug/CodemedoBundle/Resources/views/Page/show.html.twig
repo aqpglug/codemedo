@@ -1,7 +1,8 @@
 {% extends 'AqpglugCodemedoBundle::layout.html.twig' %}
 
 {% block title %}
-    {{ page.title }}
+{{parent()}}
+{% if page.title != 'home' %} | {{ page.title }}{% endif %}
 {% endblock %}
 
 {% block content %}
