@@ -1,8 +1,8 @@
-homepage: 2
+homepage: home
 
 types:
   article:
-    label: Articulo
+    label: Artículo
     metadata: [resume]
   page:
     label: Página
