@@ -1,32 +1,32 @@
 {% extends '::base.html.twig' %}
 
-{% block title %}Code me do{% endblock %}
+{% block title %}AQPGLUG{% endblock %}
 
 {% block stylesheets %}
     {{ parent() }}
+    <link rel="stylesheet" type="text/css" media="all" href="{{ asset('/bundles/aqpglugcodemedo/css/reset.css') }}" />
     <link rel="stylesheet" type="text/css" media="all" href="{{ asset('/bundles/aqpglugcodemedo/css/base.css') }}" />
-    <link rel="stylesheet" type="text/css" media="all" href="{{ asset('/bundles/aqpglugcodemedo/css/style.css') }}" />
+    <script type="text/javascript" src="{{ asset('/bundles/aqpglugcodemedo/js/jquery-1.6.1.min.js') }}"></script>
 {% endblock %}
 
 {% block body %}
-<div id="container" class="napkeeComponent napkeeCanvas"></div>
+<div id="container">
     <div id="header">
-        <img id="nap34_7_2" src="/bundles/aqpglugcodemedo/images/placeholder.jpg" class="napkeeComponent napkeeImage">
-        <span id="nap34_7_3" class="napkeeComponent napkeeTitle">AQPGLUG</span>
-        <ul id="nap34_7_5" class="napkeeComponent napkeeLinkbar" role="navigation"> 
-            <li class="linkbarStart linkbarBorder"><a href="{{ path('homepage') }}" id="nap34_7_5i0">Inicio</a></li>
-            <li class="linkbarBorder"><a href="{{ path('_article_index') }}" id="nap34_7_5i1">Artículos</a></li>
-            <li class="linkbarBorder"><a href="{{ path('_project_index') }}" id="nap34_7_5i2">Proyectos</a></li>
-            <li class="linkbarBorder"><a href="{{ path('_event_index') }}" id="nap34_7_5i3">Eventos</a></li>
-            <li class="linkbarBorder"><a href="{{ path('_member_index') }}" id="nap34_7_5i4">Comunidad</a></li>
-            <li class="linkbarEnd"><a href="{{ path('_page_show', {'slug': 'contacto'}) }}" id="nap34_7_5i5">Contacto</a></li> 
+        <h1>AQPGLUG</h1>
+        <input id="search" type="text" placeholder="Buscar" />
+        <ul> 
+            <li><a href="{{ path('homepage') }}" >Inicio</a></li>
+            <li><a href="{{ path('_article_index') }}">Artículos</a></li>
+            <li><a href="{{ path('_project_index') }}">Proyectos</a></li>
+            <li><a href="{{ path('_event_index') }}">Eventos</a></li>
+            <li><a href="{{ path('_member_index') }}">Comunidad</a></li>
+            <li><a href="{{ path('_page_show', {'slug': 'contacto'}) }}">Contacto</a></li> 
         </ul> 
-        <input id="nap34_7_6" type="text" placeholder="Buscar" class="napkeeComponent napkeeSearchbox"/>
-        <hr id="nap34_7_4" class="napkeeComponent napkeeHrule"/>
+        <hr />
     </div>
     <div id="content">
         {% block content %}
         {% endblock %}
     </div>
-
+</div>
 {% endblock %}
