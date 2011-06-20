@@ -29,7 +29,7 @@ class EventController extends Controller
      */
     public function showAction($slug)
     {
-        $event = $this->getRepo()->findOneBy(array(
+        $event = $this->getRepo()->findOnePublished(array(
             'type' =>'event',
             'slug'=> $slug));
         

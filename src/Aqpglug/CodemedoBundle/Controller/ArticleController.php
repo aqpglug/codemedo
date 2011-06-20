@@ -29,7 +29,7 @@ class ArticleController extends Controller
      */
     public function showAction($slug)
     {
-        $article = $this->getRepo()->findOneBy(array(
+        $article = $this->getRepo()->findOnePublished(array(
             'type' =>'article',
             'slug'=> $slug));
 
