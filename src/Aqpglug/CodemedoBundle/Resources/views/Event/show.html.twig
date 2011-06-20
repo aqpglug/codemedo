@@ -1,0 +1,9 @@
+{% extends 'AqpglugCodemedoBundle::layout.html.twig' %}
+
+{% block title %}
+    {{ event.title }}
+{% endblock %}
+
+{% block content %}
+    {{ event.content|raw }}
+{% endblock %}
