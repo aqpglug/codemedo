@@ -7,15 +7,22 @@ use Symfony\Component\Form\FormBuilder;
 
 class MetaType extends AbstractType
 {
+
     protected $meta;
+
     function __construct(array $meta)
     {
         $this->meta = $meta;
     }
+
     public function buildForm(FormBuilder $builder, array $options)
     {
-        foreach ($this->meta as $value) {
-            $builder->add($value, 'text');
+        foreach ($this->meta as $key => $value)
+        {
+            if (is_string($key))
+                $builder->add($key, $value ?: 'text');
+            else
+                $builder->add($value);
         }
     }
 }

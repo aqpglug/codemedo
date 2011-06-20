@@ -9,14 +9,15 @@ use Aqpglug\CodemedoBundle\Extension\Config;
 
 class BlockType extends AbstractType
 {
+
     private $meta;
     function __construct($meta)
     {
         $this->meta = $meta;
     }
+
     public function buildForm(FormBuilder $builder, array $options)
     {
-
         $builder->add('title')
                 ->add('slug', 'text', array(
                     'required' => false,
@@ -28,7 +29,6 @@ class BlockType extends AbstractType
                 ->add('featured', 'checkbox', array(
                     'required' => false,
                 ));
-        if($this->meta !== array())
-            $builder->add('metadata', new MetaType($this->meta));
+        if ($this->meta !== array()) $builder->add('metadata', new MetaType($this->meta));
     }
 }

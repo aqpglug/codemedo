@@ -4,12 +4,21 @@ types:
   article:
     label: Artículo
     metadata: [resume]
+#  slides:
+#    label: Presentación
+#    metadata: [author]
+#  gallery:
+#    label: Galeria
   project:
     label: Proyecto
     metadata: [url]
   event:
     label: Evento
-    metadata: [resume, date, lat, lng]
+    metadata:
+      resume: ~
+      date: datetime
+      lat: ~
+      lng: ~
   member:
     label: Miembro
     metadata: [url]
