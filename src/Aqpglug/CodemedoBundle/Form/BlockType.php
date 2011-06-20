@@ -27,7 +27,8 @@ class BlockType extends AbstractType
                 ))
                 ->add('featured', 'checkbox', array(
                     'required' => false,
-                ))
-                ->add('metadata', new MetaType($this->meta));
+                ));
+        if($this->meta !== array())
+            $builder->add('metadata', new MetaType($this->meta));
     }
 }
