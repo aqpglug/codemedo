@@ -1,6 +1,12 @@
 parameters:
-    types.class:      Aqpglug\CodemedoBundle\Extension\Config
+    codemedo.types.class:       Aqpglug\CodemedoBundle\Extension\Config
+    codemedo.twig.class:        Aqpglug\CodemedoBundle\Extension\Twig
 
 services:
     codemedo:
-        class:        %types.class%
+        class:        %codemedo.types.class%
+    codemedo.twig:
+        class:        %codemedo.twig.class%
+        arguments:    [@codemedo]
+        tags:
+            -  { name: twig.extension }

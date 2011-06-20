@@ -26,7 +26,6 @@ class AdminController extends Controller
         
         return $this->render('AqpglugCodemedoBundle:Admin:index.html.twig', array(
             'articles' => $articles,
-            'types' => $this->get('codemedo')->getLabels(),
         ));
     }
 
