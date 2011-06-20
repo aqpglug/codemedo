@@ -1,47 +1,33 @@
 {% extends 'AqpglugCodemedoBundle::layout.html.twig' %}
+{% import 'AqpglugCodemedoBundle:Macros:image.html.twig' as image %}
 
 {% block content %}
 
-<table id="nap90" border="0" cellspacing="0" cellpadding="0" class="napkeeComponent napkeeTabbar">
-    <tbody><tr>
-            <td valign="bottom" align="left">
-                <ul id="nap90n" class="napkeeTabs napkeeHorizontalTabs napkeeHorizontalTabsTop">
-                    <li class="selected"><a id="nap90i0" href="#nap90-0" class="selected">Preguntas Frecuentes</a></li>
-                    <li><a id="nap90i1" href="#nap90-1">Presentaciones</a></li>
-                    <li><a id="nap90i2" href="#nap90-2">Galerias</a></li>
-                </ul>
-            </td>
-        </tr>
-        <tr>
-            <td width="897" height="34" valign="top">
-                <div id="nap90t" class="napkeeTabsDivs" style="width: 897px; ">
-                    <div id="nap90-0" style="height: 21px; display: block; "></div>
-                    <div id="nap90-1" style="height: 21px; display: none; "></div>
-                    <div id="nap90-2" style="height: 21px; display: none; "></div>
-                </div>
-            </td>
-        </tr>
-    </tbody>
-</table>
-<img id="nap104" src="/bundles/aqpglugcodemedo/images/icons/RSSIcon.png" class="napkeeComponent napkeeIcon rotate360"/>
-<img id="nap105" src="/bundles/aqpglugcodemedo/images/icons/EmailIcon.png" class="napkeeComponent napkeeIcon rotate360"/>
+<ul class="menu">
+    <li class="selected"><a href="#nap90-0">Preguntas Frecuentes</a></li>
+    <li><a href="#nap90-1">Presentaciones</a></li>
+    <li><a href="#nap90-2">Galerias</a></li>
+</ul>
+<img src="/bundles/aqpglugcodemedo/images/icons/rss.png" alt="rss" />
+<img src="/bundles/aqpglugcodemedo/images/icons/email.png" alt="email" />
 
-
+<div id="articles">
     {% render 'AqpglugCodemedoBundle:Block:list' with {
                 'type': 'article',
                 'field': 'featured',
                 'template': 'AqpglugCodemedoBundle:Article:featured.html.twig',
                 'limit': 3 } %}
 
-<ul class="articles">
+    <ul class="article_list">
     {% for article in articles %}
-        <li>
-            <img src="/bundles/aqpglugcodemedo/images/{{ article.image|default('placeholder.jpg')}}" alt="{{ article.title }}" />
-            <a href="{{ path("_article_show", {'slug': article.slug}) }}">{{ article.title }}</a><br />
-            <span>{#{ article.metadata['extract']|raw }#}A paragraph of <em>text</em>.<br />A second <strong>row</strong> of text.</span>
+        <li class="article">
+            <img src="{{ image.or_default( article.image, 'http://lorempixum.com/80/80/technics/' ~ article.slug) }}" alt="{{ article.title }}" />
+            <h3><a href="{{ path("_article_show", {'slug': article.slug}) }}">{{ article.title }}</a></h3>
+            <span>{{ article.metadata.resume|raw }}</span>
         </li>
     {% else %}
         <li>no hay articulos</li>
     {% endfor %}
     </ul>
+</div>
 {% endblock %}

@@ -37,17 +37,6 @@ body {
     top: 75px;
     right: 0;
     float: right;
-    text-align: right;
-}
-
-#header ul li {
-    display: inline;
-    border-left: solid 1px black;
-    padding: 0 10px
-}
-
-#header ul li:first-child {
-    border-left: none;
 }
 
 #header hr {
@@ -59,6 +48,77 @@ body {
     clear: both;
 }
 
+/* MENU */
+
+ul.menu {
+    
+}
+
+ul.menu li {
+    display: inline;
+    border-left: solid 1px black;
+    padding: 0 10px
+}
+
+ul.menu li:first-child {
+    border-left: none;
+}
+
+/* ARTICLE */
+
+#articles {
+    width: 800px;
+    margin: 0 auto;
+}
+
+#articles .article img {
+    width: 80px;
+    height: 80px;
+}
+
+
+#articles .article h3 {
+    font-size: 1.2em;
+}
+
+.article_featured {
+    width: 660px;
+    margin: 0 auto;
+}
+
+.article_featured .article {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    float: left;
+    text-align: center;
+    padding: 10px;
+    margin: 21px;
+    border: 2px solid;
+    border-style: groove;
+}
+
+.article_featured .article img {
+    position: absolute;
+    bottom: 10px;
+    left: 45px;
+}
+
+.article_list {
+    margin-top: 30px;
+}
+
+.article_list .article {
+    width: 360px;
+    height: 80px;
+    float: left;
+    margin: 20px;
+}
+
+.article_list .article img {
+    float: left;
+    margin-right: 20px;
+}
 
 /* EVENT */
 

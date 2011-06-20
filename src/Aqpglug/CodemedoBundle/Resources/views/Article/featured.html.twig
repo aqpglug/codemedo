@@ -1,10 +1,10 @@
-<img id="nap76" src="/bundles/aqpglugcodemedo/images/icons/RightFillTriangleIcon.png" class="napkeeComponent napkeeIcon rotate360"/>
-<img id="nap77" src="/bundles/aqpglugcodemedo/images/icons/LeftFillTriangleIcon.png" class="napkeeComponent napkeeIcon rotate360"/>
-<ul class="featured article">
+{% import 'AqpglugCodemedoBundle:Macros:image.html.twig' as image %}
+
+<ul class="article_featured">
     {% for article in results %}
-    <li>
-        <a href="{{ path('_article_show', {'slug': article.slug} ) }}">{{ article.title }}</a>
-        <img src="/bundles/aqpglugcodemedo/images/{{ article.image|default('default_project.png')}}" alt="{{ article.title }}" />
+    <li class="article">
+        <h3><a href="{{ path('_article_show', {'slug': article.slug} ) }}">{{ article.title }}</a></h3>
+        <img src="{{ image.or_default( article.image, 'http://lorempixum.com/80/80/technics/' ~ article.slug) }}" alt="{{ article.title }}" />
     </li>
     {% endfor %}
 </ul>
