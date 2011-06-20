@@ -54,3 +54,10 @@ swiftmailer:
 jms_security_extra:
     secure_controllers:  true
     secure_all_services: false
+
+avalanche_imagine:
+    filters:
+        my_thumb:
+            type: thumbnail
+            options: { size: [80, 80], mode: outbound }
+

@@ -1,2 +1,6 @@
 _codemedo:
     resource: "@AqpglugCodemedoBundle/Resources/config/routing.yml"
+
+_imagine:
+    resource: .
+    type:     imagine
