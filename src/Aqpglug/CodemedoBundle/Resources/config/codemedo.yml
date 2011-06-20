@@ -9,7 +9,7 @@ types:
     metadata: [url]
   event:
     label: Evento
-    metadata: [date, lat, long]
+    metadata: [resume, date, lat, long]
   member:
     label: Miembro
     metadata: [url]
