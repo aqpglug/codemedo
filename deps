@@ -45,3 +45,10 @@
 [AsseticBundle]
     git=http://github.com/symfony/AsseticBundle.git
     target=/bundles/Symfony/Bundle/AsseticBundle
+
+[Imagine]
+    git=http://github.com/avalanche123/Imagine.git
+
+[ImagineBundle]
+    git=http://github.com/avalanche123/AvalancheImagineBundle.git
+    target=/bundles/Avalanche/Bundle/AvalancheImagineBundle
