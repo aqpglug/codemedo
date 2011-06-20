@@ -18,10 +18,12 @@ class PageController extends Controller
      */
     public function indexAction()
     {
-        $page = $this->getRepo()->getHome($this->getConfig()->getHome());
-
+        $homepage = $this->getConfig()->getHome();
+        
+        $page = $this->getRepo()->findPageBySlug($homepage);
+        
         if ($page === null) {
-            throw $this->createNotFoundException(sprintf("Pagina no encontrada ", $slug));
+            throw $this->createNotFoundException("si no hay inicio, es el fin\n pagina de inicio no valida");
         }
 
         return $this->render('AqpglugCodemedoBundle:Page:show.html.twig', array(
@@ -37,7 +39,7 @@ class PageController extends Controller
         $page = $this->getRepo()->findPageBySlug($slug);
         
         if ($page === null) {
-            throw $this->createNotFoundException(sprintf("Pagina no encontrada ", $slug));
+            throw $this->createNotFoundException(sprintf("Pagina %s no encontrada", $slug));
         }
 
         return $this->render('AqpglugCodemedoBundle:Page:show.html.twig', array(
