@@ -1,6 +1,8 @@
-{% extends 'AqpglugCodemedoBundle::layout.html.twig' %}
+{% extends 'AqpglugCodemedoBundle:Admin:layout.html.twig' %}
 
-{% block content %}
+
+
+{% block admin %}
 <form action="{{ path('_admin_new', {'type': type }) }}" method="post" {{ form_enctype(form) }}>
     {{ form_widget(form) }}
 

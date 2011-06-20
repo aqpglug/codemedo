@@ -1,11 +1,7 @@
-{% extends 'AqpglugCodemedoBundle::layout.html.twig' %}
+{% extends 'AqpglugCodemedoBundle:Admin:layout.html.twig' %}
 
-{% block content %}
-    {% for type, label in types %}
-        <a href="{{ path('_admin_new', {'type': type }) }}" >Nuevo {{ label }}</a>
-    {% else %}
-        <li>no hay tipos de Bloque configurados</li>
-    {% endfor %}
+{% block admin %}
+    
     <ul>
     {% for article in articles %}
         <li>{{ article.type }}: <a href="{{ path("_admin_edit", {'id': article.id}) }}">{{ article.title }}</a></li>
