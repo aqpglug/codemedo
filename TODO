@@ -1,0 +1,36 @@
+v1.0
+- templates
+- auth
+- admin
+    - index
+    - show
+- mapas
+
+v1.1
+- general
+    - convertir en bundle independiente
+    - buscar un nombre
+    - crear documentacion
+
+- admin
+    - mostrar log de acceso
+    - crear campo tipo "map"
+
+- types
+    - menu
+- templates
+    - extension de twig para incrustar blocks
+    - theming
+
+v2
+- l10n
+- i18n
+- crear extensiones
+- extension
+    - menu
+    - gallery
+- admin
+    - crear campo array para form
+        - parametro cualquier tipo de campo
+        - permite multiples instancias (javascript)
+        - guarda datos en un campo tipo array
