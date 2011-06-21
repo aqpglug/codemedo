@@ -34,4 +34,9 @@ test:
 	phpunit -c app/ src/Aqpglug
 
 vendors:
-	bin/vendors update
+	bin/vendors install
+	make assets
+
+build_bootstrap:
+	php vendor/bundles/Sensio/Bundle/DistributionBundle/Resources/bin/build_bootstrap.php
+
