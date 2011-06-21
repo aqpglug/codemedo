@@ -1,27 +1,44 @@
 {% extends 'AqpglugCodemedoBundle::layout.html.twig' %}
 {% import 'AqpglugCodemedoBundle:Macros:image.html.twig' as image %}
 
+{% block title %}Eventos{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript" src="{{ asset('/bundles/aqpglugcodemedo/js/gmap3.min.js') }}"></script>
+{% endblock %}
+
 {% block content %}
 <h1>Eventos</h1>
-<img id="nap104" src="/bundles/aqpglugcodemedo/images/icons/RSSIcon.png" class="napkeeComponent napkeeIcon rotate360"/>
-<img id="nap105" src="/bundles/aqpglugcodemedo/images/icons/EmailIcon.png" class="napkeeComponent napkeeIcon rotate360"/>
 <div class="event-container">
     <ul class="events">
-    {% for event in events %}
+        {% for event in events %}
         <li>
             <img src="{{ image.or_default( event.image, 'http://lorempixum.com/80/80/technics/') }}" alt="{{ event.title }}" />
             <a href="{{ path("_event_show", {'slug': event.slug}) }}">{{ event.title }}</a><br />
-            <span>{{ event.metadata.resume }}</span><br />
-            <span class="date">{{ event.metadata.date|date("m/d/Y") }}</span>
+            {% if event.metadata.resume is defined %}<span>{{ event.metadata.resume }}</span><br />{% endif %}
+            {% if event.metadata.date is defined %}<span class="date">{{ event.metadata.date|date("m/d/Y") }}</span>{% endif %}
         </li>
     {% else %}
         <li>no hay Eventos</li>
     {% endfor %}
     </ul>
-    <div id="map">
-        <iframe id="nap11" src="http://www.napkee.com/components/NapkeeHostedMaps/?loc=arequipa" class="napkeeComponent napkeeMap"></iframe>
-    </div>
+    <div id="map"></div>
 </div>
-<img id="nap14" src="/bundles/aqpglugcodemedo/images/icons/UpTriangleIcon.png" class="napkeeComponent napkeeIcon rotate360"/>
-<img id="nap15" src="/bundles/aqpglugcodemedo/images/icons/DownFillTriangleIcon.png" class="napkeeComponent napkeeIcon rotate360"/>
+{% endblock %}
+
+{% block javascripts %}
+<script type="text/javascript">
+$(function() {
+    $("#map").gmap3(
+    'setDefault', { unit:'km', init:{address: 'Arequipa', zoom:10}},
+    {% for event in events %}
+        {% if event.metadata.lat is defined %}
+            { action: 'addMarker', latLng:[{{event.metadata.lat}}, {{event.metadata.lng}}]},
+        {% endif %}
+    {% endfor %}
+    "autofit");
+});
+</script>
 {% endblock %}
