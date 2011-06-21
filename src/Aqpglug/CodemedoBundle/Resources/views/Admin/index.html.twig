@@ -1,12 +1,5 @@
 {% extends 'AqpglugCodemedoBundle:Admin:layout.html.twig' %}
 
 {% block admin %}
-    
-    <ul>
-    {% for article in articles %}
-        <li>{{ article.type }}: <a href="{{ path("_admin_edit", {'id': article.id}) }}">{{ article.title }}</a></li>
-    {% else %}
-        <li>no hay articulos</li>
-    {% endfor %}
-    </ul>
+    nobody here... yet
 {% endblock %}
