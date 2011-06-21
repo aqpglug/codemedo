@@ -3,7 +3,7 @@ v1.0
 - auth
 - admin
     - index
-    - show
+//    - paginado HECHO!
 - mapas
 
 v1.1
