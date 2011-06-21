@@ -23,6 +23,8 @@ v1.1
     - theming
 
 v2
+- l10n
+- i18n
 - crear extensiones
 - extension
     - menu
