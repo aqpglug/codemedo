@@ -1,0 +1,18 @@
+.events {
+    
+}
+.events li {
+    height: 80px;
+    margin-bottom: 10px;
+}
+.events img {
+    float: left;
+}
+.events a, .events span {
+    margin: 5px 10px;
+}
+#map {
+    width:300px;
+    height:250px;
+    background: red;
+}
