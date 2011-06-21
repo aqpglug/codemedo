@@ -31,8 +31,7 @@
 {% block javascripts %}
 <script type="text/javascript">
 $(function() {
-    $("#map").gmap3(
-    'setDefault', { unit:'km', init:{address: 'Arequipa', zoom:10}},
+    $("#map").gmap3( { action: 'init', options:{center: [-16.398822,-71.536886], zoom:13}},
     {% for event in events %}
         {% if event.metadata.lat is defined %}
             { action: 'addMarker', latLng:[{{event.metadata.lat}}, {{event.metadata.lng}}]},
