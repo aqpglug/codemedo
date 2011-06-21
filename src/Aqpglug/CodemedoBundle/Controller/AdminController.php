@@ -30,26 +30,53 @@ class AdminController extends Controller
     }
 
     /**
-     * @Route("/{type}/{page}", name="_admin_list", defaults={"page"=1})
+     * @Route("/list/{type}/{page}", name="_admin_list", defaults={"page"=1})
      */
     public function listAction($type, $page)
     {
+        $step = 20;
         $qb = $this->getRepo()->createQueryBuilder('b');
         $qb->add('select', $qb->expr()->count('b.id'))
-           ->where('b.type = ?1')
-           ->setParameter(1, $type);
+                ->where('b.type = ?1')
+                ->setParameter(1, $type);
         $count = $qb->getQuery()->getSingleScalarResult();
-        
-        $step = 2;
         $pages = ceil($count / $step);
         $blocks = $this->getRepo()->findBy(
-                array('type' => $type,),
-                array('created' => 'DESC',), $step, $step * ($page -1));
+                    array('type' => $type,),
+                    array('created' => 'DESC',), $step, $step * ($page - 1));
         return $this->render('AqpglugCodemedoBundle:Admin:list.html.twig', array(
             'blocks' => $blocks,
             'type' => $type,
             'page' => $page,
             'pages' => $pages,
+        ));
+    }
+
+    /**
+     * @Route("/edit/{id}", name="_admin_edit")
+     */
+    public function editAction($id)
+    {
+        $block = $this->getRepo()->findOneBy(array('id' => $id));
+
+        $meta = $this->get('codemedo')->getMeta($block->getType());
+        $form = $this->createForm(new BlockType($meta), $block);
+
+        $request = $this->getRequest();
+        if ($request->getMethod() == 'POST') {
+            $form->bindRequest($request);
+
+            if ($form->isValid()) {
+                $em = $this->getDoctrine()->getEntityManager();
+                $em->persist($block);
+                $em->flush();
+                return $this->redirect($this->generateUrl('_admin_list', array('type' => $block->getType())));
+            }
+        }
+
+        return $this->render('AqpglugCodemedoBundle:Admin:edit.html.twig', array(
+            'form' => $form->createView(),
+            'id' => $id,
         ));
     }
 
@@ -79,34 +106,6 @@ class AdminController extends Controller
         return $this->render('AqpglugCodemedoBundle:Admin:new.html.twig', array(
             'form' => $form->createView(),
             'type' => $type,
-        ));
-    }
-
-    /**
-     * @Route("/edit/{id}", name="_admin_edit")
-     */
-    public function editAction($id)
-    {
-        $block = $this->getRepo()->findOneBy(array('id' => $id));
-
-        $meta = $this->get('codemedo')->getMeta($block->getType());
-        $form = $this->createForm(new BlockType($meta), $block);
-
-        $request = $this->getRequest();
-        if ($request->getMethod() == 'POST') {
-            $form->bindRequest($request);
-
-            if ($form->isValid()) {
-                $em = $this->getDoctrine()->getEntityManager();
-                $em->persist($block);
-                $em->flush();
-                return $this->redirect($this->generateUrl('_admin_index'));
-            }
-        }
-
-        return $this->render('AqpglugCodemedoBundle:Admin:edit.html.twig', array(
-            'form' => $form->createView(),
-            'id' => $id,
         ));
     }
 
