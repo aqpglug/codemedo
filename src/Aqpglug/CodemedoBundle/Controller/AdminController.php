@@ -19,23 +19,47 @@ class AdminController extends Controller
      */
     public function indexAction()
     {
-        $articles = $this->getRepo()->findBy(array(),array(
-            'type' => 'ASC',
-            'created' => 'DESC',
-        ));
-        
+        $articles = $this->getRepo()->findBy(array(), array(
+                    'type' => 'ASC',
+                    'created' => 'DESC',
+                ));
+
         return $this->render('AqpglugCodemedoBundle:Admin:index.html.twig', array(
             'articles' => $articles,
         ));
     }
 
     /**
-     * @Route("/new/{type}", name="_admin_new")
+     * @Route("/{type}/{page}", name="_admin_list", defaults={"page"=1})
+     */
+    public function listAction($type, $page)
+    {
+        $qb = $this->getRepo()->createQueryBuilder('b');
+        $qb->add('select', $qb->expr()->count('b.id'))
+           ->where('b.type = ?1')
+           ->setParameter(1, $type);
+        $count = $qb->getQuery()->getSingleScalarResult();
+        
+        $step = 2;
+        $pages = ceil($count / $step);
+        $blocks = $this->getRepo()->findBy(
+                array('type' => $type,),
+                array('created' => 'DESC',), $step, $step * ($page -1));
+        return $this->render('AqpglugCodemedoBundle:Admin:list.html.twig', array(
+            'blocks' => $blocks,
+            'type' => $type,
+            'page' => $page,
+            'pages' => $pages,
+        ));
+    }
+
+    /**
+     * @Route("/{type}/new", name="_admin_new")
      */
     public function newAction($type)
     {
         $block = new Block();
-        
+
         $meta = $this->get('codemedo')->getMeta($type);
         $form = $this->createForm(new BlockType($meta), $block);
 
@@ -57,14 +81,14 @@ class AdminController extends Controller
             'type' => $type,
         ));
     }
-    
+
     /**
      * @Route("/edit/{id}", name="_admin_edit")
      */
     public function editAction($id)
     {
         $block = $this->getRepo()->findOneBy(array('id' => $id));
-        
+
         $meta = $this->get('codemedo')->getMeta($block->getType());
         $form = $this->createForm(new BlockType($meta), $block);
 
@@ -85,6 +109,5 @@ class AdminController extends Controller
             'id' => $id,
         ));
     }
-    
-    
+
 }

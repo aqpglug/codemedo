@@ -1,12 +1,25 @@
 {% extends 'AqpglugCodemedoBundle:Admin:layout.html.twig' %}
 
 {% block admin %}
-    
-    <ul>
-    {% for article in articles %}
-        <li>{{ article.type }}: <a href="{{ path("_admin_edit", {'id': article.id}) }}">{{ article.title }}</a></li>
+    <h2>{{ get_labels[type]}}</h2>
+    <table>
+    {% for block in blocks %}
+        <tr>
+            <td><a href="{{ path("_admin_edit", {'id': block.id}) }}">{{ block.title }}</a></td>
+            <td>{% if block.published %}Publicado {% else %}No publicado{% endif %}</td>
+            <td>{{block.created|date("Y/m/d h:m")}}</td>
+        </tr>
     {% else %}
-        <li>no hay articulos</li>
+        <tr><td>no hay nada para mostrar aquí</td></tr>
     {% endfor %}
+        
+    </table>
+    <ul class="paginator">
+        {% for i in range(1, pages) %}
+            <li><a {% spaceless %}
+                href="{{ path('_admin_list', {'type': type, 'page': i }) }}" 
+                {% if i == page %}class="currentpage"{% endif %}>{{i}}
+            {% endspaceless %}</a></li>
+        {% endfor %}
     </ul>
 {% endblock %}

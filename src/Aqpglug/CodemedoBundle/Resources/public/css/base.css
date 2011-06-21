@@ -64,6 +64,12 @@ ul.menu li:first-child {
     border-left: none;
 }
 
+/* BASE */
+.paginator li 
+{
+    display: inline;
+}
+
 /* ARTICLE */
 
 #articles {
@@ -131,3 +137,5 @@ ul.menu li:first-child {
     width: 200px;
     float: right;
 }
+
+/* ADMIN */

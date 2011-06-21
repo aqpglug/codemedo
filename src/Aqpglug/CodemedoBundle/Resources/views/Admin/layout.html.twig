@@ -5,7 +5,7 @@
 {% block content %}
 
 {% for type, label in get_labels %}
-    <a href="{{ path('_admin_new', {'type': type }) }}" >Nuevo {{ label }}</a>
+    <a href="{{ path('_admin_list', {'type': type }) }}" >{{ label }}</a>
 {% endfor %}
 
 {% block admin %}
