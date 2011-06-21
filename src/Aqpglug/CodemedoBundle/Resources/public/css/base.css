@@ -1,67 +1,54 @@
 body {
-    font-size: 13px;
+    font-size: 14px;
+    background: url('/bundles/aqpglugcodemedo/images/header.png') repeat-x, url(http://griddle.it/960-12-30) repeat-y;
+    background-position: center top;
+    font-family: ubuntu;
 }
 
 #container {
     width: 960px;
     margin: 0 auto;
-    font-family: cursive;
 }
 
 #header {
-    height: 100px;
+    height: 135px;
     position: relative;
 }
 
+#content {
+    margin: 15px;
+    clear: both;
+}
+
+/* HEADER */
+
 #header h1 {
     float: left;
-    width: 300px;
-    height: 100%;
-    font-size: 3em;
+    width: 185px;
+    height: 85px;
+    margin: 25px;
+    background: url('/bundles/aqpglugcodemedo/images/logo.png') no-repeat;
+}
+
+#header h1 span {
+    display: none;
 }
 
 #header #search {
     position: absolute;
-    top: 10px;
-    right: 20px;
-    background: url('/bundles/aqpglugcodemedo/images/icons/search.png') no-repeat;
+    top: 15px;
+    right: 15px;
+    background: url('/bundles/aqpglugcodemedo/images/icons/search.png') no-repeat #fff;
     background-position: 3px;
-    padding: 3px 10px 3px 23px;
+    padding: 5px 10px 5px 23px;
     -moz-border-radius: 10px;
     -webkit-border-radius: 10px;
     border-radius: 10px;
-}
-
-#header ul {
-    position: absolute;
-    top: 75px;
-    right: 0;
-    float: right;
+    border: none;
 }
 
 #header hr {
     clear: both;
-}
-
-
-#content {
-    clear: both;
-}
-
-/* MENU */
-
-ul.menu {
-    
-}
-
-ul.menu li {
-    display: inline;
-    border-left: solid 1px black;
-    padding: 0 10px
-}
-
-ul.menu li:first-child {
-    border-left: none;
 }
 
 /* BASE */
@@ -69,6 +56,33 @@ ul.menu li:first-child {
 {
     display: inline;
 }
+
+/* MENU */
+
+#header .menu {
+    font-size: 1em;
+    position: absolute;
+    bottom: 15px;
+    right: 15px;
+    float: right;
+}
+
+#header .menu a {
+    color: #fff;
+    text-decoration: none;
+}
+
+#header .menu li {
+    display: inline;
+    border-left: #efbe15 1px dotted;
+    padding: 0 15px
+}
+
+#header .menu li:first-child {
+    border-left: none;
+}
+
+/* CONTENT */
 
 /* ARTICLE */
 
