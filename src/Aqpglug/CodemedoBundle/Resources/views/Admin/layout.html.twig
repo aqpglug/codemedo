@@ -4,10 +4,11 @@
 
 {% block content %}
 
+<ul class="admin menu">
 {% for type, label in get_labels %}
-    <a href="{{ path('_admin_list', {'type': type }) }}" >{{ label }}</a>
+    <li><a href="{{ path('_admin_list', {'type': type }) }}" >{{ label }}</a></li>
 {% endfor %}
-
+</ul>
 {% block admin %}
 {% endblock %}
 

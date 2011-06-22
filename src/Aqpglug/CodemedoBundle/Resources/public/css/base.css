@@ -104,11 +104,12 @@ a:hover {
     color: #fff;
     font-family: sans-serif;
 }
-
-#header .menu li {
+.menu li {
     display: inline;
-    border-left: #efbe15 1px dotted;
     padding: 0 15px
+}
+#header .menu li {
+    border-left: #efbe15 1px dotted;
 }
 
 #header .menu li:first-child {

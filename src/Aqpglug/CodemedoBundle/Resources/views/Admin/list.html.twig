@@ -1,10 +1,17 @@
 {% extends 'AqpglugCodemedoBundle:Admin:layout.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" media="all" href="{{ asset('/bundles/aqpglugcodemedo/css/admin.css') }}" />
+{% endblock %}
+    
 {% block title %}Admin - {{ get_labels[type]}}{% endblock %}
 
 {% block admin %}
-    <h2>{{ get_labels[type]}}</h2>
-    <a href="{{ path('_admin_new', {'type': type}) }}">Nuevo</a>
+    <h2>Admin - {{ get_labels[type]}}</h2>
+    
+    <a href="{{ path('_admin_new', {'type': type}) }}" class="new">Nuevo</a>
+    
     <table>
     {% for block in blocks %}
         <tr>
