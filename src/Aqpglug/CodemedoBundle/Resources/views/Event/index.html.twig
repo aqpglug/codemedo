@@ -18,8 +18,8 @@
         <li>
             <img src="{{ image.or_default( event.image, 'http://lorempixum.com/80/80/technics/') }}" alt="{{ event.title }}" />
             <a href="{{ path("_event_show", {'slug': event.slug}) }}">{{ event.title }}</a><br />
-            {% if event.metadata.resume is defined %}<span>{{ event.metadata.resume }}</span><br />{% endif %}
-            {% if event.metadata.date is defined %}<span class="date">{{ event.metadata.date|date("m/d/Y") }}</span>{% endif %}
+            {% if event.metadata.resume is defined %}<p>{{ event.metadata.resume }}</p>{% endif %}
+            {% if event.metadata.date is defined %}<time>{{ event.metadata.date|date("m/d/Y") }}</time>{% endif %}
         </li>
     {% else %}
         <li>no hay Eventos</li>

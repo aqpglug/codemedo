@@ -1,18 +1,37 @@
-.events {
-    
+#event-container {
+    overflow: auto;
 }
+
+.events {
+    float: left;
+    margin:20px 50px 0 20px;
+}
+
 .events li {
     height: 80px;
-    margin-bottom: 10px;
+    width: 350px;
+    margin-bottom: 20px;
 }
+
 .events img {
     float: left;
 }
-.events a, .events span {
+
+.events a {
     margin: 5px 10px;
 }
+
+.events p {
+    padding-left: 90px; /* ancho del thumbnail + padding*/
+}
+
+.events time {
+    padding-left: 10px;
+    color: #999;
+}
 #map {
-    width:300px;
-    height:250px;
-    background: red;
+    width:490px;
+    height:280px;
+    top: 20px;
+    border: 1px dashed #aaa;
 }
