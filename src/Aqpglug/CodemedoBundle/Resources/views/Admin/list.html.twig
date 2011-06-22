@@ -3,25 +3,33 @@
 {% block title %}Admin - {{ get_labels[type]}}{% endblock %}
 
 {% block admin %}
-    <h2>Admin - {{ get_labels[type]}}</h2>
+<ul class="menu submenu">
+    <li><span>{{ get_labels[type]}}</span</li>
+    <li><a href="{{ path('_admin_new', {'type': type}) }}">Nuevo</a></li>
+</ul>
     
-    <a href="{{ path('_admin_new', {'type': type}) }}" class="new">Nuevo</a>
-    
-    <table id="blocks">
+    <table class="list">
         <thead>
-            <tr><th>ID</th>
+            <tr>
+                <th>ID</th>
                 <th>Título</th>
-                <th>Publicado</th>
+                <th>Slug</th>
+                <th title="Publicado">pub</th>
+                <th title="Destacado">feat</th>
                 <th>Fecha</th>
+                <th></th>
             </tr>
             
         </thead>
     {% for block in blocks %}
-        <tr>
-            <td>{{block.id}}</td>
-            <td><a href="{{ path("_admin_edit", {'id': block.id}) }}">{{ block.title }}</a></td>
-            <td>{% if block.published %}Publicado {% else %}No publicado{% endif %}</td>
-            <td>{{block.created|date("Y/m/d h:m")}}</td>
+        <tr class="{{ cycle(['odd', 'even'], loop.index) }}">
+            <td class="id">{{block.id}}</td>
+            <td class="title"><a href="{{ path("_admin_edit", {'id': block.id}) }}">{{ block.title }}</a></td>
+            <td class="slug">{{ block.slug }}</td>
+            <td class="pub"><span class="icon {% if not block.published %}stop{%else%}tick{% endif %}"></span></td>
+            <td class="feat"><span class="icon {% if not block.featured %}stop{%else%}tick{% endif %}"></span></td>
+            <td class="date">{{block.created|date("Y/m/d h:m")}}</td>
+            <td class="actions"><a onclick="return confirm('¿esta seguro?')" href="{{ path("_admin_remove", {'id': block.id}) }}"<span class="icon trash"></span></td>
         </tr>
     {% else %}
         <tr><td>no hay nada para mostrar aquí</td></tr>

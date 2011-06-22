@@ -103,6 +103,18 @@ a:hover {
     padding: 0 15px
 }
 
+/* ICONS */
+
+.icon {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+}
+.tick { background: url('/bundles/aqpglugcodemedo/images/icons/tick_16.png') no-repeat; }
+.stop { background: url('/bundles/aqpglugcodemedo/images/icons/block_16.png') no-repeat; }
+.trash { background: url('/bundles/aqpglugcodemedo/images/icons/trash_16.png') no-repeat; }
+
+
 /* MENU */
 
 #header .menu {

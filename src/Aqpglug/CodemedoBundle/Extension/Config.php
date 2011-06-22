@@ -38,8 +38,10 @@ class Config
         return true;
     }
 
-    public function get($config)
+    public function get($config = null)
     {
+        if($config === null)
+            return $this->data;
         return $this->data[$config] ? : array();
     }
 

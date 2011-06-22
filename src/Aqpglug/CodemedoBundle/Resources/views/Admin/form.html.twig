@@ -5,6 +5,6 @@
     {{ form_widget(form) }}
 
     <input type="submit" />
-    <a href="{{ path('_admin') }}" >cancelar</a>
+    <a href="{{ path('_admin_list', {'type': type }) }}" >cancelar</a>
 </form>
 {% endblock %}
