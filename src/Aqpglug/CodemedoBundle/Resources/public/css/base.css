@@ -1,14 +1,20 @@
 body {
     font-size: 14px;
-    background:
-        url(/bundles/aqpglugcodemedo/images/header.png) repeat-x,
-        url(/bundles/aqpglugcodemedo/images/grid.png) repeat-y;
+    background: url(/bundles/aqpglugcodemedo/images/header.png) repeat-x;
     background-position: center top;
     font-family: ubuntu;
 }
 
 a {
     text-decoration: none;
+}
+a:focus {
+    outline: 
+    -moz-outline-style: none;
+}
+a:active
+{
+    outline: none;
 }
 a:hover {
     text-decoration: underline;
@@ -23,6 +29,7 @@ a:hover {
 #header {
     height: 135px;
     position: relative;
+    background: url(/bundles/aqpglugcodemedo/images/header.png) repeat-x;
 }
 
 #content {

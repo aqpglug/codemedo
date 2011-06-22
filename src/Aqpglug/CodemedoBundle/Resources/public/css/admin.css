@@ -3,8 +3,7 @@
 
 #admin .menu {
     background: #292929;
-    margin-top: -15px;
-    margin-left: -15px;
+    margin: -15px 0 15px -15px;
     width: 940px;
     border-top: 1px solid #666;
     padding: 5px 10px;
