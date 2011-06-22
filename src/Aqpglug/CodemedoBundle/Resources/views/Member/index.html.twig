@@ -8,28 +8,23 @@
 {% block title %}Comunidad{% endblock %}
     
 {% block content %}
-<h1>Miembros Activos</h1>
-<ul class='members'>
-    {% set featured = true %}
-    {% for member in members %}
-        {% if member.featured != featured %}
-            {% set featured = member.featured %}
-</ul>
 
+    {% render 'AqpglugCodemedoBundle:Member:active' %}
 <h1>Todos los Miembros</h1>
+
 <ul class='members'>
-        {% endif %}
-        <li>
-            {% if member.metadata.url is defined %}
-                <a href="{{ member.metadata.url }}" target="_blank">
-                    <img src="/bundles/aqpglugcodemedo/images/{{ member.image|default('default_member.png')}}" alt="{{ member.title }}" />
-                    {{ member.title }} ({{member.slug}})
-                </a>
-            {% else %}
+    {% for member in members %}
+    <li>
+        {% if member.metadata.url is defined %}
+            <a href="{{ member.metadata.url }}" target="_blank">
                 <img src="/bundles/aqpglugcodemedo/images/{{ member.image|default('default_member.png')}}" alt="{{ member.title }}" />
                 {{ member.title }} ({{member.slug}})
-            {% endif %}
-        </li>
+            </a>
+        {% else %}
+            <img src="/bundles/aqpglugcodemedo/images/{{ member.image|default('default_member.png')}}" alt="{{ member.title }}" />
+            {{ member.title }} ({{member.slug}})
+        {% endif %}
+    </li>
     {% endfor %}
 </ul>
 <ul class="nav">
