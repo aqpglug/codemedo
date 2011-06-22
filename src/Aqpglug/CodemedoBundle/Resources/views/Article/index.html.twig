@@ -7,8 +7,9 @@
     <link rel="stylesheet" type="text/css" media="all" href="{{ asset('/bundles/aqpglugcodemedo/css/article.css') }}" />
 {% endblock %}
 
+{% block title %}Artículos{% endblock %}
+
 {% block content %}
-<div id="articles">
     {% render 'AqpglugCodemedoBundle:Block:featured' with {
                 'type': 'article',
                 'template': 'AqpglugCodemedoBundle:Article:featured.html.twig',
@@ -45,5 +46,4 @@
             {% endif %}
         </li>
     </ul>
-</div>
 {% endblock %}

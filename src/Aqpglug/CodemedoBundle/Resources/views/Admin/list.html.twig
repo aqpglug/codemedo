@@ -1,5 +1,7 @@
 {% extends 'AqpglugCodemedoBundle:Admin:layout.html.twig' %}
 
+{% block title %}Admin - {{ get_labels[type]}}{% endblock %}
+
 {% block admin %}
     <h2>{{ get_labels[type]}}</h2>
     <a href="{{ path('_admin_new', {'type': type}) }}">Nuevo</a>
