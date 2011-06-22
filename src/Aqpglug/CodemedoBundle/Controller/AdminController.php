@@ -35,15 +35,12 @@ class AdminController extends Controller
     public function listAction($type, $page)
     {
         $step = 20;
-        $qb = $this->getRepo()->createQueryBuilder('b');
-        $qb->add('select', $qb->expr()->count('b.id'))
-                ->where('b.type = ?1')
-                ->setParameter(1, $type);
-        $count = $qb->getQuery()->getSingleScalarResult();
+        $count = $this->getRepo()->countByType($type);
         $pages = ceil($count / $step);
         $blocks = $this->getRepo()->findBy(
                     array('type' => $type,),
                     array('created' => 'DESC',), $step, $step * ($page - 1));
+        
         return $this->render('AqpglugCodemedoBundle:Admin:list.html.twig', array(
             'blocks' => $blocks,
             'type' => $type,

@@ -13,18 +13,34 @@ class BlockRepository extends EntityRepository
     public function findOnePublished(array $criteria)
     {
         $criteria = array_merge($criteria, array('published' => True));
+        
         return $this->findOneBy($criteria);
     }
-        
+
     public function findOneBy(array $criteria)
     {
         $block = parent::findOneBy($criteria);
-        
+
         if ($block === null)
             throw new NotFoundHttpException();
         return $block;
     }
-
+    
+    public function findPublishedBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+    {
+        $criteria = array_merge($criteria, array('published' => True));
+        return $this->findBy($criteria, $orderBy, $limit, $offset);
+    }
+    
+    public function countByType($type)
+    {
+        $qb = $this->createQueryBuilder('b');
+        $qb->add('select', $qb->expr()->count('b.id'))
+                ->where('b.type = ?1')
+                ->setParameter(1, $type);
+        return $qb->getQuery()->getSingleScalarResult();
+    }
+    
     public function findAllSortedBy($type, $field, $nb = null)
     {
         $query = $this->queryAllSortedBy($type, $field);
