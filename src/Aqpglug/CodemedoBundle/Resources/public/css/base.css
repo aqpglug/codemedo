@@ -9,7 +9,7 @@ a {
     text-decoration: none;
 }
 a:focus {
-    outline: 
+    outline: none;
     -moz-outline-style: none;
 }
 a:active
