@@ -23,6 +23,7 @@ a:hover {
 #header {
     height: 135px;
     position: relative;
+    background:url(/bundles/aqpglugcodemedo/images/header.png) repeat-x;
 }
 
 #content {
