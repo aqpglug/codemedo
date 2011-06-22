@@ -3,14 +3,6 @@
 
 {% block content %}
 
-<ul class="menu">
-    <li class="selected"><a href="#nap90-0">Preguntas Frecuentes</a></li>
-    <li><a href="#nap90-1">Presentaciones</a></li>
-    <li><a href="#nap90-2">Galerias</a></li>
-</ul>
-<img src="/bundles/aqpglugcodemedo/images/icons/rss.png" alt="rss" />
-<img src="/bundles/aqpglugcodemedo/images/icons/email.png" alt="email" />
-
 <div id="articles">
     {% render 'AqpglugCodemedoBundle:Block:list' with {
                 'type': 'article',
@@ -21,7 +13,7 @@
     <ul class="article_list">
     {% for article in articles %}
         <li class="article">
-            <img src="{{ image.or_default( article.image, 'http://lorempixum.com/80/80/technics/' ~ article.slug) }}" alt="{{ article.title }}" />
+            <img src="{{ image.or_default( article.image, 'http://lorempixum.com/g/80/80/technics/' ~ article.slug) }}" alt="{{ article.title }}" />
             <h3><a href="{{ path("_article_show", {'slug': article.slug}) }}">{{ article.title }}</a></h3>
             <span>{{ article.metadata.resume|raw }}</span>
         </li>
