@@ -1,3 +1,5 @@
+/* LIST */
+
 h2 {
     font-size: 2em;
     font-weight: bold;
@@ -39,4 +41,11 @@ a.new {
 
 #blocks thead :nth-last-child(1){
     border-right:none;
+}
+
+/* FORM */
+
+textarea {
+    width:100%;
+    min-height:300px;
 }
