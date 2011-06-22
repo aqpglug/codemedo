@@ -1,11 +1,22 @@
 {% extends 'AqpglugCodemedoBundle::layout.html.twig' %}
-{% block title %} Proyectos {% endblock %} 
+
+{% block title %}Proyectos {% endblock %} 
+
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" media="all" href="{{ asset('/bundles/aqpglugcodemedo/css/project.css') }}" />
+{% endblock %}
+    
 {% block content %}
     <h1>Proyectos</h1>
     <ul class="projects">
     {% for project in projects%}
         <li>
-            <a href="{{ project.metadata.url }}" target="_blank">{{ project.title }}</a>
+            {% if project.metadata.url is defined %}
+                <a href="{{ project.metadata.url }}" target="_blank" class="name">{{ project.title }}</a>
+            {% else %}
+                <span class="name">{{ project.title }}</span>
+            {% endif %}
             <img src="/bundles/aqpglugcodemedo/images/{{ project.image|default('default_project.jpg')}}" alt="{{ project.title }}" />
         </li>
     {% endfor %}

@@ -7,6 +7,12 @@ body {
     font-family: ubuntu;
 }
 
+a {
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}
 /* ESTRUCTURA */
 
 #container {
@@ -72,14 +78,13 @@ body {
     clear: both;
 }
 
-/* CONTENT */
-
-#content {
-
-}
-
 /* BASE */
 
+#content h1 {
+    font-family: sans-serif;
+    font-size: 2em;
+    font-weight: bold;
+}
 .paginator li 
 {
     display: inline;
@@ -97,7 +102,7 @@ body {
 
 #header .menu a {
     color: #fff;
-    text-decoration: none;
+    font-family: sans-serif;
 }
 
 #header .menu li {
