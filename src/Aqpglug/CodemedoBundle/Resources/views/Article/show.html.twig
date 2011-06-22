@@ -5,5 +5,8 @@
 {% endblock %}
 
 {% block content %}
-    <div class="article">{{ article.content|raw }}</div>
+    <div class="article">
+        <h2>{{ article.title }}</h2>
+        {{ article.content|raw }}
+    </div>
 {% endblock %}

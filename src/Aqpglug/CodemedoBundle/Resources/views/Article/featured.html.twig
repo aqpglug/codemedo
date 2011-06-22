@@ -4,7 +4,7 @@
     {% for article in results %}
     <li class="article">
         <h3><a href="{{ path('_article_show', {'slug': article.slug} ) }}">{{ article.title }}</a></h3>
-        <img src="{{ image.or_default( article.image, 'http://lorempixum.com/80/80/technics/' ~ article.slug) }}" alt="{{ article.title }}" />
+        <img src="{{ image.or_default( article.image, 'http://lorempixum.com/g/80/80/technics/' ~ article.slug) }}" alt="{{ article.title }}" />
     </li>
     {% endfor %}
 </ul>

@@ -1,9 +1,13 @@
 body {
     font-size: 14px;
-    background: url('/bundles/aqpglugcodemedo/images/header.png') repeat-x, url(http://griddle.it/960-12-30) repeat-y;
+    background:
+        url(/bundles/aqpglugcodemedo/images/header.png) repeat-x,
+        url(/bundles/aqpglugcodemedo/images/grid.png) repeat-y;
     background-position: center top;
     font-family: ubuntu;
 }
+
+/* ESTRUCTURA */
 
 #container {
     width: 960px;
@@ -16,8 +20,25 @@ body {
 }
 
 #content {
-    margin: 15px;
+    padding: 15px;
     clear: both;
+    min-height: 470px;
+    -moz-box-shadow: 0 0 15px 0px #292929;
+    -webkit-box-shadow: 0 0 15px 0px #292929;
+    box-shadow: 0 0 15px 0px #292929;
+    -moz-border-radius: 0px 0px 5px 5px;
+    -webkit-border-radius: 0px 0px 5px 5px;
+    border-radius: 0px 0px 5px 5px;
+    margin-bottom: 15px;
+}
+
+#footer {
+    position: fixed;
+    height: 20px;
+    background: #292929;
+    width: 100%;
+    bottom: 0;
+    left: 0;
 }
 
 /* HEADER */
@@ -51,7 +72,14 @@ body {
     clear: both;
 }
 
+/* CONTENT */
+
+#content {
+
+}
+
 /* BASE */
+
 .paginator li 
 {
     display: inline;
@@ -91,19 +119,27 @@ body {
     margin: 0 auto;
 }
 
-#articles .article img {
+.article img {
     width: 80px;
     height: 80px;
 }
 
 
-#articles .article h3 {
+.article h3 a {
     font-size: 1.2em;
+    color: #495453;
+    text-decoration: none;
+}
+
+.article h2 {
+    font-size: 2em;
+    color: #495453;
 }
 
 .article_featured {
     width: 660px;
     margin: 0 auto;
+    clear: both;
 }
 
 .article_featured .article {
@@ -126,6 +162,7 @@ body {
 
 .article_list {
     margin-top: 30px;
+    clear: both;
 }
 
 .article_list .article {
