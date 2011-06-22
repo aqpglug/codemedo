@@ -9,7 +9,7 @@ a {
     text-decoration: none;
 }
 a:focus {
-    outline: 
+    outline: none;
     -moz-outline-style: none;
 }
 a:active
@@ -33,7 +33,7 @@ a:hover {
 }
 
 #content {
-    padding: 15px; 
+    padding: 15px;
     clear: both;
     min-height: 470px;
     -moz-box-shadow: 0 0 15px 0px #292929;
