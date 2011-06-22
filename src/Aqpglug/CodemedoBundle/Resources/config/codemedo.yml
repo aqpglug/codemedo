@@ -4,11 +4,6 @@ types:
   article:
     label: Artículo
     metadata: [resume]
-#  slides:
-#    label: Presentación
-#    metadata: [author]
-#  gallery:
-#    label: Galeria
   project:
     label: Proyecto
     metadata: [url]
@@ -22,3 +17,15 @@ types:
   member:
     label: Miembro
     metadata: [url]
+
+menu:
+  main:
+    Inicio: homepage
+    Artículos: _article_index
+    Proyectos: _project_index
+    Eventos:  _event_index
+    Comunidad:
+      url:  _member_index
+    Contacto:
+      url: _page_show
+      params: { slug: contacto }
