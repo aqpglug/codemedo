@@ -35,8 +35,9 @@ class AdminController extends Controller
     public function listAction($type, $page)
     {
         $step = 20;
-        $count = $this->getRepo()->countByType($type);
+        $count = $this->getRepo()->countBy(array('type' => $type));
         $pages = ceil($count / $step);
+        
         $blocks = $this->getRepo()->findBy(
                     array('type' => $type,),
                     array('created' => 'DESC',), $step, $step * ($page - 1));
