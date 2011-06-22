@@ -9,16 +9,12 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 class BlockController extends Controller
 {
 
-    public function featuredAction($field, $template, $limit=5)
+    public function featuredAction($type, $template, $limit=5, $page=1)
     {
-        //$blocks = $this->getRepo()->findAllSortedBy($field, $limit);
-        $blocks = $this->getRepo()->findBy(
-                array('type' => $field,
-                    'published' => True,
+        $blocks = $this->getRepo()->findPublishedBy(
+                array('type' => $type,
                     'featured' => True),
-                array(
-                    'created' => 'DESC'
-                ), $limit);
+                array('created' => 'DESC'), $limit);
 
         return $this->render($template, array(
             'results' => $blocks,
