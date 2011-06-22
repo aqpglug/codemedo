@@ -30,7 +30,7 @@
     </ul>
     <ul class="nav">
         <li class="left">{% if page != 1 %}
-            <a href="{{ path('_article_index', {'page': page -1 }) }}">
+            <a href="{{ path('_article', {'page': page -1 }) }}">
                 <img src="/bundles/aqpglugcodemedo/images/icons/navleft.png" alt="Anterior"/>
             </a>
             {% else %}
@@ -38,7 +38,7 @@
             {% endif %}
         </li>
         <li class="right">{% if page != pages %}
-            <a href="{{ path('_article_index', {'page': page + 1 }) }}">
+            <a href="{{ path('_article', {'page': page + 1 }) }}">
                 <img src="/bundles/aqpglugcodemedo/images/icons/navright.png" alt="Siguiente" />
             </a>
             {% else %}

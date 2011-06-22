@@ -13,7 +13,7 @@ class MemberController extends Controller
 {
     private $type = 'member';
     /**
-     * @Route("/{page}", name="_member_index", defaults={"page"=1}, requirements={"page"="\d+"})
+     * @Route("/{page}", name="_member", defaults={"page"=1}, requirements={"page"="\d+"})
      */
     public function indexAction($page)
     {

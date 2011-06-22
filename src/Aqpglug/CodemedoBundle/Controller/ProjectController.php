@@ -13,7 +13,7 @@ class ProjectController extends Controller
 {
 
     /**
-     * @Route("/", name="_project_index")
+     * @Route("/", name="_project")
      */
     public function indexAction()
     {

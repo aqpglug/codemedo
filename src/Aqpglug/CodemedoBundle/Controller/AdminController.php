@@ -55,7 +55,7 @@ class AdminController extends Controller
     }
 
     /**
-     * @Route("/", name="_admin_index")
+     * @Route("/", name="_admin")
      */
     public function indexAction()
     {

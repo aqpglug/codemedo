@@ -21,11 +21,11 @@ types:
 menu:
   main:
     Inicio: homepage
-    Artículos: _article_index
-    Proyectos: _project_index
-    Eventos:  _event_index
+    Artículos: _article
+    Proyectos: _project
+    Eventos:  _event
     Comunidad:
-      url:  _member_index
+      url:  _member
     Contacto:
       url: _page_show
       params: { slug: contacto }
