@@ -14,14 +14,7 @@
     <div id="header">
         <h1><span>AQPGLUG</span></h1>
         <input id="search" type="text" placeholder="Buscar" />
-        <ul class="menu"> 
-            <li><a href="{{ path('homepage') }}" >Inicio</a></li>
-            <li><a href="{{ path('_article_index') }}">Artículos</a></li>
-            <li><a href="{{ path('_project_index') }}">Proyectos</a></li>
-            <li><a href="{{ path('_event_index') }}">Eventos</a></li>
-            <li><a href="{{ path('_member_index') }}">Comunidad</a></li>
-            <li><a href="{{ path('_page_show', {'slug': 'contacto'}) }}">Contacto</a></li> 
-        </ul> 
+        {{ menu('main', {'class': 'menu'}) }}
     </div>
     <div id="content">
         {% block content %}
