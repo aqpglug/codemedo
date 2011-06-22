@@ -43,8 +43,8 @@ class Menu extends Twig_Extension
         {
             if(is_array($value))
             {
-                $route = $this->router->generate($value['url'], $value['params'] ? : array());
-                $key = $value['label'] ? : $key;
+                $route = $this->router->generate($value['url'], isset($value['params']) ? $value['params'] : array());
+                $key = isset ($value['label']) ? $value['label'] : $key;
             }
             else $route = $this->router->generate($value);
             $menu[$key] = $route;
