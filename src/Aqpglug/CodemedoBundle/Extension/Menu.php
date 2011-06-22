@@ -59,7 +59,7 @@ class Menu extends Twig_Extension
         
         foreach ($attr as $key => $value)
         {
-            $attrs .= sprintf(" %s=%s", $key, $value);
+            $attrs .= sprintf(' %s="%s" ', $key, $value);
         }
         
         return sprintf($menu_str, $attrs, $menu);
