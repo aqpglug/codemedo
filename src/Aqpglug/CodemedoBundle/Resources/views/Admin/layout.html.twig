@@ -2,14 +2,21 @@
 
 {% block title %}Admin{% endblock %}
 
-{% block content %}
-
-<ul class="admin menu">
-{% for type, label in get_labels %}
-    <li><a href="{{ path('_admin_list', {'type': type }) }}" >{{ label }}</a></li>
-{% endfor %}
-</ul>
-{% block admin %}
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" media="all" href="{{ asset('/bundles/aqpglugcodemedo/css/admin.css') }}" />
 {% endblock %}
 
+{% block content %}
+<div id="admin">
+    <ul class="menu">
+        <li><a href="{{ path('_admin') }}" >Dashboard</a></li>
+    {% for type, label in get_labels %}
+        <li><a href="{{ path('_admin_list', {'type': type }) }}" >{{ label }}</a></li>
+    {% endfor %}
+        <li><a href="{{ path('_logout') }}" >Logout</a></li>
+    </ul>
+    {% block admin %}
+    {% endblock %}
+</div>
 {% endblock %}
