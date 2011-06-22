@@ -32,12 +32,17 @@ class BlockRepository extends EntityRepository
         return $this->findBy($criteria, $orderBy, $limit, $offset);
     }
     
-    public function countByType($type)
+    public function countBy(array $criteria)
     {
         $qb = $this->createQueryBuilder('b');
-        $qb->add('select', $qb->expr()->count('b.id'))
-                ->where('b.type = ?1')
-                ->setParameter(1, $type);
+        $qb->add('select', $qb->expr()->count('b.id'));
+        
+        $c = 1;
+        foreach ($criteria as $field => $value) {
+            $qb->andWhere('b.'.$field. '= ?'.$c)
+               ->setParameter($c, $value);
+            $c++;
+        }
         return $qb->getQuery()->getSingleScalarResult();
     }
     

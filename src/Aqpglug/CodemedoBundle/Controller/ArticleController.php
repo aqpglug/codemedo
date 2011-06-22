@@ -18,7 +18,10 @@ class ArticleController extends Controller
     public function indexAction($page)
     {
         $step = 4;
-        $count = $this->getRepo()->countByType($this->type);
+        $count = $this->getRepo()->countBy(array(
+            'type' => $this->type,
+            'published' => True,
+            'featured' => false,));
         $pages = ceil($count / $step);
 
         $articles = $this->getRepo()->findPublishedBy(
