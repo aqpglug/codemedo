@@ -2,7 +2,7 @@
 
 {% block title %}
 {{parent()}}
-{% if page.title != 'home' %} | {{ page.title }}{% endif %}
+{% if page.slug != get_home %} | {{ page.title }}{% endif %}
 {% endblock %}
 
 {% block content %}
