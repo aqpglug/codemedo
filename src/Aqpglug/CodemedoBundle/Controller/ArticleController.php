@@ -13,7 +13,7 @@ class ArticleController extends Controller
 {
     private $type = 'article';
     /**
-     * @Route("/{page}", name="_article_index", defaults={"page"=1}, requirements={"page"="\d+"})
+     * @Route("/{page}", name="_article", defaults={"page"=1}, requirements={"page"="\d+"})
      */
     public function indexAction($page)
     {

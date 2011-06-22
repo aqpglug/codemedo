@@ -13,7 +13,7 @@ class EventController extends Controller
 {
 
     /**
-     * @Route("/", name="_event_index")
+     * @Route("/", name="_event")
      */
     public function indexAction()
     {

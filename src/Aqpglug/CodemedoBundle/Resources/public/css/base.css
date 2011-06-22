@@ -1,14 +1,20 @@
 body {
     font-size: 14px;
-    background:
-        url(/bundles/aqpglugcodemedo/images/header.png) repeat-x,
-        url(/bundles/aqpglugcodemedo/images/grid.png) repeat-y;
+    background: url(/bundles/aqpglugcodemedo/images/header.png) repeat-x;
     background-position: center top;
     font-family: ubuntu;
 }
 
 a {
     text-decoration: none;
+}
+a:focus {
+    outline: 
+    -moz-outline-style: none;
+}
+a:active
+{
+    outline: none;
 }
 a:hover {
     text-decoration: underline;
@@ -23,7 +29,7 @@ a:hover {
 #header {
     height: 135px;
     position: relative;
-    background:url(/bundles/aqpglugcodemedo/images/header.png) repeat-x;
+    background: url(/bundles/aqpglugcodemedo/images/header.png) repeat-x;
 }
 
 #content {
@@ -86,9 +92,15 @@ a:hover {
     font-size: 2em;
     font-weight: bold;
 }
+
 .paginator li 
 {
     display: inline;
+}
+
+.menu li {
+    display: inline;
+    padding: 0 15px
 }
 
 /* MENU */
@@ -105,10 +117,7 @@ a:hover {
     color: #fff;
     font-family: sans-serif;
 }
-.menu li {
-    display: inline;
-    padding: 0 15px
-}
+
 #header .menu li {
     border-left: #efbe15 1px dotted;
 }

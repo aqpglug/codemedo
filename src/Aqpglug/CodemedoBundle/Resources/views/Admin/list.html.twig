@@ -1,10 +1,5 @@
 {% extends 'AqpglugCodemedoBundle:Admin:layout.html.twig' %}
 
-{% block stylesheets %}
-    {{ parent() }}
-    <link rel="stylesheet" type="text/css" media="all" href="{{ asset('/bundles/aqpglugcodemedo/css/admin.css') }}" />
-{% endblock %}
-    
 {% block title %}Admin - {{ get_labels[type]}}{% endblock %}
 
 {% block admin %}

@@ -1,4 +1,25 @@
-/* LIST */
+#admin {
+}
+
+#admin .menu {
+    background: #292929;
+    margin: -15px 0 15px -15px;
+    width: 940px;
+    border-top: 1px solid #666;
+    padding: 5px 10px;
+}
+
+#admin .menu li {
+    border-left: #efbe15 1px dotted;
+}
+
+#admin .menu li:first-child {
+    border-left: none;
+}
+
+#admin .menu a {
+    color: #fff;
+}
 
 h2 {
     font-size: 2em;
