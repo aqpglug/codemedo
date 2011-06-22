@@ -6,7 +6,6 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use JMS\SecurityExtraBundle\Annotation\Secure;
 use Symfony\Component\Security\Core\SecurityContext;
-
 use Aqpglug\CodemedoBundle\Controller\Controller;
 use Aqpglug\CodemedoBundle\Entity\Block;
 use Aqpglug\CodemedoBundle\Form\BlockType;
@@ -116,6 +115,7 @@ class AdminController extends Controller
         return $this->render('AqpglugCodemedoBundle:Admin:form.html.twig', array(
             'form' => $form->createView(),
             'form_action' => $this->generateUrl('_admin_edit', array('id' => $id)),
+            'type' => $block->getType(),
         ));
     }
 
@@ -150,6 +150,20 @@ class AdminController extends Controller
         return $this->render('AqpglugCodemedoBundle:Admin:form.html.twig', array(
             'form' => $form->createView(),
             'form_action' => $this->generateUrl('_admin_new', array('type' => $type)),
+            'type' => $type,
         ));
+    }
+
+    /**
+     * @Route("/remove/{id}", name="_admin_remove")
+     */
+    public function removeAction($id)
+    {
+        $block = $this->getRepo()->findOneBy(array('id' => $id));
+        $type = $block->getType();
+        $em = $this->getDoctrine()->getEntityManager();
+        $em->remove($block);
+        $em->flush();
+        return $this->redirect($this->generateUrl('_admin_list', array('type' => $type)));
     }
 }
