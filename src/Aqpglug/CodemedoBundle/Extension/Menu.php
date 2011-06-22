@@ -19,6 +19,13 @@ class Menu extends Twig_Extension
         $this->config = $config;
         $this->menu = $config->get('menu') ? : array();
         $this->router = $router;
+        if(!$this->isValid()) throw new \InvalidArgumentException();
+    }
+
+    public function isValid()
+    {
+        foreach($this->menu as $menu) foreach($menu as $item) if(is_array($item)) if(!array_key_exists('url', $item)) return false;
+        return true;
     }
 
     public function getFunctions()
@@ -32,12 +39,14 @@ class Menu extends Twig_Extension
     public function getMenuArray($menu_id)
     {
         $menu = array();
-        foreach ($this->menu[$menu_id] ?: array() as $key => $value)
+        foreach($this->menu[$menu_id] ? : array() as $key => $value)
         {
             if(is_array($value))
-                $route = $this->router->generate($value['url'], $value['params'] ?: array());
-            else
-                $route = $this->router->generate($value);
+            {
+                $route = $this->router->generate($value['url'], $value['params'] ? : array());
+                $key = $value['label'] ? : $key;
+            }
+            else $route = $this->router->generate($value);
             $menu[$key] = $route;
         }
         return $menu;
@@ -45,23 +54,23 @@ class Menu extends Twig_Extension
 
     public function getMenu($menu_id, $attr)
     {
-        $menu_str   = "<ul %s>%s</ul>";
-        $link_str   = "<li><a href=\"%s\" >%s</a></li>";
-        
+        $menu_str = "<ul %s>%s</ul>";
+        $link_str = "<li><a href=\"%s\" >%s</a></li>";
+
         $menu = "";
 
-        foreach ($this->getMenuArray($menu_id) as $label => $url)
+        foreach($this->getMenuArray($menu_id) as $label => $url)
         {
             $menu .= sprintf($link_str, $url, $label);
         }
-        
+
         $attrs = "";
-        
-        foreach ($attr as $key => $value)
+
+        foreach($attr as $key => $value)
         {
             $attrs .= sprintf(" %s=\"%s\" ", $key, $value);
         }
-        
+
         return sprintf($menu_str, $attrs, $menu);
     }
 
