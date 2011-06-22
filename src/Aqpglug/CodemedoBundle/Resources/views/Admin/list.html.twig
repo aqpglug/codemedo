@@ -12,9 +12,18 @@
     
     <a href="{{ path('_admin_new', {'type': type}) }}" class="new">Nuevo</a>
     
-    <table>
+    <table id="blocks">
+        <thead>
+            <tr><th>ID</th>
+                <th>Título</th>
+                <th>Publicado</th>
+                <th>Fecha</th>
+            </tr>
+            
+        </thead>
     {% for block in blocks %}
         <tr>
+            <td>{{block.id}}</td>
             <td><a href="{{ path("_admin_edit", {'id': block.id}) }}">{{ block.title }}</a></td>
             <td>{% if block.published %}Publicado {% else %}No publicado{% endif %}</td>
             <td>{{block.created|date("Y/m/d h:m")}}</td>
