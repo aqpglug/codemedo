@@ -74,7 +74,7 @@ class AdminController extends Controller
      */
     public function listAction($type, $page)
     {
-        $step = 20;
+        $step = 15;
         $count = $this->getRepo()->countBy(array('type' => $type));
         $pages = ceil($count / $step);
 

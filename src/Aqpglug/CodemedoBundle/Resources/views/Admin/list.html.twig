@@ -29,11 +29,13 @@
         
     </table>
     <ul class="paginator">
+        {% if pages > 1 %}
         {% for i in range(1, pages) %}
             <li><a {% spaceless %}
                 href="{{ path('_admin_list', {'type': type, 'page': i }) }}" 
                 {% if i == page %}class="currentpage"{% endif %}>{{i}}
             {% endspaceless %}</a></li>
         {% endfor %}
+            {% endif %}
     </ul>
 {% endblock %}
