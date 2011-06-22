@@ -74,7 +74,7 @@ class AdminController extends Controller
 
         return $this->render('AqpglugCodemedoBundle:Admin:form.html.twig', array(
             'form' => $form->createView(),
-            'id' => $id,
+            'form_action' => $this->generateUrl('_admin_edit', array('id' => $id)),
         ));
     }
 
@@ -106,7 +106,7 @@ class AdminController extends Controller
 
         return $this->render('AqpglugCodemedoBundle:Admin:form.html.twig', array(
             'form' => $form->createView(),
-            'type' => $type,
+            'form_action' => $this->generateUrl('_admin_new', array('type' => $type)),
         ));
     }
 
