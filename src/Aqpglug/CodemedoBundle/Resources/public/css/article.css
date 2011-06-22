@@ -1,9 +1,4 @@
 
-#articles {
-    width: 800px;
-    margin: 0 auto;
-}
-
 .article img {
     width: 80px;
     height: 80px;
@@ -45,9 +40,12 @@
     left: 45px;
 }
 
+.article_featured, .article_list {
+    overflow: auto;
+}
 .article_list {
-    margin-top: 30px;
-    clear: both;
+    margin: 20px 60px 0;
+    -webkit-column-count: 2;
 }
 
 .article_list .article {
