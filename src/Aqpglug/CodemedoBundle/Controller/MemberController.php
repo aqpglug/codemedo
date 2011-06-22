@@ -11,19 +11,29 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
  */
 class MemberController extends Controller
 {
-
+    private $type = 'member';
     /**
-     * @Route("/", name="_member_index")
+     * @Route("/{page}", name="_member_index", defaults={"page"=1}, requirements={"page"="\d+"})
      */
-    public function indexAction()
+    public function indexAction($page)
     {
+        $step = 12;
+        $count = $this->getRepo()->countBy(array(
+                    'type' => $this->type,
+                    'published' => True,));
+        $pages = ceil($count / $step);
+
         $members = $this->getRepo()->findBy(
-                array('type' => 'member',
-                    'published' => True),
+                array('type' => $this->type,
+                      'published' => True,),
                 array('featured' => 'DESC',
-                    'created' => 'DESC'));
+                      'created' => 'DESC',), $step, $step * ($page - 1));
+
         return $this->render('AqpglugCodemedoBundle:Member:index.html.twig', array(
             'members' => $members,
+            'page' => $page,
+            'pages' => $pages,
         ));
     }
+
 }

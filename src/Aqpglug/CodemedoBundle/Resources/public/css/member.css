@@ -1,0 +1,22 @@
+.members {
+    -webkit-column-count: 3;
+    margin: 0 60px;
+}
+.members img {
+    vertical-align: middle;
+}
+.nav {
+    position:relative;
+    top:-50px;
+}
+.nav li {
+    position:absolute;
+    display: block;
+}
+
+.nav .left {
+    left:10px;
+}
+.nav .right {
+    right: 10px;
+}
