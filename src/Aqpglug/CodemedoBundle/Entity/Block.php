@@ -80,6 +80,12 @@ class Block
     {
         $this->slug = $slug;
     }
+    
+    public function autoslug()
+    {
+        if (!$this->slug)
+            $this->slug = Slug::slugify($this->title);
+    }
 
     public function getContent()
     {

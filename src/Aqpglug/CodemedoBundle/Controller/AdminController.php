@@ -71,7 +71,7 @@ class AdminController extends Controller
             }
         }
 
-        return $this->render('AqpglugCodemedoBundle:Admin:edit.html.twig', array(
+        return $this->render('AqpglugCodemedoBundle:Admin:form.html.twig', array(
             'form' => $form->createView(),
             'id' => $id,
         ));
@@ -83,6 +83,7 @@ class AdminController extends Controller
     public function newAction($type)
     {
         $block = new Block();
+        $block->setPublished(true);
 
         $meta = $this->get('codemedo')->getMeta($type);
         $form = $this->createForm(new BlockType($meta), $block);
@@ -92,15 +93,17 @@ class AdminController extends Controller
             $form->bindRequest($request);
 
             if ($form->isValid()) {
+                $block->autoslug();
                 $block->setType($type);
                 $em = $this->getDoctrine()->getEntityManager();
                 $em->persist($block);
                 $em->flush();
-                return $this->redirect($this->generateUrl('_admin_index'));
+                return $this->redirect($this->generateUrl(
+                        '_admin_list', array('type' => $block->getType())));
             }
         }
 
-        return $this->render('AqpglugCodemedoBundle:Admin:new.html.twig', array(
+        return $this->render('AqpglugCodemedoBundle:Admin:form.html.twig', array(
             'form' => $form->createView(),
             'type' => $type,
         ));
