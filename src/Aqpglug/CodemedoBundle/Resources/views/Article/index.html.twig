@@ -30,13 +30,23 @@
         <li>no hay articulos</li>
     {% endfor %}
     </ul>
-    <ul class="paginator">
-        <img src="" {% if page == 1 %}href=""{% endif %}/>
-        <li><a {% spaceless %}
-            href="{{ path('_admin_list', {'type': type, 'page': i }) }}" 
-            {% if i == page %}class="currentpage"{% endif %}>{{i}}
-        {% endspaceless %}</a></li>
-    {% endfor %}
+    <ul class="nav">
+        <li>{% if page != 1 %}
+            <a href="{{ path('_article_index', {'page': page -1 }) }}">
+                <img src="/bundles/aqpglugcodemedo/images/icons/navleft.png" alt="Anterior"/>
+            </a>
+            {% else %}
+                <img src="/bundles/aqpglugcodemedo/images/icons/navleft.png" alt="Anterior"/>
+            {% endif %}
+        </li>
+        <li>{% if page != pages %}
+            <a href="{{ path('_article_index', {'page': page + 1 }) }}">
+                <img src="/bundles/aqpglugcodemedo/images/icons/navright.png" alt="Siguiente" />
+            </a>
+            {% else %}
+                <img src="/bundles/aqpglugcodemedo/images/icons/navright.png" alt="Siguiente" />
+            {% endif %}
+        </li>
     </ul>
 </div>
 {% endblock %}
