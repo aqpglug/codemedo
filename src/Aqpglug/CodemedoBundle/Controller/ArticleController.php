@@ -51,4 +51,15 @@ class ArticleController extends Controller
         ));
     }
 
+    public function featuredAction()
+    {
+        $blocks = $this->getRepo()->findPublishedBy(
+                array('type' => $this->type,
+                    'featured' => True),
+                array('created' => 'DESC'), 3);
+
+        return $this->render('AqpglugCodemedoBundle:Article:featured.html.twig', array(
+            'results' => $blocks,
+        ));
+    }
 }
