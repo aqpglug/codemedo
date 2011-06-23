@@ -29,3 +29,7 @@ menu:
     Contacto:
       url: _page_show
       params: { slug: contacto }
+  external:
+    Inicio: homepage
+    Google: http://google.com.pe
+    Yahoo: http://yahoo.com
