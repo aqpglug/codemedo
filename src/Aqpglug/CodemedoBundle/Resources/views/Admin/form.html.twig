@@ -2,9 +2,10 @@
 
 {% block admin %}
 <form class="block" action="{{ form_action }}" method="post" {{ form_enctype(form) }}>
+    <div class="buttons">
+        <input type="submit" value="Guardar" />
+        <a href="{{ path('_admin_list', {'type': type }) }}" >cancelar</a>
+    </div>
     {{ form_widget(form) }}
-
-    <input type="submit" value="Guardar" />
-    <a href="{{ path('_admin_list', {'type': type }) }}" >cancelar</a>
 </form>
 {% endblock %}

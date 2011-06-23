@@ -18,14 +18,17 @@ class BlockType extends AbstractType
 
     public function buildForm(FormBuilder $builder, array $options)
     {
-        $builder->add('title','text', array(
+        $builder->add('content','textarea', array(
+                    'label' => 'Contenido',
+                    'required' => false,
+                    'attr' => array('class' => 'content')
+                ))
+                ->add('title','text', array(
                     'label' => 'Título',
+                    'attr' => array('autofocus' => 'autofocus'),
                 ))
                 ->add('slug', 'text', array(
                     'required' => false,
-                ))
-                ->add('content','textarea', array(
-                    'label' => 'Contenido',
                 ))
                 ->add('published', 'checkbox', array(
                     'label' => 'Publicado',
