@@ -17,17 +17,18 @@ class MemberController extends Controller
      */
     public function indexAction($page)
     {
-        $step = 12;
+        $step = 6;
         $count = $this->getRepo()->countBy(array(
                     'type' => $this->type,
+                    'featured' => false,
                     'published' => True,));
         $pages = ceil($count / $step);
 
         $members = $this->getRepo()->findBy(
                 array('type' => $this->type,
+                      'featured' => false,
                       'published' => True,),
-                array('featured' => 'DESC',
-                      'created' => 'DESC',), $step, $step * ($page - 1));
+                array('created' => 'ASC',), $step, $step * ($page - 1));
 
         return $this->render('AqpglugCodemedoBundle:Member:index.html.twig', array(
             'members' => $members,
@@ -35,5 +36,16 @@ class MemberController extends Controller
             'pages' => $pages,
         ));
     }
+    
+    public function activeAction()
+    {
+        $members = $this->getRepo()->findPublishedBy(
+                array('type' => $this->type,
+                    'featured' => True),
+                array('created' => 'ASC'), 9);
 
+        return $this->render('AqpglugCodemedoBundle:Member:active.html.twig', array(
+            'members' => $members,
+        ));
+    }
 }

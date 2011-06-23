@@ -6,6 +6,7 @@
 <ul class="menu submenu">
     <li><span>{{ get_labels[type]}}</span</li>
     <li><a href="{{ path('_admin_new', {'type': type}) }}" class="icontext plus" >Nuevo</a></li>
+        {% if pages > 1 %}
     <li><ul class="right paginator">
     {% for i in range(1, pages) %}
     <li><a {% spaceless %}
@@ -14,6 +15,7 @@
         {% endspaceless %}</a></li>
     {% endfor %}
     </ul></li>
+    {% endif %}
 </ul>
     <table class="list">
         <thead>
@@ -44,15 +46,25 @@
                 </a>
             </td>
             <td class="date">{{block.created|date("Y/m/d h:m")}}</td>
-            <td class="actions">
-                <a onclick="return confirm('¿esta seguro?')" href="{{ path("_admin_remove", {'id': block.id}) }}" >
-                    <span class="icon trash"></span>
-                </a>
-            </td>
+            <td class="actions"><a class="remove" href="{{ path("_admin_remove", {'id': block.id}) }}"><span class="icon trash"></span></a></td>
         </tr>
     {% else %}
         <tr><td>no hay nada para mostrar aquí</td></tr>
     {% endfor %}
         
     </table>
+
+{% endblock %}
+
+{% block javascripts %}
+<script type="text/javascript">
+$(function(){
+    $('.remove').click(function(i){
+        if (confirm('¿Esta seguro?')) {
+            $('<form method="POST" action="' + i.currentTarget.href + '">').submit();
+        }
+        return false;
+    });
+});
+</script>
 {% endblock %}

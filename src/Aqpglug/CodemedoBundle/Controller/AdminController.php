@@ -155,7 +155,7 @@ class AdminController extends Controller
     }
 
     /**
-     * @Route("/remove/{id}", name="_admin_remove")
+     * @Route("/remove/{id}", name="_admin_remove", requirements={"_method"="POST"})
      */
     public function removeAction($id)
     {

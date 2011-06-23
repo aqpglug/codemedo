@@ -10,10 +10,7 @@
 {% block title %}Artículos{% endblock %}
 
 {% block content %}
-    {% render 'AqpglugCodemedoBundle:Block:featured' with {
-                'type': 'article',
-                'template': 'AqpglugCodemedoBundle:Article:featured.html.twig',
-                'limit': 3 } %}
+    {% render 'AqpglugCodemedoBundle:Article:featured' %}
 
     <ul class="article_list">
     {% for article in articles %}
