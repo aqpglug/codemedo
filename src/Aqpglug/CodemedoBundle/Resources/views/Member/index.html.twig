@@ -1,5 +1,7 @@
 {% extends 'AqpglugCodemedoBundle::layout.html.twig' %}
 
+{% import 'AqpglugCodemedoBundle:Macros:nav.html.twig' as nav %}
+
 {% block stylesheets %}
     {{ parent() }}
     <link rel="stylesheet" type="text/css" media="all" href="{{ asset('/bundles/aqpglugcodemedo/css/member.css') }}" />
@@ -27,22 +29,7 @@
     </li>
     {% endfor %}
 </ul>
-<ul class="nav">
-    <li class="left">{% if page != 1 %}
-        <a href="{{ path('_member', {'page': page -1 }) }}">
-            <img src="/bundles/aqpglugcodemedo/images/icons/navleft.png" alt="Anterior"/>
-        </a>
-        {% else %}
-            <img src="/bundles/aqpglugcodemedo/images/icons/navleft.png" alt="Anterior"/>
-        {% endif %}
-    </li>
-    <li class="right">{% if page != pages %}
-        <a href="{{ path('_member', {'page': page + 1 }) }}">
-            <img src="/bundles/aqpglugcodemedo/images/icons/navright.png" alt="Siguiente" />
-        </a>
-        {% else %}
-            <img src="/bundles/aqpglugcodemedo/images/icons/navright.png" alt="Siguiente" />
-        {% endif %}
-    </li>
-</ul>
+
+{{ nav.arrows('_member', page, pages) }}
+
 {% endblock %}

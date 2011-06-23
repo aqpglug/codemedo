@@ -1,26 +1,26 @@
-v1.0
+v1.0 milestone: cms funcional
 - templates
-- auth
+// - auth
+//- menu extension
 - admin
     - index
-//    - paginado HECHO!
+//    - paginado
 - mapas
+    - poner indicador de que marcador es de que evento
 
-v1.1
+v1.1 milestone: bundle independiente
 - general
-    - convertir en bundle independiente
-    - buscar un nombre
+    - poner un nombre
     - crear documentacion
 
 - admin
     - mostrar log de acceso
     - crear campo tipo "map"
+    - paginas privadas solo para usuarios
+    - usuarios en base de datos
 
 - types
-    - menu
-- templates
-    - extension de twig para incrustar blocks
-    - theming
+    - convertir menu extension en type
 
 v2
 - l10n
@@ -34,3 +34,6 @@ v2
         - parametro cualquier tipo de campo
         - permite multiples instancias (javascript)
         - guarda datos en un campo tipo array
+- templates
+    - extension de twig para incrustar blocks
+    - theming
