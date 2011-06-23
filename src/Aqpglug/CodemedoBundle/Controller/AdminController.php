@@ -73,7 +73,7 @@ class AdminController extends Controller
      */
     public function listAction($type, $page)
     {
-        $step = 20;
+        $step = 13;
         $count = $this->getRepo()->countBy(array('type' => $type));
         $pages = ceil($count / $step);
 
@@ -165,5 +165,33 @@ class AdminController extends Controller
         $em->remove($block);
         $em->flush();
         return $this->redirect($this->generateUrl('_admin_list', array('type' => $type)));
+    }
+    
+    /**
+     * @Route("/publish/{id}", name="_admin_publish")
+     */
+    public function publishAction($id)
+    {
+        $block = $this->getRepo()->findOneBy(array('id' => $id));
+        $block->setPublished(!$block->getPublished());
+        
+        $em = $this->getDoctrine()->getEntityManager();
+        $em->persist($block);
+        $em->flush();
+        return $this->redirect($this->generateUrl('_admin_list', array('type' => $block->getType())));
+    }
+    
+    /**
+     * @Route("/feature/{id}", name="_admin_feature")
+     */
+    public function featureAction($id)
+    {
+        $block = $this->getRepo()->findOneBy(array('id' => $id));
+        $block->setFeatured(!$block->getFeatured());
+        
+        $em = $this->getDoctrine()->getEntityManager();
+        $em->persist($block);
+        $em->flush();
+        return $this->redirect($this->generateUrl('_admin_list', array('type' => $block->getType())));
     }
 }

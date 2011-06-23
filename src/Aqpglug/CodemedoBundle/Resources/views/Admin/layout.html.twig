@@ -14,7 +14,11 @@
     {% for type, label in get_labels %}
         <li><a href="{{ path('_admin_list', {'type': type }) }}" >{{ label }}</a></li>
     {% endfor %}
-        <li style="float: right"><a href="{{ path('_logout') }}" >Logout</a></li>
+        <li>
+            <ul style="float: right">
+                <li><a href="{{ path('_logout') }}" >Logout</a></li>
+            </ul>
+        </li>
     </ul>
     {% block admin %}
     {% endblock %}

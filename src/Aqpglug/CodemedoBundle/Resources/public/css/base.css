@@ -100,8 +100,13 @@ a:hover {
 
 .menu li {
     display: inline;
-    padding: 0 15px
+    padding: 0 15px;
 }
+
+.menu .right {
+    float: right;
+}
+
 
 /* ICONS */
 
@@ -110,9 +115,15 @@ a:hover {
     width: 16px;
     height: 16px;
 }
+.icontext {
+    padding-left: 20px;
+    width: auto;
+    background-position: bottom left;
+}
 .tick { background: url('/bundles/aqpglugcodemedo/images/icons/tick_16.png') no-repeat; }
 .stop { background: url('/bundles/aqpglugcodemedo/images/icons/block_16.png') no-repeat; }
 .trash { background: url('/bundles/aqpglugcodemedo/images/icons/trash_16.png') no-repeat; }
+.plus { background: url('/bundles/aqpglugcodemedo/images/icons/plus_16.png') no-repeat; }
 
 
 /* MENU */

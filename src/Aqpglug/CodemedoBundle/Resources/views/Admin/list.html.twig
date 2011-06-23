@@ -5,9 +5,16 @@
 {% block admin %}
 <ul class="menu submenu">
     <li><span>{{ get_labels[type]}}</span</li>
-    <li><a href="{{ path('_admin_new', {'type': type}) }}">Nuevo</a></li>
+    <li><a href="{{ path('_admin_new', {'type': type}) }}" class="icontext plus" >Nuevo</a></li>
+    <li><ul class="right paginator">
+    {% for i in range(1, pages) %}
+    <li><a {% spaceless %}
+            href="{{ path('_admin_list', {'type': type, 'page': i }) }}" 
+            {% if i == page %}class="currentpage"{% endif %}>{{i}}
+        {% endspaceless %}</a></li>
+    {% endfor %}
+    </ul></li>
 </ul>
-    
     <table class="list">
         <thead>
             <tr>
@@ -26,22 +33,26 @@
             <td class="id">{{block.id}}</td>
             <td class="title"><a href="{{ path("_admin_edit", {'id': block.id}) }}">{{ block.title }}</a></td>
             <td class="slug">{{ block.slug }}</td>
-            <td class="pub"><span class="icon {% if not block.published %}stop{%else%}tick{% endif %}"></span></td>
-            <td class="feat"><span class="icon {% if not block.featured %}stop{%else%}tick{% endif %}"></span></td>
+            <td class="pub">
+                <a href="{{ path("_admin_publish", {'id': block.id}) }}" >
+                    <span class="icon {% if not block.published %}stop{%else%}tick{% endif %}"></span>
+                </a>
+            </td>
+            <td class="feat">
+                <a href="{{ path("_admin_feature", {'id': block.id}) }}" >
+                    <span class="icon {% if not block.featured %}stop{%else%}tick{% endif %}"></span>
+                </a>
+            </td>
             <td class="date">{{block.created|date("Y/m/d h:m")}}</td>
-            <td class="actions"><a onclick="return confirm('¿esta seguro?')" href="{{ path("_admin_remove", {'id': block.id}) }}"<span class="icon trash"></span></td>
+            <td class="actions">
+                <a onclick="return confirm('¿esta seguro?')" href="{{ path("_admin_remove", {'id': block.id}) }}" >
+                    <span class="icon trash"></span>
+                </a>
+            </td>
         </tr>
     {% else %}
         <tr><td>no hay nada para mostrar aquí</td></tr>
     {% endfor %}
         
     </table>
-    <ul class="paginator">
-        {% for i in range(1, pages) %}
-            <li><a {% spaceless %}
-                href="{{ path('_admin_list', {'type': type, 'page': i }) }}" 
-                {% if i == page %}class="currentpage"{% endif %}>{{i}}
-            {% endspaceless %}</a></li>
-        {% endfor %}
-    </ul>
 {% endblock %}
