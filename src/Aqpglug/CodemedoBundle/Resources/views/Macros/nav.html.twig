@@ -1,0 +1,20 @@
+{% macro arrows(route, page, pages) %}
+<ul class="nav">
+    <li class="left">{% if page != 1 %}
+        <a href="{{ path(route, {'page': page -1 }) }}">
+            <img src="/bundles/aqpglugcodemedo/images/icons/navleft.png" alt="Anterior"/>
+        </a>
+        {% else %}
+            <img src="/bundles/aqpglugcodemedo/images/icons/navleft.png" alt="Anterior"/>
+        {% endif %}
+    </li>
+    <li class="right">{% if page != pages %}
+        <a href="{{ path(route, {'page': page + 1 }) }}">
+            <img src="/bundles/aqpglugcodemedo/images/icons/navright.png" alt="Siguiente" />
+        </a>
+        {% else %}
+            <img src="/bundles/aqpglugcodemedo/images/icons/navright.png" alt="Siguiente" />
+        {% endif %}
+    </li>
+</ul>
+{% endmacro %}
