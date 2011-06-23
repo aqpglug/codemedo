@@ -6,6 +6,8 @@ use \Twig_Extension;
 use \Twig_Function_Method;
 use Symfony\Bundle\FrameworkBundle\Routing\Router;
 use Aqpglug\CodemedoBundle\Extension\Config;
+use Symfony\Component\Routing\Exception\RouteNotFoundException;
+use Symfony\Component\Routing\Exception\MissingMandatoryParametersException;
 
 class Menu extends Twig_Extension
 {
@@ -38,18 +40,61 @@ class Menu extends Twig_Extension
 
     public function getMenuArray($menu_id)
     {
-        $menu = array();
-        foreach($this->menu[$menu_id] ? : array() as $key => $value)
+        $menu = $params = array();
+        $url = $label = "";
+        
+        foreach($this->menu[$menu_id] ? : array() as $label => $options)
         {
-            if(is_array($value))
+            if(is_array($options))
             {
-                $route = $this->router->generate($value['url'], isset($value['params']) ? $value['params'] : array());
-                $key = isset ($value['label']) ? $value['label'] : $key;
+                // configuracion tipo array
+                $url = $options['url'];
+                // campos opcionales
+                $params = isset($options['params']) ? $options['params'] : array();
+                $label = isset($options['label']) ? $options['label'] : $label;
             }
-            else $route = $this->router->generate($value);
-            $menu[$key] = $route;
+            else
+            {
+                // url directa
+                $url = $options;
+            }
+            
+            if($this->isExternalUrl($url))
+            {
+                $route = $url;
+            }
+            else
+            {
+                if(!$route = $this->generateRoute($url, $params))
+                    continue;
+            }
+            
+            $menu[$label] = $route;
         }
         return $menu;
+    }
+    
+    private function isExternalUrl($url)
+    {
+        $regexp = "@^https?://@i";
+        return preg_match($regexp, $url);
+    }
+    
+    private function generateRoute($url, array $params)
+    {
+        try
+        {
+            $route = $this->router->generate($url, $params);
+        }
+        catch(RouteNotFoundException $ex)
+        {
+            return false;
+        }
+        catch(MissingMandatoryParametersException $ex)
+        {
+            return false;
+        }
+        return $route;
     }
 
     public function getMenu($menu_id, $attr)
