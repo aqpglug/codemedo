@@ -11,6 +11,7 @@
 
 #admin .menu li {
     border-left: #efbe15 1px dotted;
+    margin:0;
 }
 
 #admin .menu li:first-child {
@@ -40,10 +41,6 @@
     width: 100%;
 }
 
-.list a {
-    color: #292929;
-}
-
 .list .even {
     background: #eee;
 }
@@ -53,12 +50,16 @@
     overflow: hidden;
 }
 
+.list tbody tr a {
+    color: #292929;
+    font-weight: bold;
+}
+
 .list tbody tr:hover {
     background: #ccc;
 }
 
 .list tbody tr:hover a {
-    font-weight: bold;
     display: block;
     text-decoration: none;
 }

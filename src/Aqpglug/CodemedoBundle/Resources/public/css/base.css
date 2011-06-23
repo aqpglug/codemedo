@@ -1,11 +1,22 @@
 body {
     font-size: 14px;
-    background: url(/bundles/aqpglugcodemedo/images/header.png) repeat-x;
-    background-position: center top;
-    font-family: ubuntu;
+    background: url(/bundles/aqpglugcodemedo/images/header.png) repeat-x top;
+    font-family: sans-serif;
 }
 
+/* HTML */
+
+h1, h2, h3, h4, h5, h6 {
+    margin-bottom: 0.2em;
+}
+
+h1 { font-size: 2em; }
+h2 { font-size: 1.8em; }
+h3 { font-size: 1.5em; }
+h4 { font-size: 1.2em; }
+
 a {
+    color: #888;
     text-decoration: none;
 }
 a:focus {
@@ -19,6 +30,7 @@ a:active
 a:hover {
     text-decoration: underline;
 }
+
 /* ESTRUCTURA */
 
 #container {
@@ -81,17 +93,7 @@ a:hover {
     border: none;
 }
 
-#header hr {
-    clear: both;
-}
-
 /* BASE */
-
-#content h1 {
-    font-family: sans-serif;
-    font-size: 2em;
-    font-weight: bold;
-}
 
 .paginator li 
 {
@@ -137,7 +139,6 @@ a:hover {
 
 #header .menu a {
     color: #fff;
-    font-family: sans-serif;
 }
 
 #header .menu li {
@@ -149,6 +150,37 @@ a:hover {
 }
 
 /* CONTENT */
+
+#content {
+    font-size: 1.1em;
+}
+
+#content p, #content ul, #content ol {
+    line-height: 1.5em;
+}
+
+#content p {
+    text-align: justify;
+}
+
+#content li {
+    margin-left: 1.5em;
+}
+#content ul li {
+    list-style-type: disc;
+}
+
+#content ul li li {
+    list-style-type: square;
+}
+
+#content ol li {
+    list-style-type: decimal;
+}
+
+#content ol li li {
+    list-style-type: lower-alpha;
+}
 
 /* EVENT */
 
