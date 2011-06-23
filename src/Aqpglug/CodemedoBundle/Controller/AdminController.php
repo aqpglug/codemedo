@@ -73,7 +73,7 @@ class AdminController extends Controller
      */
     public function listAction($type, $page)
     {
-        $step = 15;
+        $step = 13;
         $count = $this->getRepo()->countBy(array('type' => $type));
         $pages = ceil($count / $step);
 
@@ -155,7 +155,7 @@ class AdminController extends Controller
     }
 
     /**
-     * @Route("/remove/{id}", name="_admin_remove")
+     * @Route("/remove/{id}", name="_admin_remove", requirements={"_method"="POST"})
      */
     public function removeAction($id)
     {

@@ -29,7 +29,7 @@
             <td class="pub"><span class="icon {% if not block.published %}stop{%else%}tick{% endif %}"></span></td>
             <td class="feat"><span class="icon {% if not block.featured %}stop{%else%}tick{% endif %}"></span></td>
             <td class="date">{{block.created|date("Y/m/d h:m")}}</td>
-            <td class="actions"><a onclick="return confirm('¿esta seguro?')" href="{{ path("_admin_remove", {'id': block.id}) }}"<span class="icon trash"></span></td>
+            <td class="actions"><a class="remove" href="{{ path("_admin_remove", {'id': block.id}) }}"><span class="icon trash"></span></a></td>
         </tr>
     {% else %}
         <tr><td>no hay nada para mostrar aquí</td></tr>
@@ -46,4 +46,17 @@
         {% endfor %}
             {% endif %}
     </ul>
+{% endblock %}
+
+{% block javascripts %}
+<script type="text/javascript">
+$(function(){
+    $('.remove').click(function(i){
+        if (confirm('¿Esta seguro?')) {
+            $('<form method="POST" action="' + i.currentTarget.href + '">').submit();
+        }
+        return false;
+    });
+});
+</script>
 {% endblock %}
