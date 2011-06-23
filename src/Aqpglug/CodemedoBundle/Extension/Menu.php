@@ -97,7 +97,7 @@ class Menu extends Twig_Extension
         return $route;
     }
 
-    public function getMenu($menu_id, $attr)
+    public function getMenu($menu_id, array $attr = array())
     {
         $menu_str = "<ul %s>%s</ul>";
         $link_str = "<li><a href=\"%s\" >%s</a></li>";
