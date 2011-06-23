@@ -16,7 +16,7 @@
     <ul class="article_list">
     {% for article in articles %}
         <li class="article">
-            <img src="{{ image.or_default( article.image, 'http://lorempixum.com/g/80/80/technics/' ~ article.slug) }}" alt="{{ article.title }}" />
+            <a href="{{ path("_article_show", {'slug': article.slug}) }}"><img src="{{ image.or_default( article.image, 'http://lorempixum.com/g/80/80/technics/' ~ article.slug) }}" alt="{{ article.title }}" /></a>
             <h3><a href="{{ path("_article_show", {'slug': article.slug}) }}">{{ article.title }}</a></h3>
             {% if article.metadata.resume is defined %}
                 <span>{{ article.metadata.resume|raw }}</span>

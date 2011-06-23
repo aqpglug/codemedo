@@ -3,6 +3,7 @@
 }
 .members {
     -webkit-column-count: 3;
+    column-count: 3;
     margin: 0 60px;
 }
 .members img {
