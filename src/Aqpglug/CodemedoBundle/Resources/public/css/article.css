@@ -61,16 +61,16 @@
 }
 
 .nav {
-    position:relative;
     top:-50px;
 }
 .nav li {
     position:absolute;
     display: block;
+    top: 300px;
 }
 .nav .left {
-    left:10px;
+    left:20px;
 }
 .nav .right {
-    right: 10px;
+    right:20px;
 }
