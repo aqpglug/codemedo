@@ -98,12 +98,54 @@
 
 /* FORM */
 
+#block {
+    overflow: auto;
+}
+
+form.block .buttons {
+    text-align: right;
+    margin-right: 20px;
+}
+form.block .buttons input {
+    width: auto;
+    padding: 0 20px;
+    margin: 0 10px;
+}
+
 form.block input {
-    border:1px solid #333;
+    border: 1px solid #333;
+    width: 200px;
+}
+
+form.block input[type="checkbox"] {
+    width: auto;
 }
 
 form.block label {
-    width: 100px;
+    width: 80px;
     display: inline-block;
     color: #333;
+}
+form.block .content {
+    float: right;
+    width: 580px;
+    margin-right: 20px;
+}
+
+form.block label.content {
+    margin-top: 2px;
+}
+form.block textarea.content {
+    clear: right;
+    height: 380px;
+}
+
+#block div {
+    margin: 5px 0 0 20px;
+}
+#block div div {
+    margin-left:10px;
+}
+#block_metadata label {
+    width: 60px;
 }
