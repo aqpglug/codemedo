@@ -9,18 +9,21 @@
 
 {% block content %}
 <div id="admin">
-    <ul class="menu">
-        <li><a href="{{ path('_admin') }}" >Dashboard</a></li>
-    {% for type, label in get_labels %}
-        <li><a href="{{ path('_admin_list', {'type': type }) }}" >{{ label }}</a></li>
-    {% endfor %}
-        <li>
-            <ul style="float: right">
-                <li><a href="{{ path('_logout') }}" >Logout</a></li>
-            </ul>
-        </li>
-    </ul>
+    
+    {% block admin_menu %}
+        <ul class="menu">
+            <li><a href="{{ path('_admin') }}" >Dashboard</a></li>
+        {% for type, label in get_labels %}
+            <li><a href="{{ path('_admin_list', {'type': type }) }}" >{{ label }}</a></li>
+        {% endfor %}
+            <li>
+                <ul style="float: right">
+                    <li><a href="{{ path('_logout') }}" >Logout</a></li>
+                </ul>
+            </li>
+        </ul>
+    {% endblock admin_menu %}
     {% block admin %}
-    {% endblock %}
+    {% endblock admin %}
 </div>
 {% endblock %}
