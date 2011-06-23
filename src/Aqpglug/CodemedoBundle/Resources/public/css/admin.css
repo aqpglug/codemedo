@@ -95,3 +95,15 @@
     color: #efbe15;
     font-weight: bold;
 }
+
+/* FORM */
+
+form.block input {
+    border:1px solid #333;
+}
+
+form.block label {
+    width: 100px;
+    display: inline-block;
+    color: #333;
+}

@@ -1,10 +1,10 @@
 {% extends 'AqpglugCodemedoBundle:Admin:layout.html.twig' %}
 
 {% block admin %}
-<form action="{{ form_action }}" method="post" {{ form_enctype(form) }}>
+<form class="block" action="{{ form_action }}" method="post" {{ form_enctype(form) }}>
     {{ form_widget(form) }}
 
-    <input type="submit" />
+    <input type="submit" value="Guardar" />
     <a href="{{ path('_admin_list', {'type': type }) }}" >cancelar</a>
 </form>
 {% endblock %}
