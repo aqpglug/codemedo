@@ -42,7 +42,6 @@
 
 .list a {
     color: #292929;
-    font-weight: bold;
 }
 
 .list .even {
@@ -54,16 +53,26 @@
     overflow: hidden;
 }
 
+.list tbody tr:hover {
+    background: #ccc;
+}
+
+.list tbody tr:hover a {
+    font-weight: bold;
+    display: block;
+    text-decoration: none;
+}
+
 .list tbody td {
     padding: 0 5px;
 }
 
 .list .id { width: 2%; }
-.list .title { width: 38%; }
-.list .slug { width: 38%; }
+.list .title { width: 37%; }
+.list .slug { width: 37%; }
 .list .pub { width: 3%; text-align: center; }
 .list .feat { width: 3%; text-align: center; }
-.list .date { width: 14%; }
+.list .date { width: 16%; }
 .list .actions { width: 2%; text-align: right; }
 
 .list thead th {
