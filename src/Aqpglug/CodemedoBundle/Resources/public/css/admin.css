@@ -82,6 +82,10 @@ form.block input[type="checkbox"] {
     width: auto;
 }
 
+form.block label:after {
+    content: ':';
+}
+
 form.block label {
     width: 80px;
     display: inline-block;
@@ -98,7 +102,7 @@ form.block label.content {
 }
 form.block textarea.content {
     clear: right;
-    height: 380px;
+    height: 280px;
 }
 
 #block > div {
