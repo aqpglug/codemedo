@@ -1,10 +1,52 @@
 {% extends 'AqpglugCodemedoBundle:Admin:layout.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" media="all" href="{{ asset('/bundles/aqpglugcodemedo/css/jquery-ui-1.8.13.custom.css') }}" />
+    <script type="text/javascript" src="{{ asset('/bundles/aqpglugcodemedo/js/jquery-ui-1.8.13.custom.min.js') }}"></script>
+    {#<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript" src="{{ asset('/bundles/aqpglugcodemedo/js/gmap3.min.js') }}"></script>#}
+{% endblock %}
+    
 {% block admin %}
-<form action="{{ form_action }}" method="post" {{ form_enctype(form) }}>
+<form class="block" action="{{ form_action }}" method="post" {{ form_enctype(form) }}>
+    <div class="buttons">
+        <input type="submit" value="Guardar" />
+        <a href="{{ path('_admin_list', {'type': type }) }}" >cancelar</a>
+    </div>
     {{ form_widget(form) }}
-
-    <input type="submit" />
-    <a href="{{ path('_admin_list', {'type': type }) }}" >cancelar</a>
 </form>
+{% endblock %}
+
+    {% block javascripts %}
+<script type="text/javascript">
+$(function() {
+    $('#block_metadata_date_date').after('<div id="datepicker" />').hide();
+
+    $('#datepicker').datepicker({
+        buttonImage: '/bundles/aqpglugcodemedo/images/icons/calendar_16.png',
+        buttonImageOnly: true,
+        changeMonth: true,
+        changeYear: true,
+        showOn: 'both',
+        onSelect: updateSelected,
+        defaultDate: getDefault(),
+        minDate: new Date((new Date()).getFullYear(), 0, 1),
+        maxDate: new Date((new Date()).getFullYear() + 5, 11, 31)
+    });
+    
+    function getDefault() {
+        return $('#block_metadata_date_date_month').val() + '/' +
+            $('#block_metadata_date_date_day').val() + '/' + 
+            $('#block_metadata_date_date_year').val();
+    } 
+    function updateSelected(date) {
+        var d = new Date(date);
+        $('#block_metadata_date_date_day').val(d.getDate()); 
+        $('#block_metadata_date_date_month').val(d.getMonth() + 1);
+        $('#block_metadata_date_date_year').val(d.getFullYear()); 
+    }
+    if ($('#block_metadata_date_date_year').val() == '') updateSelected(Date.now());
+});
+</script>
 {% endblock %}
