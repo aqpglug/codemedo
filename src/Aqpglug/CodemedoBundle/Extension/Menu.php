@@ -4,10 +4,11 @@ namespace Aqpglug\CodemedoBundle\Extension;
 
 use \Twig_Extension;
 use \Twig_Function_Method;
-use Symfony\Bundle\FrameworkBundle\Routing\Router;
-use Aqpglug\CodemedoBundle\Extension\Config;
 use Symfony\Component\Routing\Exception\RouteNotFoundException;
 use Symfony\Component\Routing\Exception\MissingMandatoryParametersException;
+use Symfony\Component\HttpFoundation\Session;
+use Symfony\Bundle\FrameworkBundle\Routing\Router;
+use Aqpglug\CodemedoBundle\Extension\Config;
 
 class Menu extends Twig_Extension
 {
@@ -15,19 +16,15 @@ class Menu extends Twig_Extension
     protected $config;
     protected $menu;
     protected $router;
+    protected $session;
 
-    public function __construct(Config $config, Router $router)
+    public function __construct(Config $config, Router $router, Session $session)
     {
         $this->config = $config;
-        $this->menu = $config->get('menu') ? : array();
         $this->router = $router;
-        if(!$this->isValid()) throw new \InvalidArgumentException();
-    }
+        $this->session = $session;
 
-    public function isValid()
-    {
-        foreach($this->menu as $menu) foreach($menu as $item) if(is_array($item)) if(!array_key_exists('url', $item)) return false;
-        return true;
+        $this->menu = $config->get('menu') ? : array();
     }
 
     public function getFunctions()
@@ -42,12 +39,17 @@ class Menu extends Twig_Extension
     {
         $menu = $params = $attrs = array();
         $url = $label = "";
-        
+
         foreach($this->menu[$menu_id] ? : array() as $label => $options)
         {
             if(is_array($options))
             {
                 // configuracion tipo array
+                if(!array_key_exists('url', $options))
+                {
+                    $this->session->setFlash('error', sprintf("menu error: parametro url requerido: %s => %s", $menu_id, $label));
+                    continue;
+                }
                 $url = $options['url'];
                 // campos opcionales
                 $params = isset($options['params']) ? $options['params'] : array();
@@ -59,7 +61,7 @@ class Menu extends Twig_Extension
                 // url directa
                 $url = $options;
             }
-            
+
             if($this->isExternalUrl($url))
             {
                 $route = $url;
@@ -67,26 +69,33 @@ class Menu extends Twig_Extension
             }
             else
             {
-                if(!$route = $this->generateRoute($url, $params))
-                    continue;
+                if(!$route = $this->generateRoute($url, $params)) continue;
             }
-            
+
             $menu[$label] = array(
                 'url' => $route,
                 'label' => $label,
                 'attrs' => $attrs,
-                );
-            $params = $attrs = array(); $url = $label = "";
+            );
+            $params = $attrs = array();
+            $url = $label = "";
         }
         return $menu;
     }
-    
+
     private function isExternalUrl($url)
     {
         $regexp = "@^https?://@i";
         return preg_match($regexp, $url);
     }
     
+    public function isValid($item)
+    {
+        if(is_array($item))
+            
+        return true;
+    }
+
     private function generateRoute($url, array $params)
     {
         try
@@ -95,10 +104,12 @@ class Menu extends Twig_Extension
         }
         catch(RouteNotFoundException $ex)
         {
+            $this->session->setFlash('error', sprintf("menu error: no existe la ruta %s", $url));
             return false;
         }
         catch(MissingMandatoryParametersException $ex)
         {
+            $this->session->setFlash('error', sprintf("menu error: la ruta %s requiere mas parametros", $url));
             return false;
         }
         return $route;
@@ -118,7 +129,7 @@ class Menu extends Twig_Extension
 
         return sprintf($menu_str, $this->getAttrs($attrs), $menu);
     }
-    
+
     public function getAttrs(array $attrs = array())
     {
         $str = "";
