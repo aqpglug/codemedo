@@ -23,7 +23,7 @@ class MetaType extends AbstractType
                 $options = array('required' => false);
                 if ($value == "datetime") {
                     $options['years'] = range(date('Y'), date('Y') + 5);
-                    $options['date_widget'] = 'text';
+                    $options['empty_value'] = true;
                     $options['minutes'] = range(0,59,15);
                 }
                 $builder->add($key, $value ?: 'text', $options);
