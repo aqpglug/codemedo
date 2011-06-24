@@ -51,7 +51,7 @@ $(function() {
     
     // LAT LNG
     
-    $('#block').append('<div id="map" style="width:580px;height:200px;float:right;margin:-100px 20px 10px 0;">');
+    $('#block_metadata_lat').parent().parent().append('<div id="map" style="width:580px;height:200px;float:right;margin:-100px 20px 10px 0;">');
     $('#map').gmap3({ action:'init', options:{
         center:[$('#block_metadata_lat').val() || -16.398678852982513,
                   $('#block_metadata_lng').val() || -71.53696458276369 ],
