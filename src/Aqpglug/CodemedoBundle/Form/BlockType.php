@@ -37,6 +37,10 @@ class BlockType extends AbstractType
                 ->add('featured', 'checkbox', array(
                     'label' => 'Destacado',
                     'required' => false,
+                ))
+                ->add('image', 'file', array(
+                    'label' => 'Imágen',
+                    'required' => false,
                 ));
         if ($this->meta !== array()) $builder->add('metadata', new MetaType($this->meta));
     }
