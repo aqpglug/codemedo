@@ -24,4 +24,10 @@ class Controller extends Base_Controller
     {
         return $this->get('codemedo');
     }
+
+    public function countPagesBy(array $criteria, $step = 10)
+    {
+        $count = $this->getRepo()->countBy($criteria);
+        return ceil($count / $step);
+    }
 }

@@ -1,16 +1,16 @@
 {% macro arrows(route, page, pages) %}
-<ul class="nav">
-    <li class="left">{% if page != 1 %}
-        <a href="{{ path(route, {'page': page -1 }) }}">
-            <span class="icon left" ></span>
-        </a>
-        {% endif %}
-    </li>
-    <li class="right">{% if page != pages %}
-        <a href="{{ path(route, {'page': page + 1 }) }}">
-            <span class="icon right" ></span>
-        </a>
-        {% endif %}
-    </li>
-</ul>
+{% if pages %}
+    <ul class="nav">
+        <li class="left">
+            {% if page != 1 %}
+            <a href="{{ path(route, {'page': page -1 }) }}"><span class="icon left" ></span></a>
+            {% endif %}
+        </li>
+        <li class="right">
+            {% if page != pages %}
+            <a href="{{ path(route, {'page': page + 1 }) }}"><span class="icon right" ></span></a>
+            {% endif %}
+        </li>
+    </ul>
+{% endif %}
 {% endmacro %}

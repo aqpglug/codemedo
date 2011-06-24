@@ -11,26 +11,32 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
  */
 class ArticleController extends Controller
 {
+
     private $type = 'article';
+
     /**
      * @Route("/{page}", name="_article", defaults={"page"=1}, requirements={"page"="\d+"})
      */
     public function indexAction($page)
     {
-        $step = 4;
-        $count = $this->getRepo()->countBy(array(
-            'type' => $this->type,
-            'published' => True,
-            'featured' => false,));
-        $pages = ceil($count / $step);
+        $featured = $this->getRepo()->findPublishedBy(
+                        array('type' => $this->type,
+                    'featured' => True), array('created' => 'DESC'), 3);
+
+        $step = (count($featured)) ? 4 : 6;
+
+        $pages = $this->countPagesBy(array(
+                    'type' => $this->type,
+                    'published' => True,
+                    'featured' => false,), $step);
 
         $articles = $this->getRepo()->findPublishedBy(
-                array('type' => $this->type,
-                      'featured' => False),
-                array('created'=> 'DESC',), $step, $step * ($page - 1));
+                        array('type' => $this->type,
+                    'featured' => False), array('created' => 'DESC',), $step, $step * ($page - 1));
 
         return $this->render('AqpglugCodemedoBundle:Article:index.html.twig', array(
             'articles' => $articles,
+            'featured' => $featured,
             'page' => $page,
             'pages' => $pages,
         ));
@@ -42,24 +48,11 @@ class ArticleController extends Controller
     public function showAction($slug)
     {
         $article = $this->getRepo()->findOnePublished(array(
-            'type' =>'article',
-
-            'slug'=> $slug));
+                    'type' => 'article',
+                    'slug' => $slug));
 
         return $this->render('AqpglugCodemedoBundle:Article:show.html.twig', array(
             'article' => $article,
-        ));
-    }
-
-    public function featuredAction()
-    {
-        $blocks = $this->getRepo()->findPublishedBy(
-                array('type' => $this->type,
-                    'featured' => True),
-                array('created' => 'DESC'), 3);
-
-        return $this->render('AqpglugCodemedoBundle:Article:featured.html.twig', array(
-            'results' => $blocks,
         ));
     }
 }

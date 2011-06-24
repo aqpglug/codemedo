@@ -40,7 +40,7 @@ class Menu extends Twig_Extension
 
     public function getMenuArray($menu_id)
     {
-        $menu = $params = array();
+        $menu = $params = $attrs = array();
         $url = $label = "";
         
         foreach($this->menu[$menu_id] ? : array() as $label => $options)
@@ -52,6 +52,7 @@ class Menu extends Twig_Extension
                 // campos opcionales
                 $params = isset($options['params']) ? $options['params'] : array();
                 $label = isset($options['label']) ? $options['label'] : $label;
+                $attrs = isset($options['attrs']) ? $options['attrs'] : array();
             }
             else
             {
@@ -62,6 +63,7 @@ class Menu extends Twig_Extension
             if($this->isExternalUrl($url))
             {
                 $route = $url;
+                $attrs = array_merge(array('target' => '_blank'), $attrs);
             }
             else
             {
@@ -69,7 +71,12 @@ class Menu extends Twig_Extension
                     continue;
             }
             
-            $menu[$label] = $route;
+            $menu[$label] = array(
+                'url' => $route,
+                'label' => $label,
+                'attrs' => $attrs,
+                );
+            $params = $attrs = array(); $url = $label = "";
         }
         return $menu;
     }
@@ -97,26 +104,29 @@ class Menu extends Twig_Extension
         return $route;
     }
 
-    public function getMenu($menu_id, array $attr = array())
+    public function getMenu($menu_id, array $attrs = array())
     {
         $menu_str = "<ul %s>%s</ul>";
-        $link_str = "<li><a href=\"%s\" >%s</a></li>";
+        $link_str = "<li><a href=\"%s\" %s>%s</a></li>";
 
         $menu = "";
 
-        foreach($this->getMenuArray($menu_id) as $label => $url)
+        foreach($this->getMenuArray($menu_id) as $label => $params)
         {
-            $menu .= sprintf($link_str, $url, $label);
+            $menu .= sprintf($link_str, $params['url'], $this->getAttrs($params['attrs']), $label);
         }
 
-        $attrs = "";
-
-        foreach($attr as $key => $value)
+        return sprintf($menu_str, $this->getAttrs($attrs), $menu);
+    }
+    
+    public function getAttrs(array $attrs = array())
+    {
+        $str = "";
+        foreach($attrs as $key => $value)
         {
-            $attrs .= sprintf(" %s=\"%s\" ", $key, $value);
+            $str .= sprintf(" %s=\"%s\" ", $key, $value);
         }
-
-        return sprintf($menu_str, $attrs, $menu);
+        return $str;
     }
 
     public function getName()
