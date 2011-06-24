@@ -64,6 +64,12 @@ class Config
         }
         return $labels;
     }
+    
+    public function getLabel($type)
+    {
+        $labels = $this->getLabels();
+        return $labels[$type] ? : '';
+    }
 
     public function getMeta($type = null)
     {
