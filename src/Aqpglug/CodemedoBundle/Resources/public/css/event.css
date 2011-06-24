@@ -16,6 +16,9 @@
 .events .thumb {
     float: left;
 }
+.events .pin {
+    cursor: pointer;
+}
 .events img {
     vertical-align: top;
 }
