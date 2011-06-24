@@ -37,6 +37,12 @@ a:hover {
 #container {
     width: 960px;
     margin: 0 auto;
+    -moz-box-shadow: 0 0 25px 0px #555;
+    -webkit-box-shadow: 0 0 25px 0px #555;
+    box-shadow: 0 0 25px 0px #555;
+    -moz-border-radius: 0px 0px 10px 10px;
+    -webkit-border-radius: 0px 0px 10px 10px;
+    border-radius: 0px 0px 10px 10px;
 }
 
 #header {
@@ -49,12 +55,6 @@ a:hover {
     padding: 15px;
     clear: both;
     min-height: 470px;
-    -moz-box-shadow: 0 0 15px 0px #292929;
-    -webkit-box-shadow: 0 0 15px 0px #292929;
-    box-shadow: 0 0 15px 0px #292929;
-    -moz-border-radius: 0px 0px 5px 5px;
-    -webkit-border-radius: 0px 0px 5px 5px;
-    border-radius: 0px 0px 5px 5px;
     margin-bottom: 15px;
     position: relative;
 }
@@ -132,6 +132,8 @@ a:hover {
 .right { background: url('/bundles/aqpglugcodemedo/images/icons/right_16.png') no-repeat; }
 .down { background: url('/bundles/aqpglugcodemedo/images/icons/down_16.png') no-repeat; }
 .up { background: url('/bundles/aqpglugcodemedo/images/icons/up_16.png') no-repeat; }
+.user { background: url('/bundles/aqpglugcodemedo/images/icons/user_16.png') no-repeat; }
+.home { background: url('/bundles/aqpglugcodemedo/images/icons/home_16.png') no-repeat; }
 
 /* MENU */
 
