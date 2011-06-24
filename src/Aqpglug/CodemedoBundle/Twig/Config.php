@@ -1,17 +1,17 @@
 <?php
 
-namespace Aqpglug\CodemedoBundle\Extension;
+namespace Aqpglug\CodemedoBundle\Twig;
 
 use \Twig_Extension;
 use \Twig_Function_Method;
-use Aqpglug\CodemedoBundle\Extension\Config;
+use Aqpglug\CodemedoBundle\Extension\Config as CmdConfig;
 
-class Twig extends Twig_Extension
+class Config extends Twig_Extension
 {
 
     protected $config;
 
-    public function __construct(Config $config)
+    public function __construct(CmdConfig $config)
     {
         $this->config = $config;
     }
@@ -42,6 +42,6 @@ class Twig extends Twig_Extension
 
     public function getName()
     {
-        return 'codemedo_twig_config';
+        return 'codemedo.twig.config';
     }
 }
