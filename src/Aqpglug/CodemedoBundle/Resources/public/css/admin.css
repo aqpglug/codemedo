@@ -149,10 +149,14 @@ form.block textarea.content {
 #block_metadata label {
     width: 60px;
 }
-
-#block_metadata_date_date {
-    
+#block_metadata_date {
+    margin-left: 30px;
 }
-#ui-datepicker-div {
-    font-size: 90%;
+#datepicker {
+    font-size: 80%;
+    margin: 5px 0;
+}
+
+#datepicker .ui-datepicker-header {
+    height: 1.8em;
 }

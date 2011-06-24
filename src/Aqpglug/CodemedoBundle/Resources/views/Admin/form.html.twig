@@ -21,27 +21,32 @@
     {% block javascripts %}
 <script type="text/javascript">
 $(function() {
-    $('#block_metadata_date').after('<input id="datepicker">');
+    $('#block_metadata_date_date').after('<div id="datepicker" />').hide();
+
     $('#datepicker').datepicker({
-        beforeShow: readSelected,
+        buttonImage: '/bundles/aqpglugcodemedo/images/icons/calendar_16.png',
+        buttonImageOnly: true,
+        changeMonth: true,
+        changeYear: true,
+        showOn: 'both',
         onSelect: updateSelected,
+        defaultDate: getDefault(),
+        minDate: new Date((new Date()).getFullYear(), 0, 1),
+        maxDate: new Date((new Date()).getFullYear() + 5, 11, 31)
     });
     
-    function readSelected() { 
-        $('#datepicker').val(
-            $('#block_metadata_date_date_month').val() + '/' +
+    function getDefault() {
+        return $('#block_metadata_date_date_month').val() + '/' +
             $('#block_metadata_date_date_day').val() + '/' + 
-            $('#block_metadata_date_date_year').val());
-        console.log($('#datepicker').val());
+            $('#block_metadata_date_date_year').val();
     } 
     function updateSelected(date) {
         var d = new Date(date);
         $('#block_metadata_date_date_day').val(d.getDate()); 
-        $('#block_metadata_date_date_month').val(d.getMonth()); 
+        $('#block_metadata_date_date_month').val(d.getMonth() + 1);
         $('#block_metadata_date_date_year').val(d.getFullYear()); 
-        console.log(d);
     }
-    updateSelected(Date.now());
+    if ($('#block_metadata_date_date_year').val() == '') updateSelected(Date.now());
 });
 </script>
 {% endblock %}
