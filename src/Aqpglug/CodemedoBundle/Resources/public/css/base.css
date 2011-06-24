@@ -1,3 +1,7 @@
+html {
+    background-color: #efefef;
+}
+
 body {
     font-size: 14px;
     background: url(/bundles/aqpglugcodemedo/images/header.png) repeat-x top;
@@ -57,6 +61,10 @@ a:hover {
     min-height: 470px;
     margin-bottom: 15px;
     position: relative;
+    background: #fff;
+    -moz-border-radius: 0px 0px 10px 10px;
+    -webkit-border-radius: 0px 0px 10px 10px;
+    border-radius: 0px 0px 10px 10px;
 }
 
 #footer {
