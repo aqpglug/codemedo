@@ -20,16 +20,15 @@ types:
 
 menu:
   main:
-    Inicio: homepage
-    Artículos: _article
-    Proyectos: _project
-    Eventos:  _event
-    Comunidad:
-      url:  _member
+    Inicio:       homepage
+    Artículos:    _article
+    Proyectos:    _project
+    Eventos:      _event
+    Comunidad:    _member
     Contacto:
-      url: _page_show
-      params: { slug: contacto }
+      url:      _page_show
+      params:   { slug: contacto }
+  
   external:
-    Inicio: homepage
-    Google: http://google.com.pe
-    Yahoo: http://yahoo.com
+    Google:     http://google.com.pe
+    Yahoo:      http://yahoo.com
