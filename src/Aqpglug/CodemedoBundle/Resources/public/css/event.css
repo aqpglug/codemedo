@@ -13,10 +13,12 @@
     margin-bottom: 20px;
 }
 
-.events img {
+.events .thumb {
     float: left;
 }
-
+.events img {
+    vertical-align: top;
+}
 .events a {
     margin: 5px 10px;
 }
