@@ -105,6 +105,7 @@ class AdminController extends Controller
 
             if($form->isValid())
             {
+                $block->autoslug();
                 $em = $this->getDoctrine()->getEntityManager();
                 $em->persist($block);
                 $em->flush();
