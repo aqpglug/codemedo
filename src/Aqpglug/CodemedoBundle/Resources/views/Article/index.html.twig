@@ -11,19 +11,33 @@
 {% block title %}Artículos{% endblock %}
 
 {% block content %}
-    {% render 'AqpglugCodemedoBundle:Article:featured' %}
+    {% if featured %}
+<h2>Destacados</h2>
+    <ul class="article_featured">
+        {% for article in featured %}
+        <li class="article">
+            <a href="{{ path('_article_show', {'slug': article.slug} ) }}">
+                <h3>{{ article.title }}</h3>
+                <img src="{{ image.or_default(article.image, 'default_80.png') }}"
+                     alt="{{ article.title }}" />
+            </a>
+        </li>
+        {% endfor %}
+    </ul>
+    {% endif %}
 
     <ul class="article_list">
     {% for article in articles %}
         <li class="article">
-            <a href="{{ path("_article_show", {'slug': article.slug}) }}"><img src="{{ image.or_default( article.image, 'http://lorempixum.com/g/80/80/technics/' ~ article.slug) }}" alt="{{ article.title }}" /></a>
+            <a href="{{ path("_article_show", {'slug': article.slug}) }}">
+                <img src="{{ image.or_default( article.image, 'default_80.png') }}"
+                     alt="{{ article.title }}" />
+            </a>
             <h3><a href="{{ path("_article_show", {'slug': article.slug}) }}">{{ article.title }}</a></h3>
             {% if article.metadata.resume is defined %}
                 <span>{{ article.metadata.resume|raw }}</span>
             {% endif %}
         </li>
-    {% else %}
-        <li>no hay articulos</li>
     {% endfor %}
     </ul>
 
