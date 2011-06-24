@@ -19,6 +19,7 @@ a {
     color: #888;
     text-decoration: none;
 }
+
 a:focus {
     outline: none;
     -moz-outline-style: none;
@@ -154,43 +155,6 @@ a:hover {
     border-left: none;
 }
 
-/* CONTENT */
-
-#content {
-    font-size: 1.1em;
-}
-
-#content p, #content ul, #content ol {
-    line-height: 1.5em;
-}
-
-#content p {
-    text-align: justify;
-    padding-left: 1em;
-}
-
-#content li {
-    margin-left: 2.5em;
-}
-#content li li {
-    margin-left: 1.5em;
-}
-#content ul li {
-    list-style-type: disc;
-}
-
-#content ul li li {
-    list-style-type: square;
-}
-
-#content ol li {
-    list-style-type: decimal;
-}
-
-#content ol li li {
-    list-style-type: lower-alpha;
-}
-
 /* EVENT */
 
 #event_content {
@@ -203,4 +167,44 @@ a:hover {
     float: right;
 }
 
-/* ADMIN */
+/* PAGE */
+
+.page a {
+    color: #888;
+    text-decoration: none;
+}
+
+.page {
+    font-size: 1.1em;
+}
+
+.page p, .page ul, .page ol {
+    line-height: 1.5em;
+}
+
+.page p {
+    text-align: justify;
+    padding-left: 1em;
+}
+
+.page li {
+    margin-left: 2.5em;
+}
+.page li li {
+    margin-left: 1.5em;
+}
+.page ul li {
+    list-style-type: disc;
+}
+
+.page ul li li {
+    list-style-type: square;
+}
+
+.page ol li {
+    list-style-type: decimal;
+}
+
+.page ol li li {
+    list-style-type: lower-alpha;
+}
