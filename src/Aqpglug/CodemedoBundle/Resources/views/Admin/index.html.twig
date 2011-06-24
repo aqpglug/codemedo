@@ -1,5 +1,8 @@
 {% extends 'AqpglugCodemedoBundle:Admin:layout.html.twig' %}
 
-{% block admin %}
+{% block admin_menu %}{{ parent() }}
+{{ menu('external', {'class': 'menu'}) }}
+{% endblock %}
 
+{% block admin %}
 {% endblock %}

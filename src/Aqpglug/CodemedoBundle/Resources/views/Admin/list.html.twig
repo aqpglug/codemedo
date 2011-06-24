@@ -2,8 +2,8 @@
 
 {% block title %}Admin - {{ get_labels[type]}}{% endblock %}
 
-{% block admin %}
-<ul class="menu submenu">
+{% block admin_menu %}{{ parent() }}
+<ul class="menu">
     <li><span>{{ get_labels[type]}}</span</li>
     <li><a href="{{ path('_admin_new', {'type': type}) }}" class="icontext plus" >Nuevo</a></li>
         {% if pages > 1 %}
@@ -17,6 +17,9 @@
     </ul></li>
     {% endif %}
 </ul>
+{% endblock %}
+
+{% block admin %}
     <table class="list">
         <thead>
             <tr>
