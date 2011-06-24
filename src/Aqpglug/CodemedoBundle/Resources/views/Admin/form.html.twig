@@ -1,5 +1,13 @@
 {% extends 'AqpglugCodemedoBundle:Admin:layout.html.twig' %}
 
+{% block stylesheets %}
+    {{ parent() }}
+    <link rel="stylesheet" type="text/css" media="all" href="{{ asset('/bundles/aqpglugcodemedo/css/jquery-ui-1.8.13.custom.css') }}" />
+    <script type="text/javascript" src="{{ asset('/bundles/aqpglugcodemedo/js/jquery-ui-1.8.13.custom.min.js') }}"></script>
+    {#<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+    <script type="text/javascript" src="{{ asset('/bundles/aqpglugcodemedo/js/gmap3.min.js') }}"></script>#}
+{% endblock %}
+    
 {% block admin %}
 <form class="block" action="{{ form_action }}" method="post" {{ form_enctype(form) }}>
     <div class="buttons">
@@ -8,4 +16,32 @@
     </div>
     {{ form_widget(form) }}
 </form>
+{% endblock %}
+
+    {% block javascripts %}
+<script type="text/javascript">
+$(function() {
+    $('#block_metadata_date').after('<input id="datepicker">');
+    $('#datepicker').datepicker({
+        beforeShow: readSelected,
+        onSelect: updateSelected,
+    });
+    
+    function readSelected() { 
+        $('#datepicker').val(
+            $('#block_metadata_date_date_month').val() + '/' +
+            $('#block_metadata_date_date_day').val() + '/' + 
+            $('#block_metadata_date_date_year').val());
+        console.log($('#datepicker').val());
+    } 
+    function updateSelected(date) {
+        var d = new Date(date);
+        $('#block_metadata_date_date_day').val(d.getDate()); 
+        $('#block_metadata_date_date_month').val(d.getMonth()); 
+        $('#block_metadata_date_date_year').val(d.getFullYear()); 
+        console.log(d);
+    }
+    updateSelected(Date.now());
+});
+</script>
 {% endblock %}
