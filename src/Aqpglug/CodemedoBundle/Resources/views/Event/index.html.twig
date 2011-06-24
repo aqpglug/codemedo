@@ -16,8 +16,9 @@
     <ul class="events">
         {% for event in events %}
         <li>
-            <img src="{{ image.or_default( event.image, 'http://lorempixum.com/80/80/technics/') }}" alt="{{ event.title }}" />
-            <a href="{{ path("_event_show", {'slug': event.slug}) }}">{{ event.title }}</a><br />
+            <img src="{{ event.image|default('http://lorempixum.com/80/80/technics/') }}" alt="{{ event.title }}" class="thumb" />
+            <a href="{{ path("_event_show", {'slug': event.slug}) }}">{{ event.title }}</a>
+            <img src="http://chart.googleapis.com/chart?chst=d_map_pin_letter&chld={{ letter(loop.index0) }}|FF0000|000000" id="ev{{ event.id }}" /><br />
             {% if event.metadata.resume is defined %}<p>{{ event.metadata.resume }}</p>{% endif %}
             {% if event.metadata.date is defined %}<time>{{ event.metadata.date|date("m/d/Y") }}</time>{% endif %}
         </li>
@@ -32,13 +33,26 @@
 {% block javascripts %}
 <script type="text/javascript">
 $(function() {
-    $("#map").gmap3( { action: 'init', options:{center: [-16.398822,-71.536886], zoom:13}},
+    $("#map").gmap3( { action: 'init', options:{center: [-16.398822,-71.536886], zoom:13}});
     {% for event in events %}
         {% if event.metadata.lat is defined %}
-            { action: 'addMarker', latLng:[{{event.metadata.lat}}, {{event.metadata.lng}}]},
+        addMarker($("#map"), $("#ev{{ event.id }}"), "http://chart.googleapis.com/chart?chst=d_map_pin_letter&chld={{ letter(loop.index0) }}|FF0000|000000" , {{event.metadata.lat}}, {{event.metadata.lng}});
         {% endif %}
     {% endfor %}
-    "autofit");
+    $("#map").gmap3("autofit");
+    
+    function addMarker($this, $id, img, lat, lng) {
+        $this.gmap3({
+            action: 'addMarker',
+            marker: {icon: img},
+            latLng: [lat, lng],
+            callback: function(marker){
+                $id.click(function(){
+                    $this.gmap3({action: 'panTo', args: [marker.position]});
+                });
+            },
+        });
+    }
 });
 </script>
 {% endblock %}
