@@ -20,7 +20,7 @@ class MetaType extends AbstractType
         foreach ($this->meta as $key => $value)
         {
             if (is_string($key))
-                $builder->add($key, $value ?: 'text');
+                $builder->add($key, $value ?: 'text', array('required' => false));
             else
                 $builder->add($value);
         }
