@@ -78,6 +78,11 @@ class AdminController extends Controller
 
         $blocks = $this->getRepo()->findBy(
                         array('type' => $type,), array('created' => 'DESC',), $step, $step * ($page - 1));
+        
+        // Algun bug en la session no borra la flash
+        $this->getRequest()->getSession()->removeFlash('notice');
+        if(!count($blocks))
+            $this->getRequest()->getSession()->setFlash('notice', sprintf("no hay %ss", $this->getConfig()->getLabel($type)));
 
         return $this->render('AqpglugCodemedoBundle:Admin:list.html.twig', array(
             'blocks' => $blocks,
@@ -193,5 +198,24 @@ class AdminController extends Controller
         $em->persist($block);
         $em->flush();
         return $this->redirect($this->generateUrl('_admin_list', array('type' => $block->getType())));
+    }
+    
+    /**
+     * @Route("/preview/{id}", name="_admin_preview")
+     */
+    public function previewAction($id)
+    {
+        $block = $this->getRepo()->findOneBy(array('id' => $id));
+        
+        try
+        {
+            $route = $this->generateUrl('_'.$block->getType().'_show', array('slug' => $block->getSlug()));
+        }
+        catch(\Symfony\Component\Routing\Exception\RouteNotFoundException $exc)
+        {
+            $this->getRequest()->getSession()->setFlash('notice', 'no se puede previsualizar');
+            $route = $this->getRequest()->headers->get('referer');
+        }
+        return $this->redirect($route);
     }
 }
