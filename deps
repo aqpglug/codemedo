@@ -9,7 +9,6 @@
 
 [doctrine-common]
     git=http://github.com/doctrine/common.git
-    version=origin/3.0.x
 
 [doctrine-dbal]
     git=http://github.com/doctrine/dbal.git
@@ -41,6 +40,10 @@
 [WebConfiguratorBundle]
     git=http://github.com/symfony/WebConfiguratorBundle.git
     target=/bundles/Symfony/Bundle/WebConfiguratorBundle
+
+[SensioGeneratorBundle]
+    git=http://github.com/sensio/SensioGeneratorBundle.git
+    target=/bundles/Sensio/Bundle/GeneratorBundle
 
 [AsseticBundle]
     git=http://github.com/symfony/AsseticBundle.git
