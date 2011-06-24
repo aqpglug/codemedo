@@ -3,31 +3,35 @@
 {% block title %}Admin - {{ get_labels[type]}}{% endblock %}
 
 {% block admin_menu %}{{ parent() }}
-<ul class="menu">
-    <li><span>{{ get_labels[type]}}</span</li>
+<ul class="submenu">
+    <li><span>{{ get_labels[type]}}</span></li>
     <li><a href="{{ path('_admin_new', {'type': type}) }}" class="icontext plus" >Nuevo</a></li>
-        {% if pages > 1 %}
-    <li><ul class="right paginator">
-    {% for i in range(1, pages) %}
-    <li><a {% spaceless %}
-            href="{{ path('_admin_list', {'type': type, 'page': i }) }}" 
-            {% if i == page %}class="currentpage"{% endif %}>{{i}}
-        {% endspaceless %}</a></li>
-    {% endfor %}
-    </ul></li>
+    {% if pages > 1 %}
+    <li>
+        <ul class="submenu_right paginator">
+        {% for i in range(1, pages) %}
+            {% if i == page %}<li class="currentpage">{{i}}</li>{% else %}
+            <li>
+                <a href="{{ path('_admin_list', {'type': type, 'page': i }) }}" >{{i}}</a>
+            </li>
+            {% endif %}
+        {% endfor %}
+        </ul>
+    </li>
     {% endif %}
 </ul>
 {% endblock %}
 
 {% block admin %}
+    {% if blocks %}
     <table class="list">
         <thead>
             <tr>
                 <th>ID</th>
                 <th>Título</th>
                 <th>Slug</th>
-                <th title="Publicado">pub</th>
-                <th title="Destacado">feat</th>
+                <th title="Publicado">p</th>
+                <th title="Destacado">d</th>
                 <th>Fecha</th>
                 <th></th>
             </tr>
@@ -49,14 +53,16 @@
                 </a>
             </td>
             <td class="date">{{block.created|date("Y/m/d h:m")}}</td>
-            <td class="actions"><a class="remove" href="{{ path("_admin_remove", {'id': block.id}) }}"><span class="icon trash"></span></a></td>
+            <td class="actions">
+                <a class="remove" href="{{ path("_admin_remove", {'id': block.id}) }}"><span class="icon trash"></span></a>
+                <a class="preview" href="{{ path("_admin_preview", {'id': block.id}) }}"><span class="icon globe"></span></a>
+            </td>
         </tr>
-    {% else %}
-        <tr><td>no hay nada para mostrar aquí</td></tr>
     {% endfor %}
         
     </table>
 
+    {% endif %}
 {% endblock %}
 
 {% block javascripts %}

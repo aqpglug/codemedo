@@ -58,7 +58,7 @@ a:hover {
 #content {
     padding: 15px;
     clear: both;
-    min-height: 470px;
+    min-height: 450px;
     margin-bottom: 15px;
     position: relative;
     background: #fff;
@@ -110,18 +110,32 @@ a:hover {
     display: inline;
 }
 
-.menu li {
-    display: inline;
-    padding: 0 15px;
+#flash_error, #flash_notice {
+    margin: -15px 0 15px -15px;
+    width: 900px;
+    border-top: 1px solid #666;
+    padding: 10px 20px 10px 38px;
+    background-position: 10px center ;
 }
 
-.menu .right {
-    float: right;
+#flash_error {
+    background-color: #B81900;
+    border: 1px solid #CD0A0A;
+    color: #fff;
 }
 
+#flash_notice {
+    background-color: #FFE45C;
+    border: 1px solid #FED22F;
+    color: #363636;
+}
 
 /* ICONS */
 
+.icon, .icontext {
+    background-repeat: no-repeat;
+    background-position: center left;
+}
 .icon {
     display: inline-block;
     width: 16px;
@@ -131,22 +145,25 @@ a:hover {
     padding-left: 20px;
     width: auto;
 }
-.tick { background: url('/bundles/aqpglugcodemedo/images/icons/tick_16.png') no-repeat; }
-.stop { background: url('/bundles/aqpglugcodemedo/images/icons/block_16.png') no-repeat; }
-.trash { background: url('/bundles/aqpglugcodemedo/images/icons/trash_16.png') no-repeat; }
-.plus { background: url('/bundles/aqpglugcodemedo/images/icons/plus_16.png') no-repeat; }
-.search { background: url('/bundles/aqpglugcodemedo/images/icons/search_16.png') no-repeat; }
-.left { background: url('/bundles/aqpglugcodemedo/images/icons/left_16.png') no-repeat; }
-.right { background: url('/bundles/aqpglugcodemedo/images/icons/right_16.png') no-repeat; }
-.down { background: url('/bundles/aqpglugcodemedo/images/icons/down_16.png') no-repeat; }
-.up { background: url('/bundles/aqpglugcodemedo/images/icons/up_16.png') no-repeat; }
-.user { background: url('/bundles/aqpglugcodemedo/images/icons/user_16.png') no-repeat; }
-.home { background: url('/bundles/aqpglugcodemedo/images/icons/home_16.png') no-repeat; }
+.tick       { background-image: url('/bundles/aqpglugcodemedo/images/icons/tick_16.png'); }
+.stop       { background-image: url('/bundles/aqpglugcodemedo/images/icons/block_16.png'); }
+.trash      { background-image: url('/bundles/aqpglugcodemedo/images/icons/trash_16.png'); }
+.plus       { background-image: url('/bundles/aqpglugcodemedo/images/icons/plus_16.png'); }
+.search     { background-image: url('/bundles/aqpglugcodemedo/images/icons/search_16.png'); }
+.left       { background-image: url('/bundles/aqpglugcodemedo/images/icons/left_16.png'); }
+.right      { background-image: url('/bundles/aqpglugcodemedo/images/icons/right_16.png'); }
+.down       { background-image: url('/bundles/aqpglugcodemedo/images/icons/down_16.png'); }
+.up         { background-image: url('/bundles/aqpglugcodemedo/images/icons/up_16.png'); }
+.user       { background-image: url('/bundles/aqpglugcodemedo/images/icons/user_16.png'); }
+.home       { background-image: url('/bundles/aqpglugcodemedo/images/icons/home_16.png'); }
+.globe      { background-image: url('/bundles/aqpglugcodemedo/images/icons/globe_16.png'); }
+.bubble     { background-image: url('/bundles/aqpglugcodemedo/images/icons/bubble_16.png'); }
+.info       { background-image: url('/bundles/aqpglugcodemedo/images/icons/info_16.png'); }
+.warning    { background-image: url('/bundles/aqpglugcodemedo/images/icons/warning_16.png'); }
 
-/* MENU */
+/* HEADER MENU */
 
 #header .menu {
-    font-size: 1em;
     position: absolute;
     bottom: 15px;
     right: 15px;
@@ -164,6 +181,45 @@ a:hover {
 #header .menu li:first-child {
     border-left: none;
 }
+
+/* MENU */
+
+.submenu {
+    background: #292929;
+    margin: -15px 0 15px -15px;
+    width: 940px;
+    border-top: 1px solid #666;
+    padding: 5px 10px;
+}
+
+.submenu li {
+    border-left: #efbe15 1px dotted;
+    margin:0;
+}
+
+.submenu li:first-child {
+    border-left: none;
+}
+
+.submenu a {
+    color: #fff;
+}
+
+.submenu span {
+    color: #fff;
+    font-size: 1.5em;
+}
+
+.menu li, .submenu li {
+    display: inline;
+    padding: 0 15px;
+}
+
+.menu_right, .submenu_right {
+    margin-top: 7px;
+    float: right;
+}
+
 
 /* EVENT */
 
@@ -185,7 +241,6 @@ a:hover {
 }
 
 .page {
-    font-size: 1.1em;
 }
 
 .page p, .page ul, .page ol {

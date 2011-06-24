@@ -11,18 +11,16 @@
 <div id="admin">
     
     {% block admin_menu %}
-        <ul class="menu">
-            <li><a href="{{ path('_admin') }}" >Dashboard</a></li>
-        {% for type, label in get_labels %}
-            <li><a href="{{ path('_admin_list', {'type': type }) }}" >{{ label }}</a></li>
-        {% endfor %}
-            <li>
-                <ul style="float: right">
-                    <li><a href="{{ path('_logout') }}" >Logout</a></li>
-                </ul>
-            </li>
-        </ul>
+        {% include 'AqpglugCodemedoBundle:Admin:menu.html.twig' %}
     {% endblock admin_menu %}
+    
+    {% if app.session.hasFlash('error') %}
+        <div id="flash_error" class="icontext warning">{{ app.session.flash('error') }}</div>
+    {% endif %}
+    {% if app.session.hasFlash('notice') %}
+        <div id="flash_notice" class="icontext info">{{ app.session.flash('notice') }}</div>
+    {% endif %}
+
     {% block admin %}
     {% endblock admin %}
 </div>
