@@ -15,6 +15,6 @@ services:
 
     codemedo.menu:
         class:        %codemedo.menu.class%
-        arguments:    [@codemedo, @router]
+        arguments:    [@codemedo, @router, @session]
         tags:
             -  { name: twig.extension }
