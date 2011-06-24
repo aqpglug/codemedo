@@ -12,8 +12,11 @@ class Slug
         $text = trim($text, '-');
 
         // transliterate
+        $old_locale = setlocale(LC_CTYPE, 0);
+        setLocale(LC_CTYPE, 'es_PE.UTF-8', 'es_PE', 'es');
         $text = iconv('utf-8', 'us-ascii//TRANSLIT', $text);
-
+        setLocale(LC_CTYPE, $old_locale);
+        
         // lowercase
         $text = strtolower($text);
 
