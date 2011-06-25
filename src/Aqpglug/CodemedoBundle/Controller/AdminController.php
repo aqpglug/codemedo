@@ -6,6 +6,7 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use JMS\SecurityExtraBundle\Annotation\Secure;
 use Symfony\Component\Security\Core\SecurityContext;
+use Symfony\Component\HttpFoundation\File\UploadedFile;
 use Aqpglug\CodemedoBundle\Controller\Controller;
 use Aqpglug\CodemedoBundle\Entity\Block;
 use Aqpglug\CodemedoBundle\Form\BlockType;
@@ -142,6 +143,8 @@ class AdminController extends Controller
 
             if($form->isValid())
             {
+                print_r($form['image']); die();
+                $block->setImage($this->saveImage($form['image'], md5(time()), $type));
                 $block->autoslug();
                 $block->setType($type);
                 $em = $this->getDoctrine()->getEntityManager();
@@ -217,5 +220,18 @@ class AdminController extends Controller
             $route = $this->getRequest()->headers->get('referer');
         }
         return $this->redirect($route);
+    }
+    
+    private function saveImage(UploadedFile $file, $name, $type)
+    {
+        $extension = $file->guessExtension();
+        if (!$extension) {
+            // extension cannot be guessed
+            $extension = 'bin';
+        }
+        $webroot = $this->getRequest()->server['DOCUMENT_ROOT'];
+        $dir = 'images'.DIRECTORY_SEPARATOR.$type.DIRECTORY_SEPARATOR;
+        $file->move($webroot.DIRECTORY_SEPARATOR.$dir, $name.'.'.$extension);
+        return $dir.DIRECTORY_SEPARATOR.$name.'.'.$extension;
     }
 }
