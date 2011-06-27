@@ -20,6 +20,7 @@ database:
 	php app/console doctrine:database:drop --force
 	php app/console doctrine:database:create
 	php app/console doctrine:schema:create
+	php app/console codemedo:fixtures
 
 dbupdate:
 	php app/console doctrine:schema:update --force
