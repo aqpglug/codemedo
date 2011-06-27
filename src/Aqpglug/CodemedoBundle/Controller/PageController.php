@@ -20,7 +20,7 @@ class PageController extends Controller
     {
         $homepage = $this->getConfig()->getHome();
         
-        $page = $this->getRepo()->findOnePublished(array(
+        $page = $this->getRepo()->findOnePublishedBy(array(
             'type' =>'page',
             'slug'=> $homepage));
         
@@ -34,7 +34,7 @@ class PageController extends Controller
      */
     public function showAction($slug)
     {
-        $page = $this->getRepo()->findOnePublished(array(
+        $page = $this->getRepo()->findOnePublishedBy(array(
             'type' =>'page',
             'slug'=> $slug));
 

@@ -3,12 +3,14 @@ v1.0 milestone: cms funcional
 // - auth
 //- menu extension
 - admin
-    - index
 //    - paginado
+    - subir imagenes
+    - 
 - mapas
     - poner indicador de que marcador es de que evento
 
 v1.1 milestone: bundle independiente
+- buscador
 - general
     - poner un nombre
     - crear documentacion
@@ -18,6 +20,7 @@ v1.1 milestone: bundle independiente
     - crear campo tipo "map"
     - paginas privadas solo para usuarios
     - usuarios en base de datos
+    - redimencionar imagenes
 
 - types
     - convertir menu extension en type

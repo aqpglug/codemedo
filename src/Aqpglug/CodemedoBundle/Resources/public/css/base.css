@@ -4,7 +4,8 @@ html {
 
 body {
     font-size: 14px;
-    background: url(/bundles/aqpglugcodemedo/images/header.png) repeat-x top;
+    background: url(/bundles/aqpglugcodemedo/images/header.png) repeat-x;
+    background-position: 0 -30px;
     font-family: sans-serif;
 }
 
@@ -50,9 +51,11 @@ a:hover {
 }
 
 #header {
-    height: 135px;
+    height: 110px;
     position: relative;
     background: url(/bundles/aqpglugcodemedo/images/header.png) repeat-x;
+    background-position: top;
+    overflow: hidden;
 }
 
 #content {
@@ -80,9 +83,9 @@ a:hover {
 
 #header h1 {
     float: left;
-    width: 185px;
-    height: 85px;
-    margin: 25px;
+    width: 141px;
+    height: 65px;
+    margin: 25px 0 0 35px;
     background: url('/bundles/aqpglugcodemedo/images/logo.png') no-repeat;
 }
 
@@ -93,7 +96,7 @@ a:hover {
 #header #search {
     position: absolute;
     top: 15px;
-    right: 15px;
+    right: 25px;
     background-color: #fff;
     background-position: 3px;
     padding: 5px 10px 5px 23px;

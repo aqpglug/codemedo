@@ -19,20 +19,28 @@ class ArticleController extends Controller
      */
     public function indexAction($page)
     {
-        $featured = $this->getRepo()->findPublishedBy(
-                        array('type' => $this->type,
-                    'featured' => True), array('created' => 'DESC'), 3);
+        $criteria = array('type' => $this->type, 'published' => true);
 
-        $step = (count($featured)) ? 4 : 6;
+        $featured = $this->getRepo()->findOnePublishedBy(array_merge(array('featured' => true), $criteria));
 
-        $pages = $this->countPagesBy(array(
-                    'type' => $this->type,
-                    'published' => True,
-                    'featured' => false,), $step);
+        $step = ($featured !== null) ? 2 : 3;
+        $pages = $this->countPagesBy($criteria, $step);
 
-        $articles = $this->getRepo()->findPublishedBy(
-                        array('type' => $this->type,
-                    'featured' => False), array('created' => 'DESC',), $step, $step * ($page - 1));
+        $query = $this->getRepo()->createQueryBuilder('b')
+                ->select('b.title, b.image, b.metadata, b.slug')
+                ->where('b.type = ?1')
+                ->andWhere('b.published = true')
+                ->setParameter(1, $this->type)
+                ->orderBy('b.created', 'DESC')
+                ->setMaxResults($step)
+                ->setFirstResult($step * ($page - 1));
+        if($featured !== null)
+        {
+            $query
+                ->andWhere('b.id != ?2')
+                ->setParameter(2, $featured->getId());
+        }
+        $articles = $query->getQuery()->execute();
 
         return $this->render('AqpglugCodemedoBundle:Article:index.html.twig', array(
             'articles' => $articles,
@@ -47,7 +55,7 @@ class ArticleController extends Controller
      */
     public function showAction($slug)
     {
-        $article = $this->getRepo()->findOnePublished(array(
+        $article = $this->getRepo()->findOnePublishedBy(array(
                     'type' => 'article',
                     'slug' => $slug));
 

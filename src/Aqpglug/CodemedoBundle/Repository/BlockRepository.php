@@ -10,20 +10,10 @@ use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 class BlockRepository extends EntityRepository
 {
     
-    public function findOnePublished(array $criteria)
+    public function findOnePublishedBy(array $criteria)
     {
         $criteria = array_merge($criteria, array('published' => True));
-        
         return $this->findOneBy($criteria);
-    }
-
-    public function findOneBy(array $criteria)
-    {
-        $block = parent::findOneBy($criteria);
-
-        if ($block === null)
-            throw new NotFoundHttpException();
-        return $block;
     }
     
     public function findPublishedBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)

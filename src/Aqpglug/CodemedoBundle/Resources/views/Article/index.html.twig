@@ -11,36 +11,27 @@
 {% block title %}Artículos{% endblock %}
 
 {% block content %}
+<div class="article">
     {% if featured %}
-<h2>Destacados</h2>
-    <ul class="article_featured">
-        {% for article in featured %}
-        <li class="article">
-            <a href="{{ path('_article_show', {'slug': article.slug} ) }}">
-                <h3>{{ article.title }}</h3>
-                <img src="{{ image.or_default(article.image, 'default_80.png') }}"
-                     alt="{{ article.title }}" />
-            </a>
-        </li>
-        {% endfor %}
-    </ul>
+    <div class="featured">
+        <img src="{{ image.or_default( featured.image, 'default_180.png') }}" alt="{{ featured.title }}" />
+        <a href="{{ path('_article_show', {'slug': featured.slug} ) }}"><h2>{{ featured.title }}</h2></a>
+        <p>{{ featured.metadata.resume|raw }}</p>
+    </div>
     {% endif %}
 
-    <ul class="article_list">
+    <ul class="list">
     {% for article in articles %}
-        <li class="article">
-            <a href="{{ path("_article_show", {'slug': article.slug}) }}">
-                <img src="{{ image.or_default( article.image, 'default_80.png') }}"
-                     alt="{{ article.title }}" />
-            </a>
-            <h3><a href="{{ path("_article_show", {'slug': article.slug}) }}">{{ article.title }}</a></h3>
+        <li>
+            <img src="/bundles/aqpglugcodemedo/images/{{ article.image }}" alt="{{ article.title }}" />
+            <a href="{{ path("_article_show", {'slug': article.slug}) }}"><h2>{{ article.title }}</h2></a>
             {% if article.metadata.resume is defined %}
                 <span>{{ article.metadata.resume|raw }}</span>
             {% endif %}
         </li>
     {% endfor %}
     </ul>
-
     {{ nav.arrows('_article', page, pages) }}
+</div>
 
 {% endblock %}
