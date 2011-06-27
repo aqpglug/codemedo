@@ -1,0 +1,9 @@
+article:
+  type: article
+  title:  Inicio
+  content: contenido
+  published: true
+  featured: false
+  image: ~
+  metadata:
+    resume: resumennnnnn del contenido
