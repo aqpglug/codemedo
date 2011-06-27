@@ -1,9 +1,24 @@
-article:
-  type: article
-  title:  Inicio
-  content: contenido
-  published: true
-  featured: false
-  image: ~
-  metadata:
-    resume: resumennnnnn del contenido
+Articles:
+<?php for($i = 0; $i<10; $i++) : ?>
+  article_<?php echo $i ?>:
+    type: article
+    title:  Articulo_<?php echo $i."\n" ?>
+    content: contenido
+    published: true
+    featured: <?php echo ($i & 1)."\n" ?>
+    image: ~
+    metadata:
+      resume: resumen del articulo_<?php echo $i."\n" ?>
+<?php endfor; ?>
+
+Pages:
+<?php for($i = 0; $i<10; $i++) : ?>
+  page_<?php echo $i ?>:
+    type: page
+    title:  Pagina_<?php echo $i."\n" ?>
+    content: contenido
+    published: true
+    featured: <?php echo ($i & 1)."\n" ?>
+    image: ~
+    metadata:
+<?php endfor; ?>
