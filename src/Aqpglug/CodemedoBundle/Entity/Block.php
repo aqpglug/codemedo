@@ -80,7 +80,7 @@ class Block
     {
         $this->slug = $slug;
     }
-    
+
     public function autoslug()
     {
         if (!$this->slug)

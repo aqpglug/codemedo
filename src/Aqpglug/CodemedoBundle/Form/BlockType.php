@@ -44,4 +44,9 @@ class BlockType extends AbstractType
                 ));
         if ($this->meta !== array()) $builder->add('metadata', new MetaType($this->meta));
     }
+
+    public function getName()
+    {
+        return 'block';
+    }
 }

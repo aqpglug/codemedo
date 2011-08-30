@@ -32,4 +32,9 @@ class MetaType extends AbstractType
                 $builder->add($value);
         }
     }
+
+    public function getName()
+    {
+        return 'meta';
+    }
 }
