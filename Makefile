@@ -41,3 +41,5 @@ vendors:
 build_bootstrap:
 	php vendor/bundles/Sensio/Bundle/DistributionBundle/Resources/bin/build_bootstrap.php
 
+ctags:
+	ctags -R --languages=php .
