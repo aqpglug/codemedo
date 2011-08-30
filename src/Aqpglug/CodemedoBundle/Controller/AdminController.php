@@ -143,8 +143,7 @@ class AdminController extends Controller
 
             if($form->isValid())
             {
-                print_r($form['image']); die();
-                $block->setImage($this->saveImage($form['image'], md5(time()), $type));
+                //$block->setImage($this->saveImage($form->getData()['image'], md5(time()), $type));
                 $block->autoslug();
                 $block->setType($type);
                 $em = $this->getDoctrine()->getEntityManager();
