@@ -22,7 +22,7 @@ Pages:
     image:     ~
     metadata:
 
-  page_home:
+  page_contact:
     type:      page
     title:     Contacto
     slug:      contacto
