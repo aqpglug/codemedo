@@ -19,6 +19,7 @@ class AppKernel extends Kernel
             new JMS\SecurityExtraBundle\JMSSecurityExtraBundle(),
             new Aqpglug\CodemedoBundle\AqpglugCodemedoBundle(),
             
+            new Aqpglug\WebBundle\AqpglugWebBundle(),
         );
 
         if (in_array($this->getEnvironment(), array('dev', 'test'))) {
