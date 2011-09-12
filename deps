@@ -57,3 +57,8 @@
     git=http://github.com/symfony/AsseticBundle.git
     target=/bundles/Symfony/Bundle/AsseticBundle
     version=v1.0.0
+
+[AqpglugCodemedoBundle]
+    git=http://github.com/aqpglug/AqpglugCodemedoBundle.git
+    target=/bundles/Aqpglug/CodemedoBundle
+

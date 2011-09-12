@@ -12,30 +12,31 @@ Articles:
 <?php endfor; ?>
 
 Pages:
-  page_0:
-    type: page
-    title:  Home
-    slug: home
-    content: home content
+  page_home:
+    type:      page
+    title:     Home
+    slug:      home
+    content:   contenido
     published: true
-    featured: 1
-    image: ~
+    featured:  0
+    image:     ~
     metadata:
 
-  page_1:
-    type: page
-    title:  Contacto
-    slug: contacto
-    content: contacto content
+  page_contact:
+    type:      page
+    title:     Contacto
+    slug:      contacto
+    content:   página de contacto
     published: true
-    featured: 1
-    image: ~
+    featured:  0
+    image:     ~
     metadata:
 
-<?php for($i = 2; $i<10; $i++) : ?>
+<?php for($i = 0; $i<10; $i++) : ?>
   page_<?php echo $i ?>:
     type: page
     title:  Pagina_<?php echo $i."\n" ?>
+    slug:   pagina_<?php echo $i."\n" ?>
     content: contenido
     published: true
     featured: <?php echo ($i & 1)."\n" ?>
